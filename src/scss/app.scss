@@ -42,6 +42,12 @@ $bp-small: 740px;
   text-decoration: none;
 }
 
+
+%flipInX {
+  backface-visibility: visible !important;
+  animation: flipInX 0.8s ease;
+}
+
 $custom: (
   input-width: 500px,
   input-height: 60px,
@@ -298,6 +304,8 @@ main {
     box-shadow: 0 2px 10px black;
     position: relative;
     left: -0.25em;
+
+    @extend %flipInX;
     @media (max-width: $bp-small) {
       margin: inheri;
     }
@@ -459,5 +467,30 @@ footer {
 
   100% {
     opacity: 1;
+  }
+}
+@keyframes flipInX {
+  0% {        
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);    
+    transition-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {        
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);    
+    transition-timing-function: ease-in;
+  }
+
+  60% {        
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {        
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  100% {        
+    transform: perspective(400px);
   }
 }
