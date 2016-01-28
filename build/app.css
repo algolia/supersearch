@@ -493,6 +493,10 @@ footer {
     footer {
       width: calc(100% + 32px);
       left: -16px; } }
+  footer span {
+    text-indent: -9999px;
+    background: url(../img/Algolia_logo_bg-dark.svg) no-repeat center center/contain;
+    color: transparent; }
 
 @-webkit-keyframes spin {
   from {
