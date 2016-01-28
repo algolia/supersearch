@@ -103,7 +103,8 @@ gulp.task('copy', function () {
 
 gulp.task('watch', function() {
   livereload.listen();
-  gulp.watch('src/scss/**/*.scss', ['sass','copy','scss-lint']);
+  gulp.watch('src/img/**/*',['copy']);
+  gulp.watch('src/scss/**/*.scss', ['sass','scss-lint']);
   gulp.watch('src/*.haml', ['build']);
   gulp.watch('src/js/**/*.js', ['js']);
 });
