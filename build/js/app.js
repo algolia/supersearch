@@ -89,7 +89,7 @@
 	  limit: 1000,
 	  sortBy: ['name:asc'],
 	  templates: {
-	    header: 'Filters: <a href="javascript:void(0)" id="toggleFilter" class="button">open</a>'
+	    header: '<a href="javascript:void(0)" id="toggleFilter" class="button">Open filters</a>'
 	  }
 	}));
 
@@ -46946,7 +46946,7 @@
 	  // Stick dat footer
 	  $('input').on('keyup keypress live change', function () {
 	    $('.ais-refinement-list--body').removeClass('open');
-	    $('#toggleFilter').text('open');
+	    $('#toggleFilter').text('Open filters');
 	    if ($('.ais-hits').hasClass('ais-hits__empty')) {
 	      $('footer').css({
 	        position: 'absolute',
@@ -46960,13 +46960,19 @@
 	    }
 	  });
 
+<<<<<<< HEAD
 	  $('#years').on('click', $('#toggleFilter'), function (e) {
+=======
+	  $('.filters').on('click', $('#toggleFilter'), function (e) {
+	    alert();
+	    e.preventDefault();
+>>>>>>> 501c9bddae6ce702a36d8b7d53b47a46620ab2e2
 	    if ($('.ais-refinement-list--body').hasClass('open')) {
-	      $('#toggleFilter').text('open');
-	      $('.ais-refinement-list--body').removeClass('open');
+	      $('#toggleFilter').text('Open filters');
+	      $('.ais-refinement-list--body').toggleClass('open');
 	    } else {
-	      $('#toggleFilter').text('close');
-	      $('.ais-refinement-list--body').addClass('open');
+	      $('#toggleFilter').text('Close filters');
+	      $('.ais-refinement-list--body').toggleClass('open');
 	    }
 	  });
 	});

@@ -6,14 +6,28 @@
   %link{href: "https://fonts.googleapis.com/css?family=Exo+2:400,900", rel: "stylesheet", type: "text/css"}
   %link{rel:"icon", type:"image/png", href:"favicon.png"}
   %link{rel:"shortcut icon", type:"image/png", href:"favicon.png"}
+  %meta{name:"fb:app_id", content:"YOUR_FB_APP_ID"}
   %meta{name:"viewport", content:"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"}
-  %meta{name: "twitter:card", content: "summary"}
+  %meta{name: "twitter:card", content: "summary_large_image"}
   %meta{name: "twitter:site", content: "@AlgoliaSuperbowl"}
   %meta{name: "twitter:creator", content: "@Algolia"}
   %meta{property: "og:url", content: "https://community.algolia.com/instantsearch.js/"}
   %meta{property: "og:title", content: "SUPERBOWL ADS"}
   %meta{property: "og:description", content: "Superbowl Ads is an Algolia experiment that will help you to browse through the history of the superbowl, by selecting and watching superbowl ads. The ads are from the first ever Superbowl, to the latest!"}
-  %meta{property: "og:image", content: "http://graphics8.nytimes.com/images/2011/12/08/technology/bits-newtwitter/bits-newtwitter-tmagArticle.jpg"}
+  %meta{property: "og:image", content: "img/og_screen.png"}
+  %meta{name:"apple-mobile-web-app-capable",content:"yes"}
+  %meta{name:"apple-mobile-web-app-title",content:"Algolia - SuperBowl Ads"}
+  %meta{name:"apple-mobile-web-app-status-bar-style",content:"black"}
+  %link{href:"img/og_screen.png", media:"(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)", rel:"apple-touch-startup-image"}
+  %link{href:"img/og_screen.png", media:"(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)", rel:"apple-touch-startup-image"}
+  %link{href:"img/og_screen.png", media:"(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 1) and (orientation: portrait)", rel:"apple-touch-startup-image"}
+  %link{href:"img/og_screen.png", media:"(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 1) and (orientation: landscape)", rel:"apple-touch-startup-image"}
+  %link{href:"img/og_screen.png", media:"(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)", rel:"apple-touch-startup-image"}
+  %link{href:"img/og_screen.png", media:"(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)", rel:"apple-touch-startup-image"}
+  %link{href:"img/og_screen.png", media:"(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)", rel:"apple-touch-startup-image"}
+  %link{href:"img/og_screen.png", media:"(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)", rel:"apple-touch-startup-image"}
+  %link{href:"img/og_screen.png", media:"(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)", rel:"apple-touch-startup-image"}
+  %link{href:"img/og_screen.png", media:"(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)", rel:"apple-touch-startup-image"}
 
 %body
   .container-fluid
@@ -55,8 +69,9 @@
       %section#years
       %section#results
       %section#pagination
+
   %footer
-    Made with love by Algolia
+    Made with love by <span>Algolia</span>
   %script{src:  "js/app.js"}
 
   .svg-icons{style: "height: 0; width: 0; position: absolute; visibility: hidden"}

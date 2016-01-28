@@ -61,7 +61,8 @@
   cursor: pointer;
   font-size: 14px;
   line-height: 1;
-  text-decoration: none; }
+  text-decoration: none;
+  z-index: 12; }
 
 .sbx-custom {
   display: inline-block;
@@ -311,7 +312,6 @@ main {
     width: 100%;
     padding-bottom: 16px; }
     .ais-refinement-list .ais-refinement-list--header.ais-header .button {
-      float: right;
       padding: 12px 16px; }
   .ais-refinement-list .ais-refinement-list--body {
     display: -webkit-inline-flex;
@@ -332,6 +332,10 @@ main {
     -webkit-flex: 1 1 auto;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto; }
+    @media (max-width: 740px) {
+      .ais-refinement-list label {
+        min-width: 22.5%;
+        left: 0; } }
     .ais-refinement-list label .ais-refinement-list--count {
       display: inline-block;
       border-radius: 4px;
@@ -522,7 +526,11 @@ main {
       .ais-hits .ais-hits--item {
         margin: inherit; } }
   .ais-hits .hit {
+<<<<<<< HEAD
     height: 100px;
+=======
+    height: 14vh;
+>>>>>>> 501c9bddae6ce702a36d8b7d53b47a46620ab2e2
     display: block;
     text-decoration: none;
     transition: background-size 0.2s ease;
@@ -546,7 +554,7 @@ main {
       left: 0;
       z-index: 0;
       opacity: 0.5;
-      mix-blend-mode: lighten; }
+      mix-blend-mode: color; }
     .ais-hits .hit:before {
       content: '';
       display: block;
@@ -619,6 +627,10 @@ footer {
     footer {
       width: calc(100% + 32px);
       left: -16px; } }
+  footer span {
+    text-indent: -9999px;
+    background: url(../img/Algolia_logo_bg-dark.svg) no-repeat center center/contain;
+    color: transparent; }
 
 @-webkit-keyframes up {
   0% {
