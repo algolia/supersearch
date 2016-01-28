@@ -19,7 +19,7 @@
     height: 100%;
     vertical-align: middle;
     white-space: normal;
-    font-size: 22px;
+    font-size: 16px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none; }
@@ -133,16 +133,23 @@
 body {
   font-family: 'Exo 2', sans-serif;
   font-weight: 800;
-  margin: 0 10%;
-  background: url("img/levis-stadium.jpg") no-repeat center 200px #001939;
+  background: url("img/levis-stadium.jpg") no-repeat center top #002040;
   background-size: auto; }
+  @media (min-width: 660px) {
+    body {
+      margin: 0 10%; } }
 
 h1 {
   text-align: center;
   color: White;
   font-size: 4em;
-  margin: 20px 0 0;
-  text-transform: uppercase; }
+  margin: 10px 0 0;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135; }
+  @media (max-width: 660px) {
+    h1 {
+      font-size: 2.5em; } }
 
 .searchbox {
   width: 540px;
@@ -150,7 +157,8 @@ h1 {
   display: block; }
   .searchbox .sbx-custom__input {
     color: white;
-    box-shadow: 0 2px #00A5FF; }
+    box-shadow: 0 2px #00A5FF;
+    background-color: transparent; }
   .searchbox .sbx-custom__input:focus {
     box-shadow: 0 2px white; }
   .searchbox .sbx-custom__reset {
@@ -173,7 +181,7 @@ h1 {
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
-    min-width: 15vw;
+    min-width: 20vw;
     overflow: hidden;
     margin: .5em 0 0 .5em;
     box-shadow: 0 2px 10px black; }
@@ -187,17 +195,24 @@ h1 {
     background-color: #3F97F3;
     background-blend-mode: soft-light;
     color: white;
-    padding: 10px; }
+    padding: 10px;
+    transition: background-color .25s, background-size .1s ease, -webkit-transform 200ms;
+    transition: background-color .25s, background-size .1s ease, transform 200ms;
+    transition: background-color .25s, background-size .1s ease, transform 200ms, -webkit-transform 200ms; }
     .ais-hits .hit:hover {
-      width: 110%;
-      background-color: #4D4E4E;
-      transition: background-color .25s, background-size .1s ease; }
+      -webkit-transform: scale(110%, 110%);
+      transform: scale(110%, 110%);
+      background-color: #4D4E4E; }
   .ais-hits .hit-brand {
     font-size: 1.4em;
     text-transform: uppercase;
-    text-shadow: 2px 2px 0 black; }
+    text-shadow: 2px 2px 0 black, 0 0 6px rgba(0, 0, 0, 0.5); }
   .ais-hits .hit-season {
-    font-size: 12px; }
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: rgba(0, 27, 58, 0.4);
+    padding: 2px 6px; }
 
 @-webkit-keyframes spin {
   from {
