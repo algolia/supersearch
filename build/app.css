@@ -177,7 +177,9 @@ h1 {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  font-size: 16px; }
+  font-size: 16px;
+  -webkit-animation: up .3s linear;
+  animation: up .3s linear; }
   .ais-hits .ais-hits--item {
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
@@ -190,9 +192,6 @@ h1 {
     animation: fade 100ms ease;
     -webkit-animation-fill-mode: backwards;
     animation-fill-mode: backwards;
-    transition: -webkit-transform 100ms;
-    transition: transform 100ms;
-    transition: transform 100ms, -webkit-transform 100ms;
     font-size: 1.1em; }
     .ais-hits .ais-hits--item:nth-child(1) {
       -webkit-animation-delay: 0.01s;
@@ -311,6 +310,12 @@ h1 {
     .ais-hits .ais-hits--item:nth-child(39) {
       -webkit-animation-delay: 0.39s;
       animation-delay: 0.39s; }
+    .ais-hits .ais-hits--item:nth-child(40) {
+      -webkit-animation-delay: 0.4s;
+      animation-delay: 0.4s; }
+    .ais-hits .ais-hits--item:nth-child(41) {
+      -webkit-animation-delay: 0.41s;
+      animation-delay: 0.41s; }
     .ais-hits .ais-hits--item:hover {
       z-index: 99;
       box-shadow: 0 2px 30px black; }
@@ -339,21 +344,21 @@ h1 {
     background-color: rgba(0, 27, 58, 0.4);
     padding: 2px 6px; }
 
-@-webkit-keyframes spin {
-  from {
-    -webkit-transform: rotate(0);
-    transform: rotate(0); }
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg); } }
+@-webkit-keyframes up {
+  0% {
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px); }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0); } }
 
-@keyframes spin {
-  from {
-    -webkit-transform: rotate(0);
-    transform: rotate(0); }
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg); } }
+@keyframes up {
+  0% {
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px); }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0); } }
 
 @-webkit-keyframes fade {
   0% {
