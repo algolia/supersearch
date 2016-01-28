@@ -1,0 +1,138 @@
+@charset 'utf-8';
+
+@import 'searchbox';
+
+@mixin clearfix {
+  &::after {
+    display: table;
+    clear: both;
+    content: '';
+  }
+}
+
+$custom: (
+  input-width: 500px,
+  input-height: 60px,
+  border-width: 3px,
+  border-radius: 0px,
+  input-border-color: #0067EB,
+  input-focus-border-color: #fff,
+  input-background: #001B3A,
+  input-focus-background: #001B3A,
+  font-size: 22px,
+  placeholder-color: #fff,
+  icon-size: 28px,
+  icon-position: left,
+  icon-color: white,
+  icon-background: #3e82f7,
+  icon-background-opacity: 0,
+  icon-clear-size: 20px
+);
+
+.sbx-custom {
+  @include searchbox($custom...);
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 500ms;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+}
+
+body {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 800;
+  margin: 0 10%;
+  background: url('img/levis-stadium.jpg') no-repeat center 200px darken(#0067EB,35%);
+  background-size: auto;
+}
+
+h1 {
+  text-align: center;
+  color: White;
+  font-size: 4em;
+  margin: 20px 0 0;
+  text-transform: uppercase;
+}
+
+.searchbox {
+  width: 540px;
+  margin: 0 auto 40px;
+  display: block;
+  .sbx-custom__input {
+    color: white;
+    box-shadow: 0 2px #00A5FF;
+  }
+  .sbx-custom__input:focus {
+    box-shadow: 0 2px white;
+  }
+  .sbx-custom__reset {
+    fill: white
+  }
+}
+
+.ais-hits {
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  .ais-hits--item {
+    flex-grow: 1;
+    min-width: 15vw;
+    overflow: hidden;
+    margin: .5em 0 0 .5em;
+    box-shadow: 0 2px 10px black;
+  }
+  .hit {
+    height: 10vh;
+    display: block;
+    text-decoration: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 120%;
+    background-color: #3F97F3;
+    background-blend-mode: soft-light;
+    color: white;
+    padding: 10px;
+    &:hover {
+      width: 110%;
+      background-color: #4D4E4E;
+      transition: background-color .25s, background-size .1s ease;
+    }
+  }
+  .hit-brand {
+    font-size: 1.4em;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 black;
+  }
+  .hit-season {
+    font-size: 12px;
+  }
+}
+
+
+@keyframes spin {
+
+    from {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+
+
+@keyframes fade {
+
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
