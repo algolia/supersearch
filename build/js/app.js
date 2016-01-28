@@ -54,7 +54,9 @@
 
 	'use strict';
 
+	//until 1.2 is released
 	var instantsearch = __webpack_require__(2);
+	var inceptionWidget = __webpack_require__(436);
 
 	var search = instantsearch({
 	  appId: 'VC519DRAY3',
@@ -76,6 +78,28 @@
 	    empty: 'No Results',
 	    item: document.getElementById('hit-template').innerHTML
 	  }
+	}));
+
+	search.addWidget(instantsearch.widgets.clearAll({
+	  container: "#clear",
+	  templates: {
+	    link: 'Clear all filters'
+	  },
+	  autoHideContainer: false
+	}));
+
+	// search.addWidget(
+	//   instantsearch.widgets.currentRefinedValues({
+	//     container: "#clear"
+	//   })
+	// );
+
+	search.addWidget(inceptionWidget({
+	  container: '#inception-filters',
+	  mainSearchAttribute: 'brand',
+	  title: 'Brand',
+	  secondarySearchAttribute: 'name',
+	  index: 'sb_ads_brands'
 	}));
 
 	// search.addWidget(
@@ -44605,6 +44629,123 @@
 	  item: '<label class="{{cssClasses.label}}">\n  <input type="checkbox" class="{{cssClasses.checkbox}}" value="{{name}}" {{#isRefined}}checked{{/isRefined}} />{{name}}\n  <span class="{{cssClasses.count}}">{{#helpers.formatNumber}}{{count}}{{/helpers.formatNumber}}</span>\n</label>',
 	  footer: ''
 	};
+
+/***/ },
+/* 436 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var template = {
+	  main: function main(data) {
+	    return '\n      <button class=\'menu-trigger\'>' + data.title + '</button>\n      <div class=\'menu\'>\n        <input class=\'value\' placeholder=\'Search ' + data.title + '\'/>\n        <ul class=\'items\'></ul>\n      </div>';
+	  },
+	  item: function item(value, highlight) {
+	    return '<li data-facet-value="' + value + '">' + highlight + '</li>';
+	  }
+	};
+
+	var inceptionWidget = function inceptionWidget(config) {
+	  var isMenuHidden = true;
+
+	  var container = config.container;
+	  var mainSearchAttribute = config.mainSearchAttribute;
+	  var secondarySearchAttribute = config.secondarySearchAttribute;
+	  var index = config.index;
+	  var title = config.title;
+
+	  return {
+	    getConfiguration: function getConfiguration() {
+	      var widgetConfiguration = {
+	        'disjunctiveFacets': [mainSearchAttribute]
+	      };
+
+	      return widgetConfiguration;
+	    },
+	    init: function init(params) {
+	      var helper = params.helper;
+	      var $container = document.querySelector(container);
+
+	      $container.innerHTML = template.main({ title: title });
+
+	      setTimeout(function () {
+	        var $input = $container.querySelector('input');
+	        var $list = $container.querySelector('ul');
+	        var $menu = $container.querySelector('.menu');
+	        var $button = $container.querySelector('.menu-trigger');
+
+	        $input.addEventListener('keyup', function (e) {
+	          var query = $input.value;
+	          if (query === '') {
+	            var results = helper.lastResults;
+	            updateList($list, mainSearchAttribute, results);
+	          } else {
+	            helper.searchOnce({
+	              index: index,
+	              query: query
+	            }).then(updateListSearchOnce.bind(undefined, secondarySearchAttribute, $list));
+	          }
+	        });
+
+	        $list.addEventListener('click', function (e) {
+	          var target = e.target;
+	          var facetValue = target.dataset.facetValue;
+	          helper.addDisjunctiveFacetRefinement(mainSearchAttribute, facetValue).search();
+	          $menu.style.display = 'none';
+	          isMenuHidden = true;
+	          $input.value = '';
+	        });
+
+	        $menu.style.display = 'none';
+	        $button.addEventListener('click', function () {
+	          if (isMenuHidden) {
+	            $menu.style.display = 'block';
+	            isMenuHidden = false;
+	          } else {
+	            $menu.style.display = 'none';
+	            isMenuHidden = true;
+	          }
+	        });
+	      }, 0);
+	    },
+	    render: function render(params) {
+	      // updates when the search change
+	      var results = params.results;
+	      var $container = document.querySelector(container);
+	      var $list = $container.querySelector('ul');
+
+	      updateList($list, mainSearchAttribute, results);
+	    }
+	  };
+	};
+
+	function updateList($list, attribute, results) {
+	  var facets = results.getFacetValues(attribute);
+
+	  var list = facets.map(function (facet) {
+	    return template.item(facet.name, facet.name);
+	  }).join('');
+
+	  $list.innerHTML = list;
+	};
+
+	function updateListSearchOnce(attribute, $list, response) {
+	  var results = response.content;
+
+	  if (results.nbHits === 0) {
+	    $list.innerHTML = '';
+	    return;
+	  }
+
+	  var list = results.hits.map(function (hit) {
+	    var hlValue = hit._highlightResult[attribute] && hit._highlightResult[attribute].value || hit[attribute];
+	    return template.item(hit[attribute], hlValue);
+	  }).join('');
+
+	  $list.innerHTML = list;
+	};
+
+	module.exports = inceptionWidget;
 
 /***/ }
 /******/ ]);
