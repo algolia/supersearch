@@ -81,7 +81,7 @@ $( document ).ready(function() {
       }
     })
 
-    $('.ais-refinement-list--header').on('click', $('#toggleFilter'), function(e){
+    $('.ais-refinement-list--header').on('click tap', $('#toggleFilter'), function(e){
       if($('.ais-refinement-list--body').hasClass('open')) {
         $('#toggleFilter').text('Open filters')
         $('.ais-refinement-list--body').removeClass('open');
