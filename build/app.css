@@ -339,6 +339,10 @@ main {
     -webkit-flex: 1 1 auto;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto; }
+    @media (max-width: 740px) {
+      .ais-refinement-list label {
+        min-width: 22.5%;
+        left: 0; } }
     .ais-refinement-list label .ais-refinement-list--count {
       display: inline-block;
       border-radius: 4px;

@@ -249,6 +249,10 @@ main {
     @extend %button;
     float: left;
     flex: 1 1 auto;
+    @media (max-width: $bp-small) {
+     min-width: 22.5%;
+     left: 0;
+    }
 
     .ais-refinement-list--count {
       display: inline-block;
