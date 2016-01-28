@@ -123,8 +123,8 @@
 .fade {
   -webkit-animation-name: fade;
   animation-name: fade;
-  -webkit-animation-duration: 500ms;
-  animation-duration: 500ms;
+  -webkit-animation-duration: 200ms;
+  animation-duration: 200ms;
   -webkit-animation-timing-function: ease;
   animation-timing-function: ease;
   -webkit-animation-iteration-count: 1;
@@ -176,17 +176,146 @@ h1 {
   flex-direction: row;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
-  justify-content: space-between; }
+  justify-content: space-between;
+  font-size: 16px; }
   .ais-hits .ais-hits--item {
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
-    min-width: 20vw;
+    min-width: 15vw;
     overflow: hidden;
     margin: .5em 0 0 .5em;
-    box-shadow: 0 2px 10px black; }
+    box-shadow: 0 2px 10px black;
+    -webkit-animation: fade 100ms ease;
+    animation: fade 100ms ease;
+    -webkit-animation-fill-mode: backwards;
+    animation-fill-mode: backwards;
+    transition: -webkit-transform 100ms;
+    transition: transform 100ms;
+    transition: transform 100ms, -webkit-transform 100ms;
+    font-size: 1.1em; }
+    .ais-hits .ais-hits--item:nth-child(1) {
+      -webkit-animation-delay: 0.01s;
+      animation-delay: 0.01s; }
+    .ais-hits .ais-hits--item:nth-child(2) {
+      -webkit-animation-delay: 0.02s;
+      animation-delay: 0.02s; }
+    .ais-hits .ais-hits--item:nth-child(3) {
+      -webkit-animation-delay: 0.03s;
+      animation-delay: 0.03s; }
+    .ais-hits .ais-hits--item:nth-child(4) {
+      -webkit-animation-delay: 0.04s;
+      animation-delay: 0.04s; }
+    .ais-hits .ais-hits--item:nth-child(5) {
+      -webkit-animation-delay: 0.05s;
+      animation-delay: 0.05s; }
+    .ais-hits .ais-hits--item:nth-child(6) {
+      -webkit-animation-delay: 0.06s;
+      animation-delay: 0.06s; }
+    .ais-hits .ais-hits--item:nth-child(7) {
+      -webkit-animation-delay: 0.07s;
+      animation-delay: 0.07s; }
+    .ais-hits .ais-hits--item:nth-child(8) {
+      -webkit-animation-delay: 0.08s;
+      animation-delay: 0.08s; }
+    .ais-hits .ais-hits--item:nth-child(9) {
+      -webkit-animation-delay: 0.09s;
+      animation-delay: 0.09s; }
+    .ais-hits .ais-hits--item:nth-child(10) {
+      -webkit-animation-delay: 0.1s;
+      animation-delay: 0.1s; }
+    .ais-hits .ais-hits--item:nth-child(11) {
+      -webkit-animation-delay: 0.11s;
+      animation-delay: 0.11s; }
+    .ais-hits .ais-hits--item:nth-child(12) {
+      -webkit-animation-delay: 0.12s;
+      animation-delay: 0.12s; }
+    .ais-hits .ais-hits--item:nth-child(13) {
+      -webkit-animation-delay: 0.13s;
+      animation-delay: 0.13s; }
+    .ais-hits .ais-hits--item:nth-child(14) {
+      -webkit-animation-delay: 0.14s;
+      animation-delay: 0.14s; }
+    .ais-hits .ais-hits--item:nth-child(15) {
+      -webkit-animation-delay: 0.15s;
+      animation-delay: 0.15s; }
+    .ais-hits .ais-hits--item:nth-child(16) {
+      -webkit-animation-delay: 0.16s;
+      animation-delay: 0.16s; }
+    .ais-hits .ais-hits--item:nth-child(17) {
+      -webkit-animation-delay: 0.17s;
+      animation-delay: 0.17s; }
+    .ais-hits .ais-hits--item:nth-child(18) {
+      -webkit-animation-delay: 0.18s;
+      animation-delay: 0.18s; }
+    .ais-hits .ais-hits--item:nth-child(19) {
+      -webkit-animation-delay: 0.19s;
+      animation-delay: 0.19s; }
+    .ais-hits .ais-hits--item:nth-child(20) {
+      -webkit-animation-delay: 0.2s;
+      animation-delay: 0.2s; }
+    .ais-hits .ais-hits--item:nth-child(21) {
+      -webkit-animation-delay: 0.21s;
+      animation-delay: 0.21s; }
+    .ais-hits .ais-hits--item:nth-child(22) {
+      -webkit-animation-delay: 0.22s;
+      animation-delay: 0.22s; }
+    .ais-hits .ais-hits--item:nth-child(23) {
+      -webkit-animation-delay: 0.23s;
+      animation-delay: 0.23s; }
+    .ais-hits .ais-hits--item:nth-child(24) {
+      -webkit-animation-delay: 0.24s;
+      animation-delay: 0.24s; }
+    .ais-hits .ais-hits--item:nth-child(25) {
+      -webkit-animation-delay: 0.25s;
+      animation-delay: 0.25s; }
+    .ais-hits .ais-hits--item:nth-child(26) {
+      -webkit-animation-delay: 0.26s;
+      animation-delay: 0.26s; }
+    .ais-hits .ais-hits--item:nth-child(27) {
+      -webkit-animation-delay: 0.27s;
+      animation-delay: 0.27s; }
+    .ais-hits .ais-hits--item:nth-child(28) {
+      -webkit-animation-delay: 0.28s;
+      animation-delay: 0.28s; }
+    .ais-hits .ais-hits--item:nth-child(29) {
+      -webkit-animation-delay: 0.29s;
+      animation-delay: 0.29s; }
+    .ais-hits .ais-hits--item:nth-child(30) {
+      -webkit-animation-delay: 0.3s;
+      animation-delay: 0.3s; }
+    .ais-hits .ais-hits--item:nth-child(31) {
+      -webkit-animation-delay: 0.31s;
+      animation-delay: 0.31s; }
+    .ais-hits .ais-hits--item:nth-child(32) {
+      -webkit-animation-delay: 0.32s;
+      animation-delay: 0.32s; }
+    .ais-hits .ais-hits--item:nth-child(33) {
+      -webkit-animation-delay: 0.33s;
+      animation-delay: 0.33s; }
+    .ais-hits .ais-hits--item:nth-child(34) {
+      -webkit-animation-delay: 0.34s;
+      animation-delay: 0.34s; }
+    .ais-hits .ais-hits--item:nth-child(35) {
+      -webkit-animation-delay: 0.35s;
+      animation-delay: 0.35s; }
+    .ais-hits .ais-hits--item:nth-child(36) {
+      -webkit-animation-delay: 0.36s;
+      animation-delay: 0.36s; }
+    .ais-hits .ais-hits--item:nth-child(37) {
+      -webkit-animation-delay: 0.37s;
+      animation-delay: 0.37s; }
+    .ais-hits .ais-hits--item:nth-child(38) {
+      -webkit-animation-delay: 0.38s;
+      animation-delay: 0.38s; }
+    .ais-hits .ais-hits--item:nth-child(39) {
+      -webkit-animation-delay: 0.39s;
+      animation-delay: 0.39s; }
+    .ais-hits .ais-hits--item:hover {
+      z-index: 99;
+      box-shadow: 0 2px 30px black; }
   .ais-hits .hit {
-    height: 10vh;
+    height: 100px;
     display: block;
     text-decoration: none;
     background-repeat: no-repeat;
@@ -196,12 +325,8 @@ h1 {
     background-blend-mode: soft-light;
     color: white;
     padding: 10px;
-    transition: background-color .25s, background-size .1s ease, -webkit-transform 200ms;
-    transition: background-color .25s, background-size .1s ease, transform 200ms;
-    transition: background-color .25s, background-size .1s ease, transform 200ms, -webkit-transform 200ms; }
+    transition: background-color .25s, background-size .1s ease; }
     .ais-hits .hit:hover {
-      -webkit-transform: scale(110%, 110%);
-      transform: scale(110%, 110%);
       background-color: #4D4E4E; }
   .ais-hits .hit-brand {
     font-size: 1.4em;
@@ -209,7 +334,7 @@ h1 {
     text-shadow: 2px 2px 0 black, 0 0 6px rgba(0, 0, 0, 0.5); }
   .ais-hits .hit-season {
     display: inline-block;
-    font-size: 14px;
+    font-size: 0.7em;
     font-weight: 400;
     background-color: rgba(0, 27, 58, 0.4);
     padding: 2px 6px; }
@@ -232,12 +357,20 @@ h1 {
 
 @-webkit-keyframes fade {
   0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
     opacity: 0; }
   100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
     opacity: 1; } }
 
 @keyframes fade {
   0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
     opacity: 0; }
   100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
     opacity: 1; } }

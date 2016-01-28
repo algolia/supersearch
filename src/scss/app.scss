@@ -35,7 +35,7 @@ $custom: (
 
 .fade {
   animation-name: fade;
-  animation-duration: 500ms;
+  animation-duration: 200ms;
   animation-timing-function: ease;
   animation-iteration-count: 1;
 }
@@ -80,20 +80,36 @@ h1 {
   }
 }
 
+
+
 .ais-hits {
   display: flex;
   flex-flow: wrap;
   flex-direction: row;
   justify-content: space-between;
+  font-size: 16px;
   .ais-hits--item {
     flex-grow: 1;
-    min-width: 20vw;
+    min-width: 15vw;
     overflow: hidden;
     margin: .5em 0 0 .5em;
     box-shadow: 0 2px 10px black;
+    animation: fade 100ms ease;
+    animation-fill-mode: backwards;
+    transition : transform 100ms;
+    font-size: 1.1em;
+    @for $i from 1 to 40 {
+      &:nth-child(#{$i}) {
+        animation-delay: $i * .01s;
+      }
+    }
+    &:hover {
+      z-index: 99;
+      box-shadow: 0 2px 30px black;
+    }
   }
   .hit {
-    height: 10vh;
+    height: 100px;
     display: block;
     text-decoration: none;
     background-repeat: no-repeat;
@@ -103,9 +119,8 @@ h1 {
     background-blend-mode: soft-light;
     color: white;
     padding: 10px;
-    transition: background-color .25s, background-size .1s ease, transform 200ms;
+    transition: background-color .25s, background-size .1s ease;
     &:hover {
-      transform: scale(110%,110%);
       background-color: #4D4E4E;
     }
   }
@@ -116,7 +131,7 @@ h1 {
   }
   .hit-season {
     display: inline-block;
-    font-size: 14px;
+    font-size: 0.7em;
     font-weight: 400;
     background-color: rgba(#001B3A,.4);
     padding: 2px 6px;
@@ -141,10 +156,12 @@ h1 {
 @keyframes fade {
 
   0% {
+    transform: scale(0);
     opacity: 0;
   }
 
   100% {
+    transform: scale(1);
     opacity: 1;
   }
 }
