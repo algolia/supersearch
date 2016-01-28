@@ -1,3 +1,154 @@
+.lightbox {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+  max-width: 100% !important;
+  z-index: 12; }
+  .lightbox:before {
+    content: '';
+    background: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; }
+  .lightbox .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    margin: 16px;
+    max-width: 50px;
+    cursor: pointer; }
+    .lightbox .close svg {
+      max-width: 100%;
+      fill: #fff; }
+  .lightbox .lightbox_frame {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%) scale(1.3);
+    transform: translate(-50%, -50%) scale(1.3);
+    border: 0;
+    max-width: 100% !important; }
+    @media (max-width: 740px) {
+      .lightbox .lightbox_frame {
+        -webkit-transform: translate(-50%, -50%) scale(1);
+        transform: translate(-50%, -50%) scale(1); } }
+  .lightbox.hidden {
+    -webkit-transform: translate(-50%, -300%);
+    transform: translate(-50%, -300%); }
+
+.ais-range-slider--target {
+  position: relative;
+  direction: ltr;
+  background: #F3F4F7;
+  height: 6px;
+  margin-top: 2em;
+  margin-bottom: 2em; }
+
+.ais-range-slider--base {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+  border-left: 2px solid #DDD;
+  border-right: 2px solid #DDD; }
+
+.ais-range-slider--origin {
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+.ais-range-slider--connect {
+  background: #46AEDA; }
+
+.ais-range-slider--background {
+  background: #F3F4F7; }
+
+.ais-range-slider--handle {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  z-index: 1;
+  background: #FFF;
+  border: 1px solid #46AEDA;
+  border-radius: 50%;
+  cursor: pointer; }
+
+.ais-range-slider--handle-lower {
+  left: -10px;
+  bottom: 7px; }
+
+.ais-range-slider--handle-upper {
+  right: 10px;
+  bottom: 7px; }
+
+.ais-range-slider--tooltip {
+  position: absolute;
+  background: transparent;
+  color: #fff;
+  top: -22px;
+  font-size: .8em; }
+
+.ais-range-slider--pips {
+  box-sizing: border-box;
+  position: absolute;
+  height: 3em;
+  top: 100%;
+  left: 0;
+  width: 100%; }
+
+.ais-range-slider--value {
+  width: 40px;
+  position: absolute;
+  text-align: center;
+  margin-left: -20px; }
+
+.ais-range-slider--marker {
+  position: absolute;
+  background: #DDD;
+  margin-left: -1px;
+  width: 1px;
+  height: 5px; }
+
+.ais-range-slider--marker-sub {
+  background: #DDD;
+  width: 2px;
+  margin-left: -2px;
+  height: 13px; }
+
+.ais-range-slider--marker-large {
+  background: #DDD;
+  width: 2px;
+  margin-left: -2px;
+  height: 12px; }
+
+.ais-star-rating--star, .ais-star-rating--star__empty {
+  display: inline-block;
+  width: 1em;
+  height: 1em; }
+
+.ais-range-slider--marker-large:first-child {
+  margin-left: 0; }
+
 .sbx-custom {
   display: inline-block;
   position: relative;
@@ -120,49 +271,69 @@
     transform: none;
     opacity: 1; } }
 
-.fade {
-  -webkit-animation-name: fade;
-  animation-name: fade;
-  -webkit-animation-duration: 500ms;
-  animation-duration: 500ms;
-  -webkit-animation-timing-function: ease;
-  animation-timing-function: ease;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1; }
+:root {
+  font-size: calc(.65rem + 0.3vw + 0.3vh); }
 
 body {
   font-family: 'Exo 2', sans-serif;
   font-weight: 800;
-  background: url("img/levis-stadium.jpg") no-repeat center top #002040;
-  background-size: auto; }
-  @media (min-width: 660px) {
+  margin: 0 10%;
+  background: url("img/levis-stadium.jpg") no-repeat center 200px #001939;
+  background-size: cover; }
+  @media (max-width: 740px) {
     body {
-      margin: 0 10%; } }
+      margin: 0;
+      padding: 16px; } }
+  body:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 300px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: linear-gradient(to bottom, #001939, #001939, #001939, #001939, transparent); }
 
-h1 {
-  text-align: center;
-  color: White;
-  font-size: 4em;
-  margin: 10px 0 0;
-  text-transform: uppercase;
-  color: #fff;
-  text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135; }
-  @media (max-width: 660px) {
-    h1 {
-      font-size: 2.5em; } }
-
-.searchbox {
-  width: 540px;
-  margin: 0 auto 40px;
-  display: block; }
-  .searchbox .sbx-custom__input {
-    color: white;
-    box-shadow: 0 2px #00A5FF;
-    background-color: transparent; }
-  .searchbox .sbx-custom__input:focus {
-    box-shadow: 0 2px white; }
-  .searchbox .sbx-custom__reset {
-    fill: white; }
+header {
+  position: relative;
+  z-index: 5; }
+  header h1 {
+    text-align: center;
+    color: White;
+    font-size: 4em;
+    margin: 20px 0 0;
+    text-transform: uppercase;
+    text-align: center;
+    color: White;
+    font-size: 4em;
+    margin: 10px 0 0;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135; }
+    @media (max-width: 960px) {
+      header h1 {
+        font-size: 3em; } }
+    @media (max-width: 740px) {
+      header h1 {
+        font-size: 2em; } }
+  header .searchbox {
+    max-width: 540px;
+    width: 100%;
+    margin: 16px auto 40px;
+    display: block; }
+    header .searchbox .sbx-custom__input {
+      color: white;
+      box-shadow: 0 2px #00A5FF;
+      padding: 16px !important; }
+    header .searchbox .sbx-custom__input:focus {
+      box-shadow: 0 2px white; }
+    header .searchbox .sbx-custom__reset {
+      fill: white; }
+    header .searchbox .sbx-custom__submit {
+      right: 0;
+      left: inherit; }
+  header #years {
+    color: #fff !important; }
 
 .ais-hits {
   display: -webkit-flex;
@@ -181,10 +352,13 @@ h1 {
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
-    min-width: 20vw;
+    min-width: 15vw;
     overflow: hidden;
     margin: .5em 0 0 .5em;
     box-shadow: 0 2px 10px black; }
+    @media (max-width: 740px) {
+      .ais-hits .ais-hits--item {
+        margin: 2px; } }
   .ais-hits .hit {
     height: 10vh;
     display: block;
@@ -192,27 +366,51 @@ h1 {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 120%;
-    background-color: #3F97F3;
+    background-color: rgba(63, 151, 243, 0.8);
     background-blend-mode: soft-light;
     color: white;
     padding: 10px;
-    transition: background-color .25s, background-size .1s ease, -webkit-transform 200ms;
-    transition: background-color .25s, background-size .1s ease, transform 200ms;
-    transition: background-color .25s, background-size .1s ease, transform 200ms, -webkit-transform 200ms; }
+    position: relative; }
+    .ais-hits .hit:after {
+      background-image: linear-gradient(to bottom right, #da0021, #1251a0);
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      opacity: 0.5;
+      mix-blend-mode: lighten; }
+    .ais-hits .hit:before {
+      content: '';
+      display: block;
+      width: 55px;
+      height: 55px;
+      position: absolute;
+      background: url(../img/play.svg) no-repeat center center/55px;
+      opacity: .8;
+      top: 50% !important;
+      left: calc(50% - 20px);
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      transition: all .2s ease;
+      will-change: transform;
+      opacity: 0; }
     .ais-hits .hit:hover {
-      -webkit-transform: scale(110%, 110%);
-      transform: scale(110%, 110%);
-      background-color: #4D4E4E; }
+      width: 110%;
+      background-color: #4D4E4E;
+      transition: background-color .25s, background-size .1s ease;
+      blend-mode: hard-light; }
+      .ais-hits .hit:hover:before {
+        opacity: 1; }
   .ais-hits .hit-brand {
     font-size: 1.4em;
     text-transform: uppercase;
-    text-shadow: 2px 2px 0 black, 0 0 6px rgba(0, 0, 0, 0.5); }
+    text-shadow: 2px 2px 0 black; }
   .ais-hits .hit-season {
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 400;
-    background-color: rgba(0, 27, 58, 0.4);
-    padding: 2px 6px; }
+    font-size: 12px; }
 
 @-webkit-keyframes spin {
   from {

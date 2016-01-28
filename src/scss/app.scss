@@ -1,6 +1,8 @@
 @charset 'utf-8';
 
-@import 'searchbox';
+@import 'searchbox',
+'lightbox',
+'rangeslider'; 
 
 @mixin clearfix {
   &::after {
@@ -9,6 +11,16 @@
     content: '';
   }
 }
+
+// The official NFL colors 
+$sb_blue: #0F4589;
+$sb_red: #C0001D;
+// Spice them up a lil bit
+$ais_blue: lighten($sb_blue, 5%);
+$ais_red: lighten($sb_red, 5%);
+
+$bp-regular: 960px;
+$bp-small: 740px;
 
 $custom: (
   input-width: 500px,
@@ -33,50 +45,93 @@ $custom: (
   @include searchbox($custom...);
 }
 
-.fade {
-  animation-name: fade;
-  animation-duration: 500ms;
-  animation-timing-function: ease;
-  animation-iteration-count: 1;
+:root {
+  font-size: calc(.65rem + 0.3vw + 0.3vh); 
 }
+
+
+
+
+
 
 body {
   font-family: 'Exo 2', sans-serif;
   font-weight: 800;
-  background: url('img/levis-stadium.jpg') no-repeat center top #002040;
-  background-size: auto;
-  @media (min-width: 660px){
-    margin: 0 10%;
+  margin: 0 10%;
+  background: url('img/levis-stadium.jpg') no-repeat  center 200px darken(#0067EB,35%);
+  background-size: cover;
+
+  @media (max-width: $bp-small) {
+    margin: 0;
+    padding: 16px;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 300px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: linear-gradient(to bottom, darken(#0067EB,35%), darken(#0067EB,35%), darken(#0067EB,35%), darken(#0067EB,35%), rgba(0,0,0,0));
   }
 }
 
-h1 {
-  text-align: center;
-  color: White;
-  font-size: 4em;
-  margin: 10px 0 0;
-  text-transform: uppercase;
-  color: #fff;
-  text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
-  @media (max-width: 660px){
-    font-size: 2.5em;
-  }
-}
+header {
+  position: relative;
+  z-index: 5;
+  h1 {
+    text-align: center;
+    color: White;
+    font-size: 4em;
+    margin: 20px 0 0;
+    text-transform: uppercase;
+    text-align: center;
+    color: White;
+    font-size: 4em;
+    margin: 10px 0 0;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
 
-.searchbox {
-  width: 540px;
-  margin: 0 auto 40px;
-  display: block;
-  .sbx-custom__input {
-    color: white;
-    box-shadow: 0 2px #00A5FF;
-    background-color: transparent;
+    @media (max-width: $bp-regular) {
+      font-size: 3em;
+    }
+
+    @media (max-width: $bp-small) {
+      font-size: 2em;
+    }
   }
-  .sbx-custom__input:focus {
-    box-shadow: 0 2px white;
+
+
+  .searchbox {
+    max-width: 540px;
+    width: 100%;
+    margin: 16px auto 40px;
+    display: block;
+
+    .sbx-custom__input {
+      color: white;
+      box-shadow: 0 2px #00A5FF;
+      padding: 16px !important;
+    }
+    .sbx-custom__input:focus {
+      box-shadow: 0 2px white;
+    }
+    .sbx-custom__reset {
+      fill: white
+    }
+
+    .sbx-custom__submit {
+      right: 0;
+      left: inherit;
+    }
   }
-  .sbx-custom__reset {
-    fill: white
+
+
+  #years{
+    color: #fff !important;
   }
 }
 
@@ -85,56 +140,102 @@ h1 {
   flex-flow: wrap;
   flex-direction: row;
   justify-content: space-between;
+
   .ais-hits--item {
     flex-grow: 1;
-    min-width: 20vw;
+    min-width: 15vw;
     overflow: hidden;
     margin: .5em 0 0 .5em;
     box-shadow: 0 2px 10px black;
+
+    @media (max-width: $bp-small) {
+      margin: 2px;
+    }
   }
+
   .hit {
     height: 10vh;
     display: block;
     text-decoration: none;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 120%;
-    background-color: #3F97F3;
-    background-blend-mode: soft-light;
+
+    background: {
+      repeat: no-repeat;
+      position: center;
+      size: 120%;
+      color: rgba(#3F97F3, 0.8);
+      blend-mode: soft-light;
+    }
+
     color: white;
     padding: 10px;
-    transition: background-color .25s, background-size .1s ease, transform 200ms;
-    &:hover {
-      transform: scale(110%,110%);
-      background-color: #4D4E4E;
+    position: relative; 
+
+    &:after {
+      background-image: linear-gradient(to bottom right, $ais_red, $ais_blue);
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      opacity: 0.5;
+      mix-blend-mode: lighten;
     }
+
+    &:before {
+      content: '';
+      display: block;
+      width: 55px;
+      height: 55px;
+      position: absolute;
+
+      background:  url(../img/play.svg)no-repeat center center / 55px;
+      opacity: .8;
+
+      top: 50% !important;
+      left: calc(50% - 20px);
+      transform: translate(-50%, -50%);
+      transition: all .2s ease;
+      will-change: transform;
+      opacity: 0;
+    }
+
+    &:hover {
+      width: 110%;
+      background-color: #4D4E4E;
+      transition: background-color .25s, background-size .1s ease;
+      blend-mode: hard-light;
+      &:before{
+        opacity: 1;
+      }
+    }
+
+
   }
   .hit-brand {
     font-size: 1.4em;
     text-transform: uppercase;
-    text-shadow: 2px 2px 0 black, 0 0 6px rgba(black, .5);
+    text-shadow: 2px 2px 0 black;
   }
   .hit-season {
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 400;
-    background-color: rgba(#001B3A,.4);
-    padding: 2px 6px;
+    font-size: 12px;
   }
 }
 
 
 @keyframes spin {
 
-    from {
-        -webkit-transform: rotate(0);
-        transform: rotate(0)
-    }
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0)
+  }
 
-    to {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg)
-    }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg)
+  }
 }
 
 
