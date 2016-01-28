@@ -70,7 +70,7 @@
 	}));
 
 	search.addWidget(instantsearch.widgets.hits({
-	  hitsPerPage: 42,
+	  hitsPerPage: 40,
 	  container: '#results',
 	  templates: {
 	    empty: 'No Results',
