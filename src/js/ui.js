@@ -81,13 +81,14 @@ $( document ).ready(function() {
       }
     })
 
-    $('.ais-refinement-list--header').on('click tap', $('#toggleFilter'), function(e){
+    $('.filters').on('click', $('#toggleFilter'), function(e){
+      e.preventDefault()
       if($('.ais-refinement-list--body').hasClass('open')) {
-        $('#toggleFilter').text('Open filters')
-        $('.ais-refinement-list--body').removeClass('open');
+        $('#toggleFilter').text('Open filters');
+        $('.ais-refinement-list--body').toggleClass('open');
       } else {
-        $('#toggleFilter').text('Close filters')
-        $('.ais-refinement-list--body').addClass('open');
+        $('#toggleFilter').text('Close filters');
+        $('.ais-refinement-list--body').toggleClass('open');
       }
     })
 

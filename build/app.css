@@ -61,7 +61,8 @@
   cursor: pointer;
   font-size: 14px;
   line-height: 1;
-  text-decoration: none; }
+  text-decoration: none;
+  z-index: 12; }
 
 .ais-hits .ais-hits--item {
   -webkit-backface-visibility: visible !important;

@@ -46455,13 +46455,15 @@
 	    }
 	  });
 
-	  $('.ais-refinement-list--header').on('click tap', $('#toggleFilter'), function (e) {
+	  $('.filters').on('click', $('#toggleFilter'), function (e) {
+	    alert();
+	    e.preventDefault();
 	    if ($('.ais-refinement-list--body').hasClass('open')) {
 	      $('#toggleFilter').text('Open filters');
-	      $('.ais-refinement-list--body').removeClass('open');
+	      $('.ais-refinement-list--body').toggleClass('open');
 	    } else {
 	      $('#toggleFilter').text('Close filters');
-	      $('.ais-refinement-list--body').addClass('open');
+	      $('.ais-refinement-list--body').toggleClass('open');
 	    }
 	  });
 	});
