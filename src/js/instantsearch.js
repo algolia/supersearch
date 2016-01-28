@@ -37,7 +37,7 @@ search.addWidget(
     limit: 1000,
     sortBy: ['name:asc'],
     templates: {
-      header: 'Filters: <a href="javascript:void(0)" id="toggleFilter" class="button">open</a>',
+      header: '<a href="javascript:void(0)" id="toggleFilter" class="button">Open filters</a>',
     }
   })
 );
