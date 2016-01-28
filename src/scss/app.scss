@@ -17,7 +17,7 @@
   justify-content: space-between;
 }
 
-// The official NFL colors
+
 $sb_blue: #0F4589;
 $sb_red: #C0001D;
 // Spice them up a lil bit
@@ -26,6 +26,25 @@ $ais_red: lighten($sb_red, 15%);
 
 $bp-regular: 960px;
 $bp-small: 740px;
+
+
+%button {
+  background: rgba(white, 0.85);
+  padding: 0.25rem;
+  margin: 0.3rem 0.3rem;
+  border-radius: 3px;
+  color: $ais_blue;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+
+%flipInX {
+  backface-visibility: visible !important;
+  animation: flipInX 0.8s ease;
+}
 
 $custom: (
   input-width: 500px,
@@ -194,9 +213,14 @@ main {
 
   .ais-refinement-list--header.ais-header {
     float: left;
-    font-size: 1.3em;
+    font-size: 2rem;
     width: 100%;
     padding-bottom: 16px;
+
+    .button {
+      float: right;
+      padding: 12px 16px;
+    }
   }
 
   .ais-refinement-list--body {
@@ -206,18 +230,17 @@ main {
 
     float: left;
     width: 100%;
+    height: 0;
+    overflow: hidden;
+
+    &.open {
+      height: auto;
+    }
   }
 
   label {
+    @extend %button;
     float: left;
-    background: rgba(white, 0.85);
-    padding: 0.25rem;
-    margin: 0.3rem 0.3rem;
-    border-radius: 3px;
-    color: $ais_blue;
-    cursor: pointer;
-    font-size: 14px;
-    line-height: 1;
     flex: 1 1 auto;
 
     .ais-refinement-list--count {
@@ -281,10 +304,7 @@ main {
         animation-delay: $i * .01s;
       }
     }
-    &:hover {
-      z-index: 99;
-      box-shadow: 0 2px 30px black;
-    }
+
     @media (max-width: $bp-small) {
       margin: inherit;
     }
@@ -393,6 +413,12 @@ main {
   }
 }
 
+// Generic
+.button {
+  @extend %button;
+  font-style: 16px;
+}
+
 
 footer {
   position: relative;
@@ -434,5 +460,30 @@ footer {
   100% {
     transform: scale(1);
     opacity: 1;
+  }
+}
+@keyframes flipInX {
+  0% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transition-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transition-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  100% {
+    transform: perspective(400px);
   }
 }

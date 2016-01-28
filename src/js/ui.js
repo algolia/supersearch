@@ -66,6 +66,8 @@ $( document ).ready(function() {
 
     // Stick dat footer
     $('input').on('keyup keypress live change', function(){
+      $('.ais-refinement-list--body').removeClass('open');
+      $('#toggleFilter').text('open');
       if($('.ais-hits').hasClass('ais-hits__empty')) {
         $('footer').css({
           position: 'absolute',
@@ -76,6 +78,16 @@ $( document ).ready(function() {
           position: 'relative',
           bottom: 'inherit'
         })
+      }
+    })
+
+    $('.ais-refinement-list--header').on('click', $('#toggleFilter'), function(e){
+      if($('.ais-refinement-list--body').hasClass('open')) {
+        $('#toggleFilter').text('open')
+        $('.ais-refinement-list--body').removeClass('open');
+      } else {
+        $('#toggleFilter').text('close')
+        $('.ais-refinement-list--body').addClass('open');
       }
     })
 
