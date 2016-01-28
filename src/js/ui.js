@@ -79,4 +79,14 @@ $( document ).ready(function() {
       }
     })
 
+    $('#toggleFilter').on('click', function(e){
+      if($('.ais-refinement-list--body').hasClass('open')) {
+        $(this).text('open')
+        $('.ais-refinement-list--body').removeClass('open');
+      } else {
+        $(this).text('close')
+        $('.ais-refinement-list--body').toggleClass('open');
+      }
+    })
+
 });

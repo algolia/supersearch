@@ -85,8 +85,9 @@
 	  attributeName: 'year',
 	  operator: 'or',
 	  limit: 1000,
+	  sortBy: ['name:asc'],
 	  templates: {
-	    header: 'Filter by years :'
+	    header: 'Filters: <a href="javascript:void(0)" id="toggleFilter" class="button">open</a>'
 	  }
 	}));
 
@@ -46449,6 +46450,16 @@
 	        position: 'relative',
 	        bottom: 'inherit'
 	      });
+	    }
+	  });
+
+	  $('#toggleFilter').on('click', function (e) {
+	    if ($('.ais-refinement-list--body').hasClass('open')) {
+	      $(this).text('open');
+	      $('.ais-refinement-list--body').removeClass('open');
+	    } else {
+	      $(this).text('close');
+	      $('.ais-refinement-list--body').toggleClass('open');
 	    }
 	  });
 	});
