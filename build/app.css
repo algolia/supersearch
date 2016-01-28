@@ -162,7 +162,6 @@
     border: 0;
     border-radius: 0px;
     box-shadow: inset 0 0 0 3px #0067EB;
-    background: #001B3A;
     padding: 0;
     padding-right: 48px;
     padding-left: 60px;
@@ -324,7 +323,8 @@ header {
     header .searchbox .sbx-custom__input {
       color: white;
       box-shadow: 0 2px #00A5FF;
-      padding: 16px !important; }
+      padding: 16px !important;
+      background: transparent; }
     header .searchbox .sbx-custom__input:focus {
       box-shadow: 0 2px white; }
     header .searchbox .sbx-custom__reset {
@@ -363,6 +363,8 @@ header {
     height: 10vh;
     display: block;
     text-decoration: none;
+    transition: background-size 0.2s ease;
+    cursor: pointer;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 120%;

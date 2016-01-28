@@ -44328,8 +44328,8 @@
 	    document.body.appendChild(ifrContainer);
 	    for (var i = 0, len = item.length; i < len; i++) {
 	      item[i].addEventListener('click', function (e) {
-	        e.preventDefault();
-	        var itSrc = this.getAttribute('data-id').split('v=')[1];
+
+	        var itSrc = this.getAttribute('dataid').split('v=')[1];
 	        ifr.setAttribute('src', 'http://www.youtube.com/embed/' + itSrc);
 	        ifrContainer.classList.toggle('hidden');
 	      });

@@ -115,6 +115,7 @@ header {
       color: white;
       box-shadow: 0 2px #00A5FF;
       padding: 16px !important;
+      background: transparent;
     }
     .sbx-custom__input:focus {
       box-shadow: 0 2px white;
@@ -157,6 +158,8 @@ header {
     height: 10vh;
     display: block;
     text-decoration: none;
+    transition: background-size 0.2s ease;
+    cursor: pointer;
 
     background: {
       repeat: no-repeat;
