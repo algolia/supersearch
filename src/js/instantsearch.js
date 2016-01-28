@@ -24,8 +24,21 @@ search.addWidget(
     hitsPerPage: 40,
     container: '#results',
     templates: {
-      empty: 'No Results',
+      empty: `<h2>No Results :(</h2>
+        <h3>What about starting a new search?</h2>`,
       item: document.getElementById('hit-template').innerHTML
+    }
+  })
+);
+
+search.addWidget(
+  instantsearch.widgets.refinementList({
+    container: '#years',
+    attributeName: 'year',
+    operator: 'or',
+    limit: 1000,
+    templates: {
+      header: 'Filter by years :'
     }
   })
 );
@@ -86,5 +99,7 @@ search.addWidget(
 //     maxPages: 10
 //   })
 // );
+
+
 
 search.start();

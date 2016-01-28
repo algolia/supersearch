@@ -1,6 +1,6 @@
 @charset 'utf-8';
 
-@import 'searchbox';
+@import 'searchbox', 'lightbox';
 
 @mixin clearfix {
   &::after {
@@ -9,6 +9,23 @@
     content: '';
   }
 }
+
+@mixin flex-setting {
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+// The official NFL colors
+$sb_blue: #0F4589;
+$sb_red: #C0001D;
+// Spice them up a lil bit
+$ais_blue: lighten($sb_blue, 15%);
+$ais_red: lighten($sb_red, 15%);
+
+$bp-regular: 960px;
+$bp-small: 740px;
 
 $custom: (
   input-width: 500px,
@@ -40,47 +57,200 @@ $custom: (
   animation-iteration-count: 1;
 }
 
+:root {
+  font-size: calc(.65rem + 0.3vw + 0.3vh);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 500;
+}
+
+html, body {
+  float: left;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+
 body {
   font-family: 'Exo 2', sans-serif;
   font-weight: 800;
-  background: url('img/levis-stadium.jpg') no-repeat center top #002040;
-  background-size: auto;
-  @media (min-width: 660px){
-    margin: 0 10%;
+  background: url('img/levis-stadium.jpg') no-repeat  center top darken(#0067EB,35%);
+  background-size: cover;
+  background-attachment: fixed;
+
+  @media (max-width: $bp-small) {
+    margin: 0;
+    padding: 16px;
+  }
+
+}
+
+.container-fluid {
+  float: left;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+}
+
+header {
+  position: relative;
+  z-index: 5;
+  float: left;
+  width: 100%;
+  h1 {
+    text-align: center;
+    color: White;
+    font-size: 4em;
+    margin: 20px 0 0;
+    text-transform: uppercase;
+    text-align: center;
+    color: White;
+    font-size: 4em;
+    margin: 10px 0 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: transparent;
+    @media (max-width: $bp-regular) {
+      font-size: 3em;
+    }
+
+    @media (max-width: $bp-small) {
+      font-size: 2em;
+    }
+
+    @supports (-webkit-background-clip: text) {
+      position: relative;
+      text-align: center;
+      &:after {
+        content: attr(datatext);
+         background: -webkit-linear-gradient(lighten($ais_red, 0%), lighten($ais_blue, 0%));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: none;
+        position: absolute;
+        z-index: 99;
+        left: 0;
+        right: 0;
+        top: 0;
+        text-align: center;
+      }
+    }
+  }
+  .searchbox {
+    max-width: 540px;
+    width: 100%;
+    margin: 16px auto 40px;
+    display: block;
+
+    .sbx-custom__input {
+      color: white;
+      box-shadow: 0 2px #00A5FF;
+      padding: 16px;
+      padding-left: 4em;
+      background: transparent;
+    }
+    .sbx-custom__input:focus {
+      box-shadow: 0 2px white;
+    }
+    .sbx-custom__reset {
+      fill: white
+    }
+
+    .sbx-custom__submit {
+    }
   }
 }
 
-h1 {
-  text-align: center;
-  color: White;
-  font-size: 4em;
-  margin: 10px 0 0;
-  text-transform: uppercase;
-  color: #fff;
-  text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
-  @media (max-width: 660px){
-    font-size: 2.5em;
-  }
+main {
+  float: left;
+  padding-bottom: 2em;
+  width: 100%;
+}
+#results, #year {
+  width: 100%;
+  clear: both;
 }
 
-.searchbox {
-  width: 540px;
-  margin: 0 auto 40px;
-  display: block;
-  .sbx-custom__input {
-    color: white;
-    box-shadow: 0 2px #00A5FF;
-    background-color: transparent;
+.ais-refinement-list {
+  color: #fff !important;
+  width: 100%;
+  max-width: 80%;
+  clear: both;
+  position: relative;
+  float: left;
+  left: 10%;
+  font-weight: 300;
+
+  @media (max-width: $bp-small) {
+    max-width: 100%;
+    left: 0;
   }
-  .sbx-custom__input:focus {
-    box-shadow: 0 2px white;
+
+  .ais-refinement-list--header.ais-header {
+    float: left;
+    font-size: 1.3em;
+    width: 100%;
+    padding-bottom: 16px;
   }
-  .sbx-custom__reset {
-    fill: white
+
+  .ais-refinement-list--body {
+    display: inline-flex;
+    flex-direction: column;
+    height: auto;
+
+    float: left;
+    width: 100%;
+  }
+
+  label {
+    float: left;
+    background: rgba(white, 0.85);
+    padding: 0.25rem;
+    margin: 0.3rem 0.3rem;
+    border-radius: 3px;
+    color: $ais_blue;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    flex: 1 1 auto;
+
+    .ais-refinement-list--count {
+      display: inline-block;
+      border-radius: 4px;
+      padding: 5px;
+      background: $ais_blue;
+      color: #fff;
+      font-size: 10px;
+      margin-left: 3px;
+    }
+
+    &:hover {
+      background: white;
+    }
+
+    input {
+      display: none;
+    }
+  }
+
+  .ais-refinement-list--item__active {
+    label {
+      color: #fff;
+      background: $ais_blue;
+
+      .ais-refinement-list--count {
+        background: #fff;
+        color: $ais_blue;
+      }
+    }
   }
 }
-
-
 
 .ais-hits {
   display: flex;
@@ -89,6 +259,14 @@ h1 {
   justify-content: space-between;
   font-size: 16px;
   animation: up .3s linear;
+  @include flex-setting();
+  max-width: calc(80% + 0.5em);
+  margin: auto;
+
+  @media (max-width: $bp-small) {
+    max-width: 100%;
+  }
+
   .ais-hits--item {
     flex-grow: 1;
     min-width: 15vw;
@@ -107,34 +285,129 @@ h1 {
       z-index: 99;
       box-shadow: 0 2px 30px black;
     }
+    @media (max-width: $bp-small) {
+      margin: inherit;
+    }
   }
+
   .hit {
     height: 100px;
     display: block;
     text-decoration: none;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 120%;
-    background-color: #3F97F3;
-    background-blend-mode: soft-light;
+    transition: background-size 0.2s ease;
+    cursor: pointer;
+    background: {
+      repeat: no-repeat;
+      position: center;
+      size: 120%;
+      color: rgba(#3F97F3, 0.8);
+      blend-mode: soft-light;
+    }
     color: white;
     padding: 10px;
-    transition: background-color .25s, background-size .1s ease;
+    position: relative;
+
+    &:after {
+      background-image: linear-gradient(to bottom right, $ais_red, $ais_blue);
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      opacity: 0.5;
+      mix-blend-mode: lighten;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      width: 55px;
+      height: 55px;
+      position: absolute;
+      background:  url(../img/play.svg)no-repeat center center / 55px;
+      opacity: .8;
+      top: 50% !important;
+      left: calc(50% - 20px);
+      transform: translate(-50%, -50%);
+      transition: all .2s ease;
+      will-change: transform;
+      opacity: 0;
+    }
+
     &:hover {
       background-color: #4D4E4E;
+      transition: background-color .25s, background-size .1s ease;
+      blend-mode: hard-light;
+      &:before{
+        opacity: 1;
+      }
     }
   }
+
   .hit-brand {
     font-size: 1.4em;
+    font-weight: bold;
     text-transform: uppercase;
-    text-shadow: 2px 2px 0 black, 0 0 6px rgba(black, .5);
+    text-shadow: 2px 2px 0 black;
+
+    // highlight
+    em {
+      font-style: normal;
+      font-weight: bold;
+      color: black;
+      // box-shadow: 0 0 1px rgba(black, 0.8),0 1px 1px rgba(black, 0.8), 0 6px 12px rgba(0, 0, 0, 0.6)
+    }
   }
+
   .hit-season {
     display: inline-block;
     font-size: 0.7em;
     font-weight: 400;
     background-color: rgba(#001B3A,.4);
     padding: 2px 6px;
+  }
+
+  &.ais-hits__empty {
+    float: left;
+    display: block !important;
+    width: 100%;
+    max-width: 520px;
+    margin-top: 100px;
+    height: 100%;
+    background: #fff;
+    color: $sb_blue;
+    padding: 3em 1em;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    left: calc(50% - 520px/2);
+    border: 2px solid $ais_blue;
+    box-shadow: 0 16px 32px rgba(#000, 0.7);
+
+    @media (max-width: $bp-small) {
+      left: 0;
+    }
+  }
+}
+
+
+footer {
+  position: relative;
+  float: left;
+  width: 100%;
+  padding: 16px;
+  text-align: center;
+  color: #fff;
+  background: darken(#0067EB,35%);
+  min-height: 65px;
+  line-height: 55px;
+
+  @media (max-width: $bp-small) {
+    width: calc(100% + 32px);
+    left: -16px;
   }
 }
 

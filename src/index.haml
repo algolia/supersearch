@@ -4,11 +4,21 @@
   %title search with instantsearch.js
   %link{href: "app.css", rel: "stylesheet", type: "text/css"}
   %link{href: "https://fonts.googleapis.com/css?family=Exo+2:400,900", rel: "stylesheet", type: "text/css"}
+  %link{rel:"icon", type:"image/png", href:"favicon.png"}
+  %link{rel:"shortcut icon", type:"image/png", href:"favicon.png"}
+  %meta{name:"viewport", content:"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"}
+  %meta{name: "twitter:card", content: "summary"}
+  %meta{name: "twitter:site", content: "@AlgoliaSuperbowl"}
+  %meta{name: "twitter:creator", content: "@Algolia"}
+  %meta{property: "og:url", content: "https://community.algolia.com/instantsearch.js/"}
+  %meta{property: "og:title", content: "SUPERBOWL ADS"}
+  %meta{property: "og:description", content: "Superbowl Ads is an Algolia experiment that will help you to browse through the history of the superbowl, by selecting and watching superbowl ads. The ads are from the first ever Superbowl, to the latest!"}
+  %meta{property: "og:image", content: "http://graphics8.nytimes.com/images/2011/12/08/technology/bits-newtwitter/bits-newtwitter-tmagArticle.jpg"}
 
 %body
   .container-fluid
     %header
-      %h1 SuperBowl Ads
+      %h1{datatext:"SuperBowl Ads"} SuperBowl Ads
       %form.searchbox.sbx-custom{role: "search", novalidate: true, onsubmit="return false;"}
         %input#search.sbx-custom__input{type: "search", placeholder: "Search for a commercial ad or brand", autocomplete: "off", required: true, spellcheck: false}
         %button.sbx-custom__submit{type: "submit"}
@@ -27,8 +37,8 @@
              });
 
           %script#hit-template{type: "text/template"}
-            %a.hit{href: "https://www.youtube.com/watch?v={{objectID}}", style: "background-image: url('{{thumbnails.high.url}}')"}
-              .hit-brand {{{brand}}}
+            %a.hit{href: "#",dataid: "https://www.youtube.com/watch?v={{objectID}}", style: "background-image: url('{{thumbnails.high.url}}')"}
+              .hit-brand {{{_highlightResult.brand.value}}}
               .hit-season {{year}} - {{sbYear}}
 
     %main
@@ -42,9 +52,11 @@
         #stats.text-muted
       %section#clear
       %section#inception-filters
-
+      %section#years
       %section#results
       %section#pagination
+  %footer
+    Made with love by Algolia
   %script{src:  "js/app.js"}
 
   .svg-icons{style: "height: 0; width: 0; position: absolute; visibility: hidden"}
