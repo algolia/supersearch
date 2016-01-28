@@ -15,7 +15,7 @@
   z-index: 12; }
   .lightbox:before {
     content: '';
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.8);
     position: absolute;
     top: 0;
     left: 0;
@@ -332,8 +332,19 @@ header {
     header .searchbox .sbx-custom__submit {
       right: 0;
       left: inherit; }
-  header #years {
-    color: #fff !important; }
+
+main {
+  width: 100%;
+  float: left; }
+
+.ais-refinement-list {
+  color: #fff !important;
+  width: 100%;
+  clear: both;
+  position: relative;
+  float: left; }
+  .ais-refinement-list label {
+    float: left; }
 
 .ais-hits {
   display: -webkit-flex;

@@ -28,62 +28,16 @@ search.addWidget(
   })
 );
 
-// search.addWidget(
-//   instantsearch.widgets.refinementList({
-//     container: '#years',
-//     attributeName: 'year',
-//     operator: 'or',
-//     limit: 1000,
-//     templates: {
-//       header: 'Years'
-//     }
-//   })
-// );
 search.addWidget(
-instantsearch.widgets.rangeSlider({
+  instantsearch.widgets.refinementList({
     container: '#years',
     attributeName: 'year',
+    operator: 'or',
     limit: 1000,
     templates: {
       header: 'Years'
-    },
-    tooltips: {
-      format: function(formattedValue) {
-        return formattedValue;
-      }
     }
   })
 );
-
-// search.addWidget(
-//   instantsearch.widgets.refinementList({
-//     container: '#brand-filters',
-//     attributeName: 'brand',
-//     operator: 'or',
-//     limit: 25,
-//     templates: {
-//       header: 'Brands'
-//     }
-//   })
-// );
-//
-// search.addWidget(
-//   instantsearch.widgets.refinementList({
-//     container: '#year-filters',
-//     attributeName: 'year',
-//     operator: 'or',
-//     limit: 25,
-//     templates: {
-//       header: 'Years'
-//     }
-//   })
-// );
-//
-// search.addWidget(
-//   instantsearch.widgets.pagination({
-//     container: '#pagination',
-//     maxPages: 10
-//   })
-// );
 
 search.start();

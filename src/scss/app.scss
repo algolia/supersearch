@@ -103,8 +103,6 @@ header {
       font-size: 2em;
     }
   }
-
-
   .searchbox {
     max-width: 540px;
     width: 100%;
@@ -129,10 +127,22 @@ header {
       left: inherit;
     }
   }
+}
 
+main {
+  width: 100%;
+  float: left;
+}
 
-  #years{
-    color: #fff !important;
+.ais-refinement-list {
+  color: #fff !important;
+  width: 100%;
+  clear: both;
+  position: relative;
+  float: left;
+  
+  label {
+    float: left;
   }
 }
 

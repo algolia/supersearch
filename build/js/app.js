@@ -79,61 +79,15 @@
 	  }
 	}));
 
-	// search.addWidget(
-	//   instantsearch.widgets.refinementList({
-	//     container: '#years',
-	//     attributeName: 'year',
-	//     operator: 'or',
-	//     limit: 1000,
-	//     templates: {
-	//       header: 'Years'
-	//     }
-	//   })
-	// );
-	search.addWidget(instantsearch.widgets.rangeSlider({
+	search.addWidget(instantsearch.widgets.refinementList({
 	  container: '#years',
 	  attributeName: 'year',
+	  operator: 'or',
 	  limit: 1000,
 	  templates: {
 	    header: 'Years'
-	  },
-	  tooltips: {
-	    format: function format(formattedValue) {
-	      return formattedValue;
-	    }
 	  }
 	}));
-
-	// search.addWidget(
-	//   instantsearch.widgets.refinementList({
-	//     container: '#brand-filters',
-	//     attributeName: 'brand',
-	//     operator: 'or',
-	//     limit: 25,
-	//     templates: {
-	//       header: 'Brands'
-	//     }
-	//   })
-	// );
-	//
-	// search.addWidget(
-	//   instantsearch.widgets.refinementList({
-	//     container: '#year-filters',
-	//     attributeName: 'year',
-	//     operator: 'or',
-	//     limit: 25,
-	//     templates: {
-	//       header: 'Years'
-	//     }
-	//   })
-	// );
-	//
-	// search.addWidget(
-	//   instantsearch.widgets.pagination({
-	//     container: '#pagination',
-	//     maxPages: 10
-	//   })
-	// );
 
 	search.start();
 
@@ -44317,7 +44271,7 @@
 	    var ifrClose = document.createElement('a');
 	    var ifr = document.createElement('iframe');
 	    ifrClose.classList.add('close');
-	    ifrClose.innerHTML = '<svg height="50px" id="Layer_1" style="enable-background:new 0 0 50 50;" version="1.1" viewBox="0 0 512 512" width="50px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg>';
+	    ifrClose.innerHTML = '<svg height="34px" id="Layer_1" style="enable-background:new 0 0 34 34;" version="1.1" viewBox="0 0 512 512" width="34px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg>';
 	    ifrContainer.classList.add('lightbox', 'hidden');
 	    ifr.setAttribute('type', 'text/html');
 	    ifr.setAttribute('width', '640');
@@ -44328,7 +44282,7 @@
 	    document.body.appendChild(ifrContainer);
 	    for (var i = 0, len = item.length; i < len; i++) {
 	      item[i].addEventListener('click', function (e) {
-
+	        e.preventDefault();
 	        var itSrc = this.getAttribute('dataid').split('v=')[1];
 	        ifr.setAttribute('src', 'http://www.youtube.com/embed/' + itSrc);
 	        ifrContainer.classList.toggle('hidden');
