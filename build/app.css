@@ -63,12 +63,6 @@
   line-height: 1;
   text-decoration: none; }
 
-.ais-hits .ais-hits--item {
-  -webkit-backface-visibility: visible !important;
-  backface-visibility: visible !important;
-  -webkit-animation: flipInX 0.8s ease;
-  animation: flipInX 0.8s ease; }
-
 .sbx-custom {
   display: inline-block;
   position: relative;
@@ -524,9 +518,6 @@ main {
     .ais-hits .ais-hits--item:nth-child(41) {
       -webkit-animation-delay: 0.41s;
       animation-delay: 0.41s; }
-    .ais-hits .ais-hits--item:hover {
-      z-index: 99;
-      box-shadow: 0 2px 30px black; }
     @media (max-width: 740px) {
       .ais-hits .ais-hits--item {
         margin: inherit; } }

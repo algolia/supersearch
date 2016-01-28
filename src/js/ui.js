@@ -4,7 +4,7 @@
 //   var lightBox = function(param) {
 //     var item = param.item;
 //     var item = $(item);
-    
+
 //     // add iframe
 //     var ifrContainer = $('body').append('div');
 //     ifrContainer.addClass('lightbox','hidden');
@@ -35,7 +35,7 @@
 //   }
 
 //   // Then, we'll give an id to each video container
-//   // To help us identifying the video to play on the 
+//   // To help us identifying the video to play on the
 //   // fancybox
 //   // And also, get rid of the hred
 //   var aisItem = document.querySelectorAll('.ais-hits--item > a');
@@ -44,9 +44,9 @@
 //     aisItem[i].setAttribute('data-id', aisItem[i].href)
 //     aisItem[i].setAttribute('href', 'javascript:void(0)')
 //   }
- 
 
- 
+
+
 // });
 
 
@@ -81,7 +81,7 @@ $( document ).ready(function() {
       }
     })
 
-    $('.ais-refinement-list--header').on('click', $('#toggleFilter'), function(e){
+    $('#years').on('click', $('#toggleFilter'), function(e){
       if($('.ais-refinement-list--body').hasClass('open')) {
         $('#toggleFilter').text('open')
         $('.ais-refinement-list--body').removeClass('open');

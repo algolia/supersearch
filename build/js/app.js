@@ -46960,7 +46960,7 @@
 	    }
 	  });
 
-	  $('.ais-refinement-list--header').on('click', $('#toggleFilter'), function (e) {
+	  $('#years').on('click', $('#toggleFilter'), function (e) {
 	    if ($('.ais-refinement-list--body').hasClass('open')) {
 	      $('#toggleFilter').text('open');
 	      $('.ais-refinement-list--body').removeClass('open');
