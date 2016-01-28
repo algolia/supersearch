@@ -404,7 +404,6 @@ main {
     position: relative;
     z-index: 10;
     left: calc(50% - 520px/2);
-    border: 2px solid $ais_blue;
     box-shadow: 0 16px 32px rgba(#000, 0.7);
 
     @media (max-width: $bp-small) {
