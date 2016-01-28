@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "dev": "gulp dev"
+  },
   "devDependencies": {
     "async": "^1.5.2",
     "babel-core": "^5.4.3",
@@ -30,7 +33,7 @@
   "dependencies": {
     "algoliasearch": "^3.10.2",
     "imports-loader": "^0.6.5",
-    "instantsearch.js": "^1.1.3",
+    "instantsearch.js": "1.X",
     "jquery": "^2.2.0",
     "lodash": "^3.10.1",
     "mustache": "^2.2.1"
