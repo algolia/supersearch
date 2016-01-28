@@ -19,7 +19,7 @@ search.addWidget(
 
 search.addWidget(
   instantsearch.widgets.hits({
-    hitsPerPage: 40,
+    hitsPerPage: 42,
     container: '#results',
     templates: {
       empty: 'No Results',
