@@ -19,7 +19,7 @@ $custom: (
   input-focus-border-color: #fff,
   input-background: #001B3A,
   input-focus-background: #001B3A,
-  font-size: 22px,
+  font-size: 16px,
   placeholder-color: #fff,
   icon-size: 28px,
   icon-position: left,
@@ -43,17 +43,24 @@ $custom: (
 body {
   font-family: 'Exo 2', sans-serif;
   font-weight: 800;
-  margin: 0 10%;
-  background: url('img/levis-stadium.jpg') no-repeat center 200px darken(#0067EB,35%);
+  background: url('img/levis-stadium.jpg') no-repeat center top #002040;
   background-size: auto;
+  @media (min-width: 660px){
+    margin: 0 10%;
+  }
 }
 
 h1 {
   text-align: center;
   color: White;
   font-size: 4em;
-  margin: 20px 0 0;
+  margin: 10px 0 0;
   text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
+  @media (max-width: 660px){
+    font-size: 2.5em;
+  }
 }
 
 .searchbox {
@@ -63,6 +70,7 @@ h1 {
   .sbx-custom__input {
     color: white;
     box-shadow: 0 2px #00A5FF;
+    background-color: transparent;
   }
   .sbx-custom__input:focus {
     box-shadow: 0 2px white;
@@ -79,7 +87,7 @@ h1 {
   justify-content: space-between;
   .ais-hits--item {
     flex-grow: 1;
-    min-width: 15vw;
+    min-width: 20vw;
     overflow: hidden;
     margin: .5em 0 0 .5em;
     box-shadow: 0 2px 10px black;
@@ -95,19 +103,23 @@ h1 {
     background-blend-mode: soft-light;
     color: white;
     padding: 10px;
+    transition: background-color .25s, background-size .1s ease, transform 200ms;
     &:hover {
-      width: 110%;
+      transform: scale(110%,110%);
       background-color: #4D4E4E;
-      transition: background-color .25s, background-size .1s ease;
     }
   }
   .hit-brand {
     font-size: 1.4em;
     text-transform: uppercase;
-    text-shadow: 2px 2px 0 black;
+    text-shadow: 2px 2px 0 black, 0 0 6px rgba(black, .5);
   }
   .hit-season {
-    font-size: 12px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: rgba(#001B3A,.4);
+    padding: 2px 6px;
   }
 }
 
