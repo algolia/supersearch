@@ -22,8 +22,9 @@ search.addWidget(
     hitsPerPage: 42,
     container: '#results',
     templates: {
-      empty: 'No Results',
-      item: document.getElementById('hit-template').innerHTML
+      empty: `<h2>No Results :(</h2>
+        <h3>What about starting a new search?</h2>`,
+      item: document.getElementById('hit-template').innerHTML 
     }
   })
 );

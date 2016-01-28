@@ -193,7 +193,8 @@ body {
   font-family: 'Exo 2', sans-serif;
   font-weight: 800;
   background: url("img/levis-stadium.jpg") no-repeat center 200px #001939;
-  background-size: cover; }
+  background-size: cover;
+  background-attachment: fixed; }
   @media (max-width: 740px) {
     body {
       margin: 0;
@@ -212,8 +213,7 @@ body {
   float: left;
   width: 100%;
   max-width: 100%;
-  position: relative;
-  left: 16px; }
+  position: relative; }
 
 header {
   position: relative;
@@ -231,6 +231,7 @@ header {
     font-size: 4em;
     margin: 10px 0 0;
     text-transform: uppercase;
+    font-weight: bold;
     color: #fff;
     text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135; }
     @media (max-width: 960px) {
@@ -239,6 +240,23 @@ header {
     @media (max-width: 740px) {
       header h1 {
         font-size: 2em; } }
+    @supports (-webkit-background-clip: text) {
+      header h1 {
+        position: relative;
+        text-align: center;
+        text-shadow: 0 5px 10px rgba(0, 0, 0, 0.5), 0 0 1px white, 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135; }
+        header h1:after {
+          content: attr(datatext);
+          background: -webkit-linear-gradient(#ff0e32, #1768ce);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          text-shadow: none;
+          position: absolute;
+          z-index: 99;
+          left: 0;
+          right: 0;
+          top: 0;
+          text-align: center; } }
   header .searchbox {
     max-width: 540px;
     width: 100%;
@@ -247,19 +265,21 @@ header {
     header .searchbox .sbx-custom__input {
       color: white;
       box-shadow: 0 2px #00A5FF;
-      padding: 16px !important;
+      padding: 16px;
+      padding-left: 4em;
       background: transparent; }
     header .searchbox .sbx-custom__input:focus {
       box-shadow: 0 2px white; }
     header .searchbox .sbx-custom__reset {
       fill: white; }
-    header .searchbox .sbx-custom__submit {
-      right: 0;
-      left: inherit; }
 
 main {
   float: left;
-  padding-bottom: 2em; }
+  padding-bottom: 2em;
+  width: 100%; }
+
+#results {
+  width: 100%; }
 
 .ais-refinement-list {
   color: #fff !important;
@@ -269,19 +289,59 @@ main {
   position: relative;
   float: left;
   left: 10%;
-  font-weight: 300; }
+  font-weight: 300;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 16px; }
+  @media (max-width: 740px) {
+    .ais-refinement-list {
+      max-width: 100%;
+      left: 0; } }
   .ais-refinement-list .ais-refinement-list--header.ais-header {
     float: left;
-    display: inline-block;
-    color: #1768ce;
-    font-size: 1.3em; }
-    @media (max-width: 740px) {
-      .ais-refinement-list .ais-refinement-list--header.ais-header {
-        width: 100%; } }
+    font-size: 1.3em;
+    width: 100%;
+    padding-bottom: 16px; }
+  .ais-refinement-list .ais-refinement-list--body {
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: auto;
+    float: left;
+    width: 100%; }
   .ais-refinement-list label {
-    float: left; }
+    float: left;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 0.25rem;
+    margin: 0.3rem 0.3rem;
+    border-radius: 3px;
+    color: #1768ce;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto; }
+    .ais-refinement-list label .ais-refinement-list--count {
+      display: inline-block;
+      border-radius: 4px;
+      padding: 5px;
+      background: #1768ce;
+      color: #fff;
+      font-size: 10px;
+      margin-left: 3px; }
+    .ais-refinement-list label:hover {
+      background: white; }
     .ais-refinement-list label input {
       display: none; }
+  .ais-refinement-list .ais-refinement-list--item__active label {
+    color: #fff;
+    background: #1768ce; }
+    .ais-refinement-list .ais-refinement-list--item__active label .ais-refinement-list--count {
+      background: #fff;
+      color: #1768ce; }
 
 .ais-hits {
   display: -webkit-flex;
@@ -296,8 +356,11 @@ main {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  max-width: 80%;
+  max-width: calc(80% + 0.5em);
   margin: auto; }
+  @media (max-width: 740px) {
+    .ais-hits {
+      max-width: 100%; } }
   .ais-hits .ais-hits--item {
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
@@ -305,10 +368,12 @@ main {
     min-width: 15vw;
     overflow: hidden;
     margin: .5em 0 0 .5em;
-    box-shadow: 0 2px 10px black; }
+    box-shadow: 0 2px 10px black;
+    position: relative;
+    left: -0.25em; }
     @media (max-width: 740px) {
       .ais-hits .ais-hits--item {
-        margin: 2px; } }
+        margin: inheri; } }
   .ais-hits .hit {
     height: 10vh;
     display: block;
@@ -361,8 +426,36 @@ main {
     font-size: 1.4em;
     text-transform: uppercase;
     text-shadow: 2px 2px 0 black; }
+    .ais-hits .hit-brand em {
+      font-style: normal;
+      background: #1768ce;
+      background-image: linear-gradient(to bottom, #2f81e8, #1768ce);
+      position: relative;
+      z-index: 9999;
+      padding: 0.25rem;
+      border-radius: 3px;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.8), 0 1px 1px rgba(0, 0, 0, 0.8), 0 6px 12px rgba(0, 0, 0, 0.6); }
   .ais-hits .hit-season {
     font-size: 12px; }
+  .ais-hits.ais-hits__empty {
+    float: left;
+    display: block !important;
+    width: 100%;
+    max-width: 520px;
+    margin-top: 100px;
+    height: 100%;
+    background: #fff;
+    color: #0F4589;
+    padding: 3em 1em;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    left: calc(50% - 520px/2);
+    border: 2px solid #1768ce;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.7); }
+    @media (max-width: 740px) {
+      .ais-hits.ais-hits__empty {
+        left: 0; } }
 
 footer {
   position: relative;
@@ -370,9 +463,14 @@ footer {
   width: 100%;
   padding: 16px;
   text-align: center;
-  left: calc(-20%);
   color: #fff;
-  background: #001939; }
+  background: #001939;
+  min-height: 65px;
+  line-height: 55px; }
+  @media (max-width: 740px) {
+    footer {
+      width: calc(100% + 32px);
+      left: -16px; } }
 
 @-webkit-keyframes spin {
   from {

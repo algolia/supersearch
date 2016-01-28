@@ -18,7 +18,7 @@
 %body
   .container-fluid
     %header
-      %h1 SuperBowl Ads
+      %h1{datatext:"SuperBowl Ads"} SuperBowl Ads
       %form.searchbox.sbx-custom{role: "search", novalidate: true, onsubmit="return false;"}
         %input#search.sbx-custom__input{type: "search", placeholder: "Search for a commercial ad or brand", autocomplete: "off", required: true, spellcheck: false}
         %button.sbx-custom__submit{type: "submit"}
@@ -41,7 +41,7 @@
 
           %script#hit-template{type: "text/template"}
             %a.hit.fade{href: "#",dataid: "https://www.youtube.com/watch?v={{objectID}}", style: "background-image: url('{{thumbnails.high.url}}')"}
-              .hit-brand {{{brand}}}
+              .hit-brand {{{_highlightResult.brand.value}}}
               .hit-season {{year}} - {{sbYear}}
 
     %main

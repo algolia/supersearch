@@ -75,7 +75,7 @@
 	  hitsPerPage: 42,
 	  container: '#results',
 	  templates: {
-	    empty: 'No Results',
+	    empty: '<h2>No Results :(</h2>\n        <h3>What about starting a new search?</h2>',
 	    item: document.getElementById('hit-template').innerHTML
 	  }
 	}));
@@ -46424,28 +46424,32 @@
 	'use strict';
 
 	$(document).ready(function () {
-	  // We start by creating the fancybox function
-	  var lightBox = function lightBox(param) {
-	    var item = param.item;
-	    var item = $(item);
-	    console.log(item);
 
-	    // add iframe
-	    $('body').append('<div class="lightbox hidden"><a href="javascript:void(0)" class="close"><svg height="34px" id="Layer_1" style="enable-background:new 0 0 34 34;" version="1.1" viewBox="0 0 512 512" width="34px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg></a><iframe class="lightbox_frame" type="text/html" width="640" height="385"></iframe>');
+	  $('body').append('<div class="lightbox hidden"><a href="javascript:void(0)" class="close"><svg height="34px" id="Layer_1" style="enable-background:new 0 0 34 34;" version="1.1" viewBox="0 0 512 512" width="34px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg></a><iframe class="lightbox_frame" type="text/html" width="640" height="385"></iframe>');
 
-	    $('body').on('click', $(this), function (a, e) {
-	      var ytId = a.toElement.attributes[1].value.split('v=')[1];
-	      console.log(ytId);
-	      $('.lightbox_frame').attr('src', 'http://www.youtube.com/embed/' + ytId);
-	      $('.lightbox').toggleClass('hidden');
-	    });
-	    $('.close').on('click', function () {
-	      $('.lightbox').addClass('hidden');
-	    });
-	  };
+	  $('#results').on('click', '.hit', function (a, e) {
+	    var ytId = a.toElement.attributes[1].value.split('v=')[1];
+	    console.log(ytId);
+	    $('.lightbox_frame').attr('src', 'http://www.youtube.com/embed/' + ytId);
+	    $('.lightbox').toggleClass('hidden');
+	  });
+	  $('.close').on('click', function () {
+	    $('.lightbox').addClass('hidden');
+	  });
 
-	  lightBox({
-	    item: '.ais-hits--item > a[dataid]'
+	  // Stick dat footer
+	  $('input').on('keyup keypress live change', function () {
+	    if ($('.ais-hits').hasClass('ais-hits__empty')) {
+	      $('footer').css({
+	        position: 'absolute',
+	        bottom: '0'
+	      });
+	    } else {
+	      $('footer').css({
+	        position: 'relative',
+	        bottom: 'inherit'
+	      });
+	    }
 	  });
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(437)))
