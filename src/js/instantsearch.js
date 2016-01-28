@@ -35,7 +35,7 @@ search.addWidget(
     operator: 'or',
     limit: 1000,
     templates: {
-      header: 'Years'
+      header: 'Filter by years :'
     }
   })
 );

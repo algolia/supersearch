@@ -52,103 +52,6 @@
     -webkit-transform: translate(-50%, -300%);
     transform: translate(-50%, -300%); }
 
-.ais-range-slider--target {
-  position: relative;
-  direction: ltr;
-  background: #F3F4F7;
-  height: 6px;
-  margin-top: 2em;
-  margin-bottom: 2em; }
-
-.ais-range-slider--base {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 1;
-  border-top: 1px solid #DDD;
-  border-bottom: 1px solid #DDD;
-  border-left: 2px solid #DDD;
-  border-right: 2px solid #DDD; }
-
-.ais-range-slider--origin {
-  position: absolute;
-  right: 0;
-  top: 0;
-  left: 0;
-  bottom: 0; }
-
-.ais-range-slider--connect {
-  background: #46AEDA; }
-
-.ais-range-slider--background {
-  background: #F3F4F7; }
-
-.ais-range-slider--handle {
-  width: 20px;
-  height: 20px;
-  position: relative;
-  z-index: 1;
-  background: #FFF;
-  border: 1px solid #46AEDA;
-  border-radius: 50%;
-  cursor: pointer; }
-
-.ais-range-slider--handle-lower {
-  left: -10px;
-  bottom: 7px; }
-
-.ais-range-slider--handle-upper {
-  right: 10px;
-  bottom: 7px; }
-
-.ais-range-slider--tooltip {
-  position: absolute;
-  background: transparent;
-  color: #fff;
-  top: -22px;
-  font-size: .8em; }
-
-.ais-range-slider--pips {
-  box-sizing: border-box;
-  position: absolute;
-  height: 3em;
-  top: 100%;
-  left: 0;
-  width: 100%; }
-
-.ais-range-slider--value {
-  width: 40px;
-  position: absolute;
-  text-align: center;
-  margin-left: -20px; }
-
-.ais-range-slider--marker {
-  position: absolute;
-  background: #DDD;
-  margin-left: -1px;
-  width: 1px;
-  height: 5px; }
-
-.ais-range-slider--marker-sub {
-  background: #DDD;
-  width: 2px;
-  margin-left: -2px;
-  height: 13px; }
-
-.ais-range-slider--marker-large {
-  background: #DDD;
-  width: 2px;
-  margin-left: -2px;
-  height: 12px; }
-
-.ais-star-rating--star, .ais-star-rating--star__empty {
-  display: inline-block;
-  width: 1em;
-  height: 1em; }
-
-.ais-range-slider--marker-large:first-child {
-  margin-left: 0; }
-
 .sbx-custom {
   display: inline-block;
   position: relative;
@@ -273,10 +176,22 @@
 :root {
   font-size: calc(.65rem + 0.3vw + 0.3vh); }
 
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 500; }
+
+html, body {
+  float: left;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0; }
+
 body {
   font-family: 'Exo 2', sans-serif;
   font-weight: 800;
-  margin: 0 10%;
   background: url("img/levis-stadium.jpg") no-repeat center 200px #001939;
   background-size: cover; }
   @media (max-width: 740px) {
@@ -293,9 +208,18 @@ body {
     position: absolute;
     background: linear-gradient(to bottom, #001939, #001939, #001939, #001939, transparent); }
 
+.container-fluid {
+  float: left;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  left: 16px; }
+
 header {
   position: relative;
-  z-index: 5; }
+  z-index: 5;
+  float: left;
+  width: 100%; }
   header h1 {
     text-align: center;
     color: White;
@@ -334,17 +258,30 @@ header {
       left: inherit; }
 
 main {
-  width: 100%;
-  float: left; }
+  float: left;
+  padding-bottom: 2em; }
 
 .ais-refinement-list {
   color: #fff !important;
   width: 100%;
+  max-width: 80%;
   clear: both;
   position: relative;
-  float: left; }
+  float: left;
+  left: 10%;
+  font-weight: 300; }
+  .ais-refinement-list .ais-refinement-list--header.ais-header {
+    float: left;
+    display: inline-block;
+    color: #1768ce;
+    font-size: 1.3em; }
+    @media (max-width: 740px) {
+      .ais-refinement-list .ais-refinement-list--header.ais-header {
+        width: 100%; } }
   .ais-refinement-list label {
     float: left; }
+    .ais-refinement-list label input {
+      display: none; }
 
 .ais-hits {
   display: -webkit-flex;
@@ -358,7 +295,9 @@ main {
   flex-direction: row;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
-  justify-content: space-between; }
+  justify-content: space-between;
+  max-width: 80%;
+  margin: auto; }
   .ais-hits .ais-hits--item {
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
@@ -385,7 +324,7 @@ main {
     padding: 10px;
     position: relative; }
     .ais-hits .hit:after {
-      background-image: linear-gradient(to bottom right, #da0021, #1251a0);
+      background-image: linear-gradient(to bottom right, #ff0e32, #1768ce);
       content: '';
       display: block;
       position: absolute;
@@ -424,6 +363,16 @@ main {
     text-shadow: 2px 2px 0 black; }
   .ais-hits .hit-season {
     font-size: 12px; }
+
+footer {
+  position: relative;
+  float: left;
+  width: 100%;
+  padding: 16px;
+  text-align: center;
+  left: calc(-20%);
+  color: #fff;
+  background: #001939; }
 
 @-webkit-keyframes spin {
   from {
