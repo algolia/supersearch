@@ -238,7 +238,7 @@ header {
     text-transform: uppercase;
     text-align: center;
     color: White;
-    font-size: 9vw;
+    font-size: 8vw;
     margin: 10px 0 0;
     text-transform: uppercase;
     font-weight: bold;
@@ -264,7 +264,7 @@ header {
 .searchbox {
   max-width: 540px;
   width: 100%;
-  margin: 16px auto 40px;
+  margin: 16px auto 20px;
   display: block; }
   .searchbox .sbx-custom__input {
     color: white;
@@ -286,25 +286,34 @@ main {
     main {
       max-width: 100%; } }
 
-.filters {
+.filters, #topbar-refinements {
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
   padding-left: 10px; }
-  .filters > li {
+  .filters > li, .filters div, #topbar-refinements > li, #topbar-refinements div {
     list-style: none;
+    display: inline-block;
     font-size: 1em;
     font-weight: 400;
     margin-right: 10px;
     color: white;
     white-space: nowrap;
     text-transform: uppercase; }
-    .filters > li a {
+    .filters > li a, .filters div a, #topbar-refinements > li a, #topbar-refinements div a {
       color: white;
       text-decoration: none; }
-      .filters > li a div {
+      .filters > li a div, .filters div a div, #topbar-refinements > li a div, #topbar-refinements div a div {
         display: inline-block; }
-  .filters .ais-refinement-list--body, .filters .menu {
+      .filters > li a svg, .filters div a svg, #topbar-refinements > li a svg, #topbar-refinements div a svg {
+        display: inline;
+        vertical-align: middle;
+        width: 18px;
+        height: 18px;
+        top: -2px;
+        position: relative;
+        fill: #00A3FF; }
+  .filters .ais-refinement-list--body, .filters .menu, #topbar-refinements .ais-refinement-list--body, #topbar-refinements .menu {
     position: fixed;
     top: 0;
     left: 0;
@@ -313,8 +322,8 @@ main {
     background-color: #02132B;
     z-index: 99;
     padding: 60px 10%;
-    overflow: auto; }
-    .filters .ais-refinement-list--body .close, .filters .menu .close {
+    margin: 0; }
+    .filters .ais-refinement-list--body .close, .filters .menu .close, #topbar-refinements .ais-refinement-list--body .close, #topbar-refinements .menu .close {
       position: absolute;
       top: 0;
       right: 0;
@@ -322,10 +331,12 @@ main {
       margin: 16px;
       max-width: 50px;
       cursor: pointer; }
-      .filters .ais-refinement-list--body .close svg, .filters .menu .close svg {
+      .filters .ais-refinement-list--body .close svg, .filters .menu .close svg, #topbar-refinements .ais-refinement-list--body .close svg, #topbar-refinements .menu .close svg {
         max-width: 100%;
         fill: #fff; }
-  .filters .items, .filters .ais-refinement-list--list {
+  .filters .ais-current-refined-values--list svg, #topbar-refinements .ais-current-refined-values--list svg {
+    fill: #BD245E; }
+  .filters .items, .filters .ais-refinement-list--list, #topbar-refinements .items, #topbar-refinements .ais-refinement-list--list {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -341,7 +352,7 @@ main {
     border: solid 1px #0954bd;
     border-width: 1px 1px 0 0;
     padding: 0; }
-  .filters .items li, .filters .ais-refinement-list--item {
+  .filters .items li, .filters .ais-refinement-list--item, #topbar-refinements .items li, #topbar-refinements .ais-refinement-list--item {
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
@@ -352,9 +363,12 @@ main {
     margin: 0;
     padding: 8px 12px;
     background-color: #02132B; }
-    .filters .items li:hover, .filters .ais-refinement-list--item:hover {
+    .filters .items li:hover, .filters .ais-refinement-list--item:hover, #topbar-refinements .items li:hover, #topbar-refinements .ais-refinement-list--item:hover {
       background-color: #BD245E; }
-  .filters .ais-refinement-list--item {
+    .filters .items li em, .filters .ais-refinement-list--item em, #topbar-refinements .items li em, #topbar-refinements .ais-refinement-list--item em {
+      font-style: normal;
+      font-weight: 800; }
+  .filters .ais-refinement-list--item, #topbar-refinements .ais-refinement-list--item {
     width: 50%; }
 
 .ais-refinement-list .ais-refinement-list--body:not(.open) {

@@ -1,7 +1,7 @@
 'use strict';
 
 //until 1.2 is released
-let instantsearch = require('instantsearch.js');
+// let instantsearch = require('instantsearch.js');
 const inceptionWidget = require('./widgets/inception.js');
 
 let search = instantsearch({
@@ -39,32 +39,27 @@ search.addWidget(
     limit: 1000,
     sortBy: ['name:desc'],
     templates: {
-      header: '<a href="javascript:void(0)" class="toggle">add Year</a>',
+      header: '<a href="javascript:void(0)" class="toggle"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add-icon"></use></svg> Year</a>',
     }
   })
 );
 
 search.addWidget(
-  instantsearch.widgets.clearAll({
-    container: "#clear",
+  instantsearch.widgets.currentRefinedValues({
+    container: "#topbar-refinements",
+    clearAll: false,
     templates: {
-      link: 'clear all'
-    },
-    autoHideContainer: true
+      item: '<a href="javascript:void(0)">{{name}} <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#clear-icon"></use></svg></a>',
+      clearAll: '<a href="javascript:void(0)"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#clear-icon"></use></svg> Clear All</a>',
+    }
   })
 );
-
-// search.addWidget(
-//   instantsearch.widgets.currentRefinedValues({
-//     container: "#topbar-refinements"
-//   })
-// );
 
 search.addWidget(
   inceptionWidget({
     container: '#inception-filters',
     mainSearchAttribute: 'brand',
-    title: 'add Brand',
+    title: '<svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add-icon"></use></svg> Brand',
     secondarySearchAttribute: 'name',
     index: 'sb_ads_brands'
   })

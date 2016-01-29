@@ -126,7 +126,7 @@ header {
     text-transform: uppercase;
     text-align: center;
     color: White;
-    font-size: 9vw;
+    font-size: 8vw;
     margin: 10px 0 0;
     text-transform: uppercase;
     font-weight: bold;
@@ -155,7 +155,7 @@ header {
 .searchbox {
   max-width: 540px;
   width: 100%;
-  margin: 16px auto 40px;
+  margin: 16px auto 20px;
   display: block;
 
   .sbx-custom__input {
@@ -184,23 +184,32 @@ main {
 }
 
 
-.filters{
+.filters, #topbar-refinements {
   display: inline-flex;
   padding-left: 10px;
-  > li {
+  > li, div {
     list-style: none;
+    display: inline-block;
     font-size: 1em;
     font-weight: 400;
     margin-right: 10px;
     color: white;
     white-space: nowrap;
     text-transform: uppercase;
-
     a {
       color: white;
       text-decoration: none;
       div {
         display: inline-block;
+      }
+      svg {
+        display: inline;
+        vertical-align: middle;
+        width: 18px;
+        height: 18px;
+        top: -2px;
+        position: relative;
+        fill: #00A3FF;
       }
     }
   }
@@ -214,7 +223,7 @@ main {
     background-color: #02132B;
     z-index: 99;
     padding: 60px 10%;
-    overflow: auto;
+    margin: 0;
 
     .close {
       position: absolute;
@@ -229,6 +238,11 @@ main {
         max-width: 100%;
         fill: #fff;
       }
+    }
+  }
+  .ais-current-refined-values--list {
+    svg {
+      fill: #BD245E;
     }
   }
 
@@ -253,6 +267,10 @@ main {
     background-color: #02132B;
     &:hover {
       background-color: #BD245E;
+    }
+    em {
+      font-style: normal;
+      font-weight: 800;
     }
   }
   .ais-refinement-list--item{
