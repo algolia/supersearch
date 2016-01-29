@@ -54,11 +54,11 @@ search.addWidget(
   })
 );
 
-// search.addWidget(
-//   instantsearch.widgets.currentRefinedValues({
-//     container: "#clear"
-//   })
-// );
+search.addWidget(
+  instantsearch.widgets.currentRefinedValues({
+    container: "#topbar-refinements"
+  })
+);
 
 search.addWidget(
   inceptionWidget({
