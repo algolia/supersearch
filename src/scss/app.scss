@@ -131,8 +131,6 @@ header {
     text-transform: uppercase;
     font-weight: bold;
     color: white;
-
-
     @supports (-webkit-background-clip: text) {
       position: relative;
       text-align: center;
@@ -256,6 +254,9 @@ main {
     &:hover {
       background-color: #BD245E;
     }
+  }
+  .ais-refinement-list--item{
+    width: 50%
   }
 }
 

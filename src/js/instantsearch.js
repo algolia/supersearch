@@ -54,11 +54,11 @@ search.addWidget(
   })
 );
 
-search.addWidget(
-  instantsearch.widgets.currentRefinedValues({
-    container: "#topbar-refinements"
-  })
-);
+// search.addWidget(
+//   instantsearch.widgets.currentRefinedValues({
+//     container: "#topbar-refinements"
+//   })
+// );
 
 search.addWidget(
   inceptionWidget({
@@ -100,7 +100,5 @@ search.addWidget(
 //     maxPages: 10
 //   })
 // );
-
-
 
 search.start();
