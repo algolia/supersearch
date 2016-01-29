@@ -47,11 +47,11 @@ $custom: (
   input-height: 60px,
   border-width: 3px,
   border-radius: 0px,
-  input-border-color: #0067EB,
+  input-border-color: #fff,
   input-focus-border-color: #fff,
   input-background: #001B3A,
   input-focus-background: #001B3A,
-  font-size: 16px,
+  font-size: .9em,
   placeholder-color: #EEE,
   icon-size: 28px,
   icon-position: left,
@@ -94,7 +94,7 @@ html, body {
 body {
   font-family: 'Exo 2', sans-serif;
   font-weight: 800;
-  background: url('img/levis-stadium.jpg') no-repeat  center top darken(#0067EB,35%);
+  background: url('img/levis-stadium.jpg') no-repeat  center top #07132A;
   background-size: cover;
   background-attachment: fixed;
 
@@ -160,7 +160,7 @@ header {
 
   .sbx-custom__input {
     color: white;
-    box-shadow: 0 2px #00A5FF;
+    box-shadow: 0 2px #fff;
     padding: 16px;
     padding-left: 4em;
     background: transparent;
@@ -218,12 +218,19 @@ main {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
     bottom: 0;
-    background-color: #02132B;
+    right: 0;
+    background-color: rgba(#02132B,.9);
+    box-shadow: 5px 0 30px black;
     z-index: 99;
-    padding: 60px 10%;
+    padding: 60px 5%;
     margin: 0;
+    transition: transform .2s ease, opacity .4s ease;;
+    opacity: 1;
+    &.hide {
+      opacity: 0;
+      transform: translateX(-40vw);
+    }
 
     .close {
       position: absolute;
@@ -251,22 +258,21 @@ main {
     flex-flow: wrap;
     flex-direction: row;
     justify-content: space-between;
-    border: solid 1px lighten(#02132B,30%);
-    border-width: 1px 1px 0 0;
     padding: 0;
+    max-height: 100%;
+    overflow-y: auto;
+    background-color: #07132A;
   }
 
   .items li, .ais-refinement-list--item {
     flex-grow: 1;
     text-align: center;
     display: inline-block;
-    border: solid 1px lighten(#02132B,30%);
-    border-width: 0 0 1px 1px;
+    border-bottom: solid 1px lighten(#02132B,30%);
     margin: 0;
-    padding: 8px 12px;
-    background-color: #02132B;
+    padding: 10px 12px;
     &:hover {
-      background-color: #BD245E;
+      background-color: rgba(#BD245E,.2);
     }
     em {
       font-style: normal;
@@ -274,15 +280,11 @@ main {
     }
   }
   .ais-refinement-list--item{
-    width: 50%
+    width: 100%
   }
 }
 
 .ais-refinement-list {
-
-  .ais-refinement-list--body:not(.open) {
-    display: none;
-  }
 
   label {
 
@@ -321,13 +323,14 @@ main {
   padding: 0 .5vw .5vw 0;
   background-color: rgba(#02132B,.8);
   @include flex-setting();
+  margin-bottom: 120px;
 
   .ais-hits--item {
     flex-grow: 1;
     min-width: 15vw;
     overflow: hidden;
     margin: .5vw 0 0 .5vw;
-    animation: fade 200ms ease;
+    animation: fade .2s ease-in;
     animation-fill-mode: backwards;
     font-size: 1.1em;
     @for $i from 1 to 42 {
@@ -355,35 +358,6 @@ main {
       blend-mode: soft-light;
     }
 
-    &:after {
-      background-image: linear-gradient(to bottom right, $ais_red, $ais_blue);
-      content: '';
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: 0;
-      opacity: 0.3;
-      mix-blend-mode: color;
-    }
-
-    &:before {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 40px;
-      position: absolute;
-      background:  url(../img/play.svg) no-repeat center center / 40px;
-      opacity: .2;
-      top: 50% !important;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      transition: all .2s ease;
-      will-change: transform;
-    }
-
     &:hover {
       background-color: #4D4E4E;
       background-size: 120%;
@@ -391,9 +365,6 @@ main {
       blend-mode: hard-light;
       &::after{
         opacity: 0;
-      }
-      &::before{
-        opacity: .6;
       }
     }
   }
@@ -424,11 +395,14 @@ main {
   &.ais-hits__empty {
     margin-top: 140px;
     font-size: 1.2em;
-    font-weight: 400;
     display: block;
     width: 100%;
     text-align: center;
     color: white;
+    h2,
+    h3 {
+      font-weight: 400;
+    }
   }
 }
 
@@ -439,7 +413,6 @@ main {
 }
 
 .hide {
-  display: none;
   visibility: hidden;
 }
 
@@ -471,15 +444,11 @@ footer {
 @keyframes fade {
 
   0% {
-    transform: translateY(100px);
     transform: scale(0);
-    opacity: 0;
   }
 
   100% {
-    transform: translateY(0);
     transform: scale(1);
-    opacity: 1;
   }
 }
 

@@ -75,10 +75,10 @@
 	}));
 
 	search.addWidget(instantsearch.widgets.hits({
-	  hitsPerPage: 40,
+	  hitsPerPage: 30,
 	  container: '#results',
 	  templates: {
-	    empty: '<h2>No Results :(</h2>\n        <h3>What about starting a new search?</h2>',
+	    empty: '<h2>No Results</h2>\n        <h3>What about starting a new search?</h2>',
 	    item: document.getElementById('hit-template').innerHTML
 	  }
 	}));
@@ -90,7 +90,11 @@
 	  limit: 1000,
 	  sortBy: ['name:desc'],
 	  templates: {
-	    header: '<a href="javascript:void(0)" class="toggle"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add-icon"></use></svg> Year</a>'
+	    header: '<a href="javascript:void(0)" class="toggle"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add-icon"></use></svg> Year</a>',
+	    item: '{{name}}'
+	  },
+	  cssClasses: {
+	    body: 'hide'
 	  }
 	}));
 
@@ -2730,11 +2734,11 @@
 	  });
 
 	  $('#years').on('click', 'a', function (e) {
-	    $('.ais-refinement-list--body').addClass('open');
+	    $('.ais-refinement-list--body').removeClass('hide');
 	  });
 
 	  $('#years').on('click', '.ais-refinement-list--body', function (e) {
-	    $('.ais-refinement-list--body').removeClass('open');
+	    $('.ais-refinement-list--body').addClass('hide');
 	  });
 
 	  $('#inception-filters .menu').on('click', function (e) {

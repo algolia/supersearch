@@ -14,11 +14,11 @@ $( document ).ready(function() {
 
 
   $('#years').on('click', 'a', function(e){
-    $('.ais-refinement-list--body').addClass('open');
+    $('.ais-refinement-list--body').removeClass('hide');
   });
 
   $('#years').on('click', '.ais-refinement-list--body', function(e){
-    $('.ais-refinement-list--body').removeClass('open');
+    $('.ais-refinement-list--body').addClass('hide');
   });
 
 

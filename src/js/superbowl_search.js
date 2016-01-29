@@ -21,10 +21,10 @@ search.addWidget(
 
 search.addWidget(
   instantsearch.widgets.hits({
-    hitsPerPage: 40,
+    hitsPerPage: 30,
     container: '#results',
     templates: {
-      empty: `<h2>No Results :(</h2>
+      empty: `<h2>No Results</h2>
         <h3>What about starting a new search?</h2>`,
       item: document.getElementById('hit-template').innerHTML
     }
@@ -40,6 +40,10 @@ search.addWidget(
     sortBy: ['name:desc'],
     templates: {
       header: '<a href="javascript:void(0)" class="toggle"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add-icon"></use></svg> Year</a>',
+      item: '{{name}}'
+    },
+    cssClasses: {
+      body: 'hide'
     }
   })
 );
