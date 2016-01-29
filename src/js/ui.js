@@ -14,7 +14,7 @@ $( document ).ready(function() {
 
 
     $('#years').on('click', $('#toggleFilter'), function(e){
-      e.preventDefault()
+      // e.preventDefault()
       $('.ais-refinement-list--body').toggleClass('open');
     })
 

@@ -286,71 +286,98 @@ main {
   padding-bottom: 2em;
   width: 100%; }
 
-#results, #year {
+#results {
   width: 100%;
   clear: both; }
 
-.ais-refinement-list {
-  color: #fff !important;
-  width: 100%;
-  max-width: 80%;
-  clear: both;
-  position: relative;
+.filters {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex; }
+  .filters li {
+    list-style: none;
+    margin-right: 12px;
+    font-size: 1.2em;
+    font-weight: 400;
+    color: white;
+    white-space: nowrap; }
+    .filters li a {
+      color: white;
+      text-decoration: none;
+      border: solid 1px #FFF;
+      padding: 4px 8px; }
+      .filters li a div {
+        display: inline-block; }
+  .filters .ais-refinement-list--body, .filters .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(2, 19, 43, 0.9);
+    z-index: 99;
+    padding: 10%; }
+  .filters .items {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: wrap;
+    -ms-flex-flow: wrap;
+    flex-flow: wrap;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    border: solid 1px #0954bd;
+    border-width: 1px 1px 0 0;
+    padding: 0; }
+  .filters .items li {
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    text-align: center;
+    display: inline-block;
+    border: solid 1px #0954bd;
+    border-width: 0 0 1px 1px;
+    margin: 0;
+    padding: 8px 12px;
+    background-color: #02132B; }
+    .filters .items li:hover {
+      background-color: #BD245E; }
+
+.ais-refinement-list .ais-refinement-list--body:not(.open) {
+  display: none; }
+
+.ais-refinement-list label {
   float: left;
-  left: 10%;
-  font-weight: 300; }
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto; }
   @media (max-width: 740px) {
-    .ais-refinement-list {
-      max-width: 100%;
+    .ais-refinement-list label {
+      min-width: 22.5%;
       left: 0; } }
-  .ais-refinement-list .ais-refinement-list--header.ais-header {
-    float: left;
-    font-size: 2rem;
-    width: 100%;
-    padding-bottom: 16px; }
-    .ais-refinement-list .ais-refinement-list--header.ais-header .button {
-      padding: 12px 16px; }
-  .ais-refinement-list .ais-refinement-list--body {
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    height: auto;
-    float: left;
-    width: 100%;
-    height: 0;
-    overflow: hidden; }
-    .ais-refinement-list .ais-refinement-list--body.open {
-      height: auto; }
-  .ais-refinement-list label {
-    float: left;
-    -webkit-flex: 1 1 auto;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto; }
-    @media (max-width: 740px) {
-      .ais-refinement-list label {
-        min-width: 22.5%;
-        left: 0; } }
-    .ais-refinement-list label .ais-refinement-list--count {
-      display: inline-block;
-      border-radius: 4px;
-      padding: 5px;
-      background: #1768ce;
-      color: #fff;
-      font-size: 10px;
-      margin-left: 3px; }
-    .ais-refinement-list label:hover {
-      background: white; }
-    .ais-refinement-list label input {
-      display: none; }
-  .ais-refinement-list .ais-refinement-list--item__active label {
+  .ais-refinement-list label .ais-refinement-list--count {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 5px;
+    background: #1768ce;
     color: #fff;
-    background: #1768ce; }
-    .ais-refinement-list .ais-refinement-list--item__active label .ais-refinement-list--count {
-      background: #fff;
-      color: #1768ce; }
+    font-size: 10px;
+    margin-left: 3px; }
+  .ais-refinement-list label:hover {
+    background: white; }
+  .ais-refinement-list label input {
+    display: none; }
+
+.ais-refinement-list .ais-refinement-list--item__active label {
+  color: #fff;
+  background: #1768ce; }
+  .ais-refinement-list .ais-refinement-list--item__active label .ais-refinement-list--count {
+    background: #fff;
+    color: #1768ce; }
 
 .ais-hits {
   display: -webkit-flex;
@@ -582,8 +609,9 @@ main {
     display: inline-block;
     font-size: 0.8em;
     font-weight: 400;
-    background-color: rgba(0, 27, 58, 0.4);
-    padding: 2px 6px; }
+    background-color: rgba(0, 27, 58, 0.7);
+    border-radius: 10px;
+    padding: 2px 8px; }
   .ais-hits.ais-hits__empty {
     float: left;
     display: block !important;

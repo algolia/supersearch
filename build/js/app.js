@@ -89,7 +89,7 @@
 	  limit: 1000,
 	  sortBy: ['name:desc'],
 	  templates: {
-	    header: '<a href="javascript:void(0)" id="toggleFilter">By Year</a>'
+	    header: '<a href="javascript:void(0)" id="toggleFilter">by Year</a>'
 	  }
 	}));
 
@@ -98,7 +98,7 @@
 	  templates: {
 	    link: 'Clear all filters'
 	  },
-	  autoHideContainer: false
+	  autoHideContainer: true
 	}));
 
 	// search.addWidget(
@@ -110,7 +110,7 @@
 	search.addWidget(inceptionWidget({
 	  container: '#inception-filters',
 	  mainSearchAttribute: 'brand',
-	  title: 'Brand',
+	  title: 'by Brand',
 	  secondarySearchAttribute: 'name',
 	  index: 'sb_ads_brands'
 	}));
@@ -46894,7 +46894,7 @@
 	  });
 
 	  $('#years').on('click', $('#toggleFilter'), function (e) {
-	    e.preventDefault();
+	    // e.preventDefault()
 	    $('.ais-refinement-list--body').toggleClass('open');
 	  });
 	});

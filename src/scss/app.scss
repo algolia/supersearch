@@ -17,16 +17,12 @@
   justify-content: space-between;
 }
 
-
 $sb_blue: #0F4589;
 $sb_red: #C0001D;
-// Spice them up a lil bit
 $ais_blue: lighten($sb_blue, 15%);
 $ais_red: lighten($sb_red, 15%);
-
 $bp-regular: 960px;
 $bp-small: 740px;
-
 
 %button {
   background: rgba(white, 0.85);
@@ -40,7 +36,6 @@ $bp-small: 740px;
   text-decoration: none;
   z-index: 12;
 }
-
 
 %flipInX {
   backface-visibility: visible !important;
@@ -188,50 +183,71 @@ main {
   padding-bottom: 2em;
   width: 100%;
 }
-#results, #year {
+
+#results {
   width: 100%;
   clear: both;
 }
 
-.ais-refinement-list {
-  color: #fff !important;
-  width: 100%;
-  max-width: 80%;
-  clear: both;
-  position: relative;
-  float: left;
-  left: 10%;
-  font-weight: 300;
-
-  @media (max-width: $bp-small) {
-    max-width: 100%;
+.filters{
+  display: inline-flex;
+  li {
+    list-style: none;
+    margin-right: 12px;
+    font-size: 1.2em;
+    font-weight: 400;
+    color: white;
+    white-space: nowrap;
+    a {
+      color: white;
+      text-decoration: none;
+      border: solid 1px #FFF;
+      padding: 4px 8px;
+      div {
+        display: inline-block;
+      }
+    }
+  }
+  .ais-refinement-list--body, .menu {
+    position: fixed;
+    top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(#02132B,.9);
+    z-index: 99;
+    padding: 10%;
   }
-
-  .ais-refinement-list--header.ais-header {
-    float: left;
-    font-size: 2rem;
-    width: 100%;
-    padding-bottom: 16px;
-
-    .button {
-      padding: 12px 16px;
+  .items {
+    display: flex;
+    flex-flow: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    border: solid 1px lighten(#02132B,30%);
+    border-width: 1px 1px 0 0;
+    padding: 0;
+  }
+  .items li {
+    flex-grow: 1;
+    text-align: center;
+    display: inline-block;
+    border: solid 1px lighten(#02132B,30%);
+    border-width: 0 0 1px 1px;
+    margin: 0;
+    padding: 8px 12px;
+    background-color: #02132B;
+    &:hover {
+      background-color: #BD245E;
     }
   }
+}
 
-  .ais-refinement-list--body {
-    display: inline-flex;
-    flex-direction: column;
-    height: auto;
 
-    float: left;
-    width: 100%;
-    height: 0;
-    overflow: hidden;
 
-    &.open {
-      height: auto;
-    }
+.ais-refinement-list {
+
+  .ais-refinement-list--body:not(.open) {
+    display: none;
   }
 
   label {
@@ -387,8 +403,9 @@ main {
     display: inline-block;
     font-size: 0.8em;
     font-weight: 400;
-    background-color: rgba(#001B3A,.4);
-    padding: 2px 6px;
+    background-color: rgba(#001B3A,.7);
+    border-radius: 10px;
+    padding: 2px 8px;
   }
 
   &.ais-hits__empty {
