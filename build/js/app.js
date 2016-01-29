@@ -89,14 +89,14 @@
 	  limit: 1000,
 	  sortBy: ['name:desc'],
 	  templates: {
-	    header: '<a href="javascript:void(0)" id="toggleFilter">by Year</a>'
+	    header: '<a href="javascript:void(0)" class="toggle">add Year</a>'
 	  }
 	}));
 
 	search.addWidget(instantsearch.widgets.clearAll({
 	  container: "#clear",
 	  templates: {
-	    link: 'Clear all filters'
+	    link: 'clear all'
 	  },
 	  autoHideContainer: true
 	}));
@@ -110,7 +110,7 @@
 	search.addWidget(inceptionWidget({
 	  container: '#inception-filters',
 	  mainSearchAttribute: 'brand',
-	  title: 'by Brand',
+	  title: 'add Brand',
 	  secondarySearchAttribute: 'name',
 	  index: 'sb_ads_brands'
 	}));
@@ -44651,7 +44651,7 @@
 
 	var template = {
 	  main: function main(data) {
-	    return '\n      <a href=\'javascript:void(0);\' class=\'menu-trigger\'>' + data.title + '</a>\n      <div class=\'menu\'>\n        <input class=\'value\' placeholder=\'Search ' + data.title + '\'/>\n        <ul class=\'items\'></ul>\n      </div>';
+	    return '\n      <a href=\'javascript:void(0);\' class=\'menu-trigger\'>' + data.title + '</a>\n      <div class=\'menu\'>\n        <a href="javascript:void(0)" class="close"><svg height="34px" id="Layer_1" style="enable-background:new 0 0 34 34;" version="1.1" viewBox="0 0 512 512" width="34px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"></path></svg></a>\n        <form role="search" novalidate="novalidate" class="searchbox sbx-custom">\n            <input name="brand" type="search" placeholder="Search for a brand" autocomplete="off" required="required" class="sbx-custom__input ais-search-box--input" autocapitalize="off" autocorrect="off" role="textbox" spellcheck="false">\n            <button type="submit" class="sbx-custom__submit">\n              <svg role="img" aria-label="Search">\n                <title>Icon Search</title>\n                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sbx-icon-search-6"></use>\n              </svg>\n            </button>\n            <button type="reset" class="sbx-custom__reset">\n              <svg role="img" aria-label="Reset">\n                <title>Icon Reset</title>\n                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sbx-icon-clear-3"></use>\n              </svg>\n              <!--Js: focus search input after reset-->\n              <script type="text/javascript">\n                //<![CDATA[\n                 document.querySelector(\'.searchbox [type="reset"]\').addEventListener(\'click\', function() {\n                   this.parentNode.querySelector(\'input\').focus();\n                 });\n\n                //]]>\n              </script>\n              <script type="text/template" id="hit-template">\n                <a href="#" dataid="https://www.youtube.com/watch?v={{objectID}}" style="background-image: url(\'{{thumbnails.high.url}}\')" class="hit"><div class="hit-brand">{{{_highlightResult.brand.value}}}</div><div class="hit-season">{{year}} - {{sbYear}}</div></a>\n              </script>\n            </button>\n          </form>\n        <ul class=\'items\'></ul>\n      </div>';
 	  },
 	  item: function item(value, highlight) {
 	    return '<li data-facet-value="' + value + '">' + highlight + '</li>';
@@ -44659,7 +44659,6 @@
 	};
 
 	var inceptionWidget = function inceptionWidget(config) {
-	  var isMenuHidden = true;
 
 	  var container = config.container;
 	  var mainSearchAttribute = config.mainSearchAttribute;
@@ -44682,7 +44681,7 @@
 	      $container.innerHTML = template.main({ title: title });
 
 	      setTimeout(function () {
-	        var $input = $container.querySelector('input');
+	        var $input = $container.querySelector('input[type="search"]');
 	        var $list = $container.querySelector('ul');
 	        var $menu = $container.querySelector('.menu');
 	        var $button = $container.querySelector('.menu-trigger');
@@ -44704,20 +44703,11 @@
 	          var target = e.target;
 	          var facetValue = target.dataset.facetValue;
 	          helper.addDisjunctiveFacetRefinement(mainSearchAttribute, facetValue).search();
-	          $menu.style.display = 'none';
-	          isMenuHidden = true;
 	          $input.value = '';
 	        });
-
-	        $menu.style.display = 'none';
+	        $menu.classList.add('hide');
 	        $button.addEventListener('click', function () {
-	          if (isMenuHidden) {
-	            $menu.style.display = 'block';
-	            isMenuHidden = false;
-	          } else {
-	            $menu.style.display = 'none';
-	            isMenuHidden = true;
-	          }
+	          $menu.classList.remove('hide');
 	        });
 	      }, 0);
 	    },
@@ -46889,13 +46879,24 @@
 	    $('.lightbox_frame').attr('src', 'http://www.youtube.com/embed/' + ytId);
 	    $('.lightbox').toggleClass('hidden');
 	  });
+
 	  $('.close').on('click', function () {
 	    $('.lightbox').addClass('hidden');
 	  });
 
-	  $('#years').on('click', $('#toggleFilter'), function (e) {
+	  $('#years').on('click', 'a', function (e) {
+	    $('.ais-refinement-list--body').addClass('open');
+	  });
+
+	  $('#years').on('click', '.ais-refinement-list--body', function (e) {
+	    $('.ais-refinement-list--body').removeClass('open');
+	  });
+
+	  $('#inception-filters .menu').on('click', function (e) {
 	    // e.preventDefault()
-	    $('.ais-refinement-list--body').toggleClass('open');
+	    $(this).addClass('hide');
+	  }).find('.searchbox').click(function (e) {
+	    return false;
 	  });
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(440)))

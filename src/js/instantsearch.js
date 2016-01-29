@@ -39,7 +39,7 @@ search.addWidget(
     limit: 1000,
     sortBy: ['name:desc'],
     templates: {
-      header: '<a href="javascript:void(0)" id="toggleFilter">by Year</a>',
+      header: '<a href="javascript:void(0)" class="toggle">add Year</a>',
     }
   })
 );
@@ -48,7 +48,7 @@ search.addWidget(
   instantsearch.widgets.clearAll({
     container: "#clear",
     templates: {
-      link: 'Clear all filters'
+      link: 'clear all'
     },
     autoHideContainer: true
   })
@@ -64,7 +64,7 @@ search.addWidget(
   inceptionWidget({
     container: '#inception-filters',
     mainSearchAttribute: 'brand',
-    title: 'by Brand',
+    title: 'add Brand',
     secondarySearchAttribute: 'name',
     index: 'sb_ads_brands'
   })
