@@ -85,7 +85,6 @@ $custom: (
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-weight: 500;
 }
 
 html, body {
@@ -180,9 +179,6 @@ header {
     }
     .sbx-custom__reset {
       fill: white
-    }
-
-    .sbx-custom__submit {
     }
   }
 }
@@ -285,10 +281,9 @@ main {
   flex-direction: row;
   justify-content: space-between;
   font-size: 16px;
-  animation: up .3s linear;
-  @include flex-setting();
   max-width: calc(80% + 0.5em);
   margin: auto;
+  @include flex-setting();
 
   @media (max-width: $bp-small) {
     max-width: 100%;
@@ -315,21 +310,21 @@ main {
   }
 
   .hit {
-    height: 100px;
+    height: 110px;
     display: block;
     text-decoration: none;
     transition: background-size 0.2s ease;
     cursor: pointer;
-    background: {
-      repeat: no-repeat;
-      position: center;
-      size: 120%;
-      color: rgba(#3F97F3, 0.8);
-      blend-mode: soft-light;
-    }
     color: white;
     padding: 10px;
     position: relative;
+    background: {
+      repeat: no-repeat;
+      position: center;
+      size: 110%;
+      color: rgba(#3F97F3, 0.6);
+      blend-mode: soft-light;
+    }
 
     &:after {
       background-image: linear-gradient(to bottom right, $ais_red, $ais_blue);
@@ -348,47 +343,49 @@ main {
     &:before {
       content: '';
       display: block;
-      width: 55px;
-      height: 55px;
+      width: 40px;
+      height: 40px;
       position: absolute;
-      background:  url(../img/play.svg)no-repeat center center / 55px;
-      opacity: .8;
+      background:  url(../img/play.svg) no-repeat center center / 40px;
+      opacity: .2;
       top: 50% !important;
-      left: calc(50% - 20px);
+      left: 50%;
       transform: translate(-50%, -50%);
       transition: all .2s ease;
       will-change: transform;
-      opacity: 0;
     }
 
     &:hover {
       background-color: #4D4E4E;
+      background-size: 120%;
       transition: background-color .25s, background-size .1s ease;
       blend-mode: hard-light;
-      &:before{
-        opacity: 1;
+      &::after{
+        opacity: 0;
+      }
+      &::before{
+        opacity: .6;
       }
     }
   }
 
   .hit-brand {
-    font-size: 1.4em;
-    font-weight: bold;
+    font-size: 1.3em;
+    font-weight: 800;
     text-transform: uppercase;
-    text-shadow: 2px 2px 0 black;
+    text-shadow: 1px 1px 0 black;
 
     // highlight
     em {
       font-style: normal;
-      font-weight: bold;
-      color: black;
-      // box-shadow: 0 0 1px rgba(black, 0.8),0 1px 1px rgba(black, 0.8), 0 6px 12px rgba(0, 0, 0, 0.6)
+      font-weight: 800;
+      text-decoration: underline;
     }
   }
 
   .hit-season {
     display: inline-block;
-    font-size: 0.7em;
+    font-size: 0.8em;
     font-weight: 400;
     background-color: rgba(#001B3A,.4);
     padding: 2px 6px;
@@ -400,15 +397,14 @@ main {
     width: 100%;
     max-width: 520px;
     margin-top: 100px;
-    height: 100%;
-    background: #fff;
+    background: #171A3F;
     color: $sb_blue;
     padding: 3em 1em;
     text-align: center;
     position: relative;
     z-index: 10;
     left: calc(50% - 520px/2);
-    box-shadow: 0 16px 32px rgba(#000, 0.7);
+    box-shadow: 0 8px 30px rgba(#000, 0.7);
 
     @media (max-width: $bp-small) {
       left: 0;
@@ -424,8 +420,8 @@ main {
 
 
 footer {
-  position: relative;
-  float: left;
+  position: fixed;
+  bottom: 0;
   width: 100%;
   padding: 16px;
   text-align: center;
@@ -433,6 +429,7 @@ footer {
   background: darken(#0067EB,35%);
   min-height: 65px;
   line-height: 55px;
+  font-weight: 400;
 
   @media (max-width: $bp-small) {
     width: calc(100% + 32px);
@@ -441,36 +438,27 @@ footer {
 
   span {
     text-indent: -9999px;
-    background: url(../img/Algolia_logo_bg-dark.svg)no-repeat center center / contain;
+    background: url(../img/Algolia_logo_bg-dark.svg) no-repeat center center / contain;
     color: transparent;
   }
-}
-
-
-@keyframes up {
-
-    0% {
-      transform: translateY(100px);
-    }
-
-    100% {
-        transform: translateY(0);
-    }
 }
 
 
 @keyframes fade {
 
   0% {
+    transform: translateY(100px);
     transform: scale(0);
     opacity: 0;
   }
 
   100% {
+    transform: translateY(0);
     transform: scale(1);
     opacity: 1;
   }
 }
+
 @keyframes flipInX {
   0% {
     transform: perspective(400px) rotate3d(1, 0, 0, 90deg);

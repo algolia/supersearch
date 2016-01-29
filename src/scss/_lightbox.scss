@@ -3,20 +3,18 @@ $bp-small: 740px;
 
 .lightbox {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
   display: block;
   width: 100%;
   height: 100%;
-  will-change: transform;
-  transition: transform 0.5s ease;
+  visibility: visible;
   max-width: 100% !important;
   z-index: 12;
 
   &:before {
     content: '';
-    background: rgba(black, 0.8);
+    background: rgba(#001B3A, 0.9);
     position: absolute;
     top: 0;
     left: 0;
@@ -24,7 +22,7 @@ $bp-small: 740px;
     height: 100%;
     z-index: 1;
   }
-  
+
   // Lightbox close
   .close {
     position: absolute;
@@ -51,6 +49,8 @@ $bp-small: 740px;
     left: 50%;
     transform: translate(-50%, -50%) scale(1.3);
     border: 0;
+    background-color: black;
+    box-shadow: 0 0 40px black;
     max-width: 100% !important;
 
     @media (max-width: $bp-small) {
@@ -60,6 +60,8 @@ $bp-small: 740px;
   }
 
   &.hidden {
-     transform: translate(-50%, -300%);
+    display: none;
+    visibility: hidden;
+    opacity: 0;
   }
 }

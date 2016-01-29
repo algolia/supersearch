@@ -37,9 +37,9 @@ search.addWidget(
     attributeName: 'year',
     operator: 'or',
     limit: 1000,
-    sortBy: ['name:asc'],
+    sortBy: ['name:desc'],
     templates: {
-      header: '<a href="javascript:void(0)" id="toggleFilter" class="button">Open filters</a>',
+      header: '<a href="javascript:void(0)" id="toggleFilter">By Year</a>',
     }
   })
 );

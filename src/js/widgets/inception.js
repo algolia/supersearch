@@ -1,7 +1,7 @@
 const template = {
   main: function(data){
     return `
-      <button class='menu-trigger'>${data.title}</button>
+      <a href='javascript:void(0);' class='menu-trigger'>${data.title}</a>
       <div class='menu'>
         <input class='value' placeholder='Search ${data.title}'/>
         <ul class='items'></ul>
@@ -85,7 +85,7 @@ const inceptionWidget = function(config){
 
       updateList($list, mainSearchAttribute, results);
     }
-  }; 
+  };
 };
 
 function updateList ($list, attribute, results){
