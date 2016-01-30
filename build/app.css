@@ -201,27 +201,34 @@
   -moz-osx-font-smoothing: grayscale; }
 
 html, body {
-  float: left;
   width: 100%;
   height: 100%;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  overflow: hidden; }
 
 body {
   font-family: 'Exo 2', sans-serif;
   font-weight: 800;
   background: url("img/levis-stadium.jpg") no-repeat center top #07132A;
   background-attachment: fixed; }
-  @media (max-width: 740px) {
-    body {
-      margin: 0;
-      padding: 0 12px; } }
 
 .container-fluid {
   float: left;
   width: 100%;
   max-width: 100%;
-  position: relative; }
+  position: relative;
+  transition: -webkit-transform .5s ease;
+  transition: transform .5s ease;
+  transition: transform .5s ease, -webkit-transform .5s ease; }
+  @media (max-width: 740px) {
+    .container-fluid {
+      padding: 0 12px; } }
+  .container-fluid.no-scroll {
+    height: 100vh;
+    overflow: hidden;
+    -webkit-transform: translateX(-60vw);
+    transform: translateX(-60vw); }
 
 header {
   position: relative;
@@ -230,7 +237,7 @@ header {
   width: 100%; }
   header h1 {
     text-align: center;
-    color: White;
+    color: white;
     font-size: 4em;
     margin: 20px 0 0;
     text-transform: uppercase;
@@ -273,7 +280,6 @@ header {
   .searchbox .sbx-custom__input {
     color: white;
     box-shadow: 0 2px #fff;
-    padding-left: 4em;
     background: transparent;
     font-weight: bold;
     text-transform: uppercase; }
@@ -313,6 +319,44 @@ main {
   display: block;
   clear: both; }
 
+.ais-refinement-list--body, .menu, .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(2, 19, 43, 0.9);
+  z-index: 99;
+  margin: 0;
+  padding: 0;
+  transition: -webkit-transform .2s ease-in;
+  transition: transform .2s ease-in;
+  transition: transform .2s ease-in, -webkit-transform .2s ease-in;
+  opacity: 1; }
+  .ais-refinement-list--body .overlay-content, .menu .overlay-content, .overlay .overlay-content {
+    height: 100%;
+    overflow-y: auto; }
+  .ais-refinement-list--body.hide, .menu.hide, .overlay.hide {
+    opacity: 0;
+    visibility: visible;
+    -webkit-transform: translateX(100vw);
+    transform: translateX(100vw); }
+  .ais-refinement-list--body .close, .menu .close, .overlay .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    margin: 16px;
+    max-width: 50px;
+    cursor: pointer; }
+    .ais-refinement-list--body .close svg, .menu .close svg, .overlay .close svg {
+      max-width: 100%;
+      fill: #fff; }
+
+.blur {
+  -webkit-filter: blur(3px);
+  filter: blur(3px); }
+
 .filters, #topbar-refinements {
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -323,7 +367,6 @@ main {
     display: inline-block;
     font-size: 1em;
     font-weight: 400;
-    margin-right: 10px;
     color: white;
     white-space: nowrap;
     text-transform: uppercase; }
@@ -340,36 +383,6 @@ main {
         top: -2px;
         position: relative;
         fill: #00A3FF; }
-  .filters .ais-refinement-list--body, .filters .menu, #topbar-refinements .ais-refinement-list--body, #topbar-refinements .menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: rgba(2, 19, 43, 0.9);
-    box-shadow: 5px 0 30px black;
-    z-index: 99;
-    padding: 60px 5%;
-    margin: 0;
-    transition: opacity .4s ease, -webkit-transform .2s ease;
-    transition: transform .2s ease, opacity .4s ease;
-    transition: transform .2s ease, opacity .4s ease, -webkit-transform .2s ease;
-    opacity: 1; }
-    .filters .ais-refinement-list--body.hide, .filters .menu.hide, #topbar-refinements .ais-refinement-list--body.hide, #topbar-refinements .menu.hide {
-      opacity: 0;
-      -webkit-transform: translateX(-40vw);
-      transform: translateX(-40vw); }
-    .filters .ais-refinement-list--body .close, .filters .menu .close, #topbar-refinements .ais-refinement-list--body .close, #topbar-refinements .menu .close {
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 5;
-      margin: 16px;
-      max-width: 50px;
-      cursor: pointer; }
-      .filters .ais-refinement-list--body .close svg, .filters .menu .close svg, #topbar-refinements .ais-refinement-list--body .close svg, #topbar-refinements .menu .close svg {
-        max-width: 100%;
-        fill: #fff; }
   .filters .ais-current-refined-values--list svg, #topbar-refinements .ais-current-refined-values--list svg {
     fill: #BD245E; }
   .filters .items, .filters .ais-refinement-list--list, #topbar-refinements .items, #topbar-refinements .ais-refinement-list--list {
@@ -604,6 +617,9 @@ main {
     background-size: 110%;
     background-color: rgba(63, 151, 243, 0.6);
     background-blend-mode: soft-light; }
+    @media (max-width: 740px) {
+      .ais-hits .hit {
+        height: 90px; } }
     .ais-hits .hit:hover {
       background-color: #4D4E4E;
       background-size: 120%;
@@ -615,8 +631,7 @@ main {
     font-size: 1.3em;
     font-weight: 800;
     text-transform: uppercase;
-    text-shadow: 1px 1px 0 black;
-    margin-bottom: 44px; }
+    text-shadow: 1px 1px 0 black; }
     .ais-hits .hit-brand em {
       font-style: normal;
       font-weight: 800;
@@ -627,7 +642,10 @@ main {
     border-radius: 10px;
     padding: 2px 8px;
     width: 100%;
-    text-align: right; }
+    text-align: right;
+    position: absolute;
+    bottom: 8px;
+    right: 8px; }
   .ais-hits.ais-hits__empty {
     padding-top: 80px;
     font-size: 1.2em;

@@ -83,25 +83,18 @@ $custom: (
 }
 
 html, body {
-  float: left;
   width: 100%;
   height: 100%;
   padding: 0;
   margin: 0;
+  overflow: hidden;
 }
-
 
 body {
   font-family: 'Exo 2', sans-serif;
   font-weight: 800;
   background: url('img/levis-stadium.jpg') no-repeat center top #07132A;
   background-attachment: fixed;
-
-  @media (max-width: $bp-small) {
-    margin: 0;
-    padding: 0 12px;
-  }
-
 }
 
 .container-fluid {
@@ -109,6 +102,15 @@ body {
   width: 100%;
   max-width: 100%;
   position: relative;
+  transition: transform .5s ease;
+  @media (max-width: $bp-small) {
+    padding: 0 12px;
+  }
+  &.no-scroll {
+    height: 100vh;
+    overflow: hidden;
+    transform: translateX(-60vw);
+  }
 }
 
 header {
@@ -119,7 +121,7 @@ header {
 
   h1 {
     text-align: center;
-    color: White;
+    color: white;
     font-size: 4em;
     margin: 20px 0 0;
     text-transform: uppercase;
@@ -166,11 +168,11 @@ header {
   .sbx-custom__input {
     color: white;
     box-shadow: 0 2px #fff;
-    padding-left: 4em;
     background: transparent;
     font-weight: bold;
     text-transform: uppercase;
   }
+
   .sbx-custom__input:focus {
     box-shadow: 0 2px white;
   }
@@ -217,6 +219,49 @@ main {
   clear: both;
 }
 
+
+.ais-refinement-list--body, .menu, .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(#02132B,.9);
+  z-index: 99;
+  margin: 0;
+  padding: 0;
+  transition: transform .2s ease-in;
+  opacity: 1;
+  .overlay-content {
+    height: 100%;
+    overflow-y: auto;
+  }
+  &.hide {
+    opacity: 0;
+    visibility: visible;
+    transform: translateX(100vw);
+  }
+
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    margin: 16px;
+    max-width: 50px;
+    cursor: pointer;
+
+    svg {
+      max-width: 100%;
+      fill: #fff;
+    }
+  }
+}
+
+.blur {
+  filter: blur(3px);
+}
+
 .filters, #topbar-refinements {
   display: inline-flex;
   padding-left: 10px;
@@ -225,7 +270,6 @@ main {
     display: inline-block;
     font-size: 1em;
     font-weight: 400;
-    margin-right: 10px;
     color: white;
     white-space: nowrap;
     text-transform: uppercase;
@@ -247,39 +291,6 @@ main {
     }
   }
 
-  .ais-refinement-list--body, .menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: rgba(#02132B,.9);
-    box-shadow: 5px 0 30px black;
-    z-index: 99;
-    padding: 60px 5%;
-    margin: 0;
-    transition: transform .2s ease, opacity .4s ease;;
-    opacity: 1;
-    &.hide {
-      opacity: 0;
-      transform: translateX(-40vw);
-    }
-
-    .close {
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 5;
-      margin: 16px;
-      max-width: 50px;
-      cursor: pointer;
-
-      svg {
-        max-width: 100%;
-        fill: #fff;
-      }
-    }
-  }
   .ais-current-refined-values--list {
     svg {
       fill: #BD245E;
@@ -393,6 +404,9 @@ main {
       color: rgba(#3F97F3, 0.6);
       blend-mode: soft-light;
     }
+    @media (max-width: $bp-small) {
+      height: 90px;
+    }
 
     &:hover {
       background-color: #4D4E4E;
@@ -410,7 +424,6 @@ main {
     font-weight: 800;
     text-transform: uppercase;
     text-shadow: 1px 1px 0 black;
-    margin-bottom: 44px;
     // highlight
     em {
       font-style: normal;
@@ -426,6 +439,9 @@ main {
     padding: 2px 8px;
     width: 100%;
     text-align: right;
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
   }
 
   &.ais-hits__empty {

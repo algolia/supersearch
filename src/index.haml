@@ -30,6 +30,8 @@
   %link{href:"img/og_screen.png", media:"(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)", rel:"apple-touch-startup-image"}
 
 %body
+  .filters-panel.hide.overlay
+    .overlay-content
   .container-fluid
     %header
       %h1{datatext:"SuperBowl Ads"} SuperBowl Ads
@@ -57,6 +59,7 @@
             %a.hit{href: "#",dataid: "https://www.youtube.com/watch?v={{objectID}}", style: "background-image: url('{{thumbnails.high.url}}')"}
               .hit-brand {{{_highlightResult.brand.value}}}
               .hit-season {{year}} - {{sbYear}}
+
 
     %main
       %section#topbar-results-control

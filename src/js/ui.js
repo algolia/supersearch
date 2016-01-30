@@ -12,6 +12,20 @@ $( document ).ready(function() {
     $('.lightbox').addClass('hidden')
   });
 
+  $('.sbx-custom__filters').on('click', function(e){
+    $('.filters-panel').removeClass('hide');
+    // $('main, header').addClass('blur');
+    $('.container-fluid').addClass('no-scroll');
+  });
+  $('.filters-panel').on('click', function(e){
+    // e.preventDefault()
+    $(this).addClass('hide');
+    // $('main, header').removeClass('blur');
+    $('.container-fluid').removeClass('no-scroll');
+  }).find('.searchbox').click(function(e) {
+      return false;
+  });
+
 
   $('#years').on('click', 'a', function(e){
     $('.ais-refinement-list--body').removeClass('hide');
