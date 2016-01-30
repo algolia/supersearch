@@ -1,7 +1,7 @@
 !!! 5
 %head
   %meta{charset: "UTF-8"}
-  %title search with instantsearch.js
+  %title Super Bowl Commercials with instantsearch.js
   %link{href: "app.css", rel: "stylesheet", type: "text/css"}
   %link{href: "https://fonts.googleapis.com/css?family=Exo+2:400,900", rel: "stylesheet", type: "text/css"}
   %link{rel:"icon", type:"image/png", href:"favicon.png"}
@@ -31,7 +31,16 @@
 
 %body
   .filters-panel.hide.overlay
+    .close Cancel
     .overlay-content
+      %ul.filters
+        %li
+          %ul.tabs
+            %li
+              %a.active{href: "#"} Years
+              %a{href: "#"} Brands
+      #years.tab-panel.active
+      #inception-filters.tab-panel
   .container-fluid
     %header
       %h1{datatext:"SuperBowl Ads"} SuperBowl Ads
@@ -56,19 +65,14 @@
              });
 
           %script#hit-template{type: "text/template"}
-            %a.hit{href: "#",dataid: "https://www.youtube.com/watch?v={{objectID}}", style: "background-image: url('{{thumbnails.high.url}}')"}
+            %a.hit{href: "https://www.youtube.com/watch?v={{objectID}}",data-id: "{{objectID}}", style: "background-image: url('{{thumbnails.high.url}}')"}
               .hit-brand {{{_highlightResult.brand.value}}}
               .hit-season {{year}} - {{sbYear}}
 
 
     %main
       %section#topbar-results-control
-        %ul.filters
-          %li Filters:
-          %li#inception-filters
-          %li#years
-          %li#clear
-        #topbar-refinements
+        #refinements
       %section#results
       %section#pagination
 

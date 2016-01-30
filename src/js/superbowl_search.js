@@ -6,7 +6,7 @@ const inceptionWidget = require('./widgets/inception.js');
 
 let search = instantsearch({
   appId: 'VC519DRAY3',
-  apiKey: '5c796d39dcd489e62b89b38dae03fbc4',
+  apiKey: 'ba8e7e5e700d53fe3f28f20226b63baf',
   indexName: 'sb_ads',
   urlSync: false
 });
@@ -39,18 +39,16 @@ search.addWidget(
     limit: 1000,
     sortBy: ['name:desc'],
     templates: {
-      header: '<a href="javascript:void(0)" class="toggle"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add-icon"></use></svg> Year</a>',
+      // header: '<a href="javascript:void(0)" class="toggle"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add-icon"></use></svg> Year</a>',
+      header: false,
       item: '{{name}}'
-    },
-    cssClasses: {
-      body: 'hide'
     }
   })
 );
 
 search.addWidget(
   instantsearch.widgets.currentRefinedValues({
-    container: "#topbar-refinements",
+    container: "#refinements",
     clearAll: false,
     templates: {
       item: '<a href="javascript:void(0)">{{name}} <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#clear-icon"></use></svg></a>',

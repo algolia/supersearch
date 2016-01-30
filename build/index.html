@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>search with instantsearch.js</title>
+  <title>Super Bowl Commercials with instantsearch.js</title>
   <link href="app.css" rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Exo+2:400,900" rel="stylesheet" type="text/css" />
   <link rel="icon" type="image/png" href="favicon.png" />
@@ -33,7 +33,19 @@
 
 <body>
   <div class="filters-panel hide overlay">
-    <div class="overlay-content"></div>
+    <div class="close">Cancel</div>
+    <div class="overlay-content">
+      <ul class="filters">
+        <li>
+          <ul class="tabs">
+            <li><a href="#" class="active">Years</a><a href="#">Brands</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="tab-panel active" id="years"></div>
+      <div class="tab-panel" id="inception-filters"></div>
+    </div>
   </div>
   <div class="container-fluid">
     <header>
@@ -66,20 +78,14 @@
             //]]>
           </script>
           <script type="text/template" id="hit-template">
-            <a href="#" dataid="https://www.youtube.com/watch?v={{objectID}}" style="background-image: url('{{thumbnails.high.url}}')" class="hit"><div class="hit-brand">{{{_highlightResult.brand.value}}}</div><div class="hit-season">{{year}} - {{sbYear}}</div></a>
+            <a href="https://www.youtube.com/watch?v={{objectID}}" data-id="{{objectID}}" style="background-image: url('{{thumbnails.high.url}}')" class="hit"><div class="hit-brand">{{{_highlightResult.brand.value}}}</div><div class="hit-season">{{year}} - {{sbYear}}</div></a>
           </script>
         </button>
       </form>
     </header>
     <main>
       <section id="topbar-results-control">
-        <ul class="filters">
-          <li>Filters:</li>
-          <li id="inception-filters"></li>
-          <li id="years"></li>
-          <li id="clear"></li>
-        </ul>
-        <div id="topbar-refinements"></div>
+        <div id="refinements"></div>
       </section>
       <section id="results"></section>
       <section id="pagination"></section>

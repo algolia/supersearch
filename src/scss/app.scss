@@ -77,6 +77,8 @@ $custom: (
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -87,14 +89,13 @@ html, body {
   height: 100%;
   padding: 0;
   margin: 0;
-  overflow: hidden;
 }
 
 body {
   font-family: 'Exo 2', sans-serif;
   font-weight: 800;
   background: url('img/levis-stadium.jpg') no-repeat center top #07132A;
-  background-attachment: fixed;
+  // background-attachment: fixed;
 }
 
 .container-fluid {
@@ -102,14 +103,17 @@ body {
   width: 100%;
   max-width: 100%;
   position: relative;
-  transition: transform .5s ease;
+  transition: transform 1s ease, opacity 1s ease;
   @media (max-width: $bp-small) {
     padding: 0 12px;
   }
   &.no-scroll {
+    position: relative;
+    right: 40px;
     height: 100vh;
     overflow: hidden;
-    transform: translateX(-60vw);
+    opacity: 0;
+    transform: translateX(-80vw);
   }
 }
 
@@ -122,11 +126,10 @@ header {
   h1 {
     text-align: center;
     color: white;
-    font-size: 4em;
     margin: 20px 0 0;
     text-transform: uppercase;
     text-align: center;
-    color: White;
+    color: white;
     font-size: 8vw;
     margin: 10px 0 0;
     text-transform: uppercase;
@@ -198,10 +201,7 @@ header {
     svg {
       width: 30px;
       height: 30px;
-      fill: $ais_blue;
-      &:hover {
-        fill: white;
-      }
+      fill: white;
     }
   }
 }
@@ -219,26 +219,68 @@ main {
   clear: both;
 }
 
+.filters {
+  left: 0;
+  right: 0;
+  height: 76px;
+  padding: 16px;
+  a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+  }
+}
 
-.ais-refinement-list--body, .menu, .overlay {
+.tabs {
+  list-style: none;
+  display: block;
+  width: 180px;
+  border: solid 2px white;
+  padding: 0;
+  margin: 0 auto;
+  border-radius: 30px;
+  overflow: hidden;
+  a {
+    display: inline-block;
+    font-size: 1em;
+    width: 50%;
+    padding: 8px 0;
+    text-align: center;
+  }
+  .active {
+    color: black;
+    background-color: white;
+  }
+}
+
+.tab-panel {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(#02132B,.9);
   z-index: 99;
   margin: 0;
-  padding: 0;
-  transition: transform .2s ease-in;
+  transition: transform .4s ease-in, opacity 1s ease;
   opacity: 1;
+
   .overlay-content {
     height: 100%;
+    overflow-x: hidden;
     overflow-y: auto;
+    color: white;
+    -webkit-overflow-scrolling: touch;
   }
   &.hide {
     opacity: 0;
-    visibility: visible;
+    display: block;
     transform: translateX(100vw);
   }
 
@@ -246,26 +288,27 @@ main {
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 5;
-    margin: 16px;
-    max-width: 50px;
-    cursor: pointer;
-
-    svg {
-      max-width: 100%;
-      fill: #fff;
+    color: white;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    z-index: 9000;
+    padding: 24px 24px 12px 12px;
     }
-  }
 }
 
 .blur {
   filter: blur(3px);
 }
 
-.filters, #topbar-refinements {
-  display: inline-flex;
-  padding-left: 10px;
-  > li, div {
+.hide {
+  display: none;
+}
+
+#refinements {
+  padding: 0;
+  > li, > div {
+    width: 100%;
+    padding: 0 8px;
     list-style: none;
     display: inline-block;
     font-size: 1em;
@@ -273,6 +316,8 @@ main {
     color: white;
     white-space: nowrap;
     text-transform: uppercase;
+    margin-right: 8px;
+    user-select: inherit;
     a {
       color: white;
       text-decoration: none;
@@ -296,70 +341,42 @@ main {
       fill: #BD245E;
     }
   }
-
-  .items, .ais-refinement-list--list {
-    display: flex;
-    flex-flow: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0;
-    max-height: 100%;
-    overflow-y: auto;
-    background-color: #07132A;
-  }
-
-  .items li, .ais-refinement-list--item {
-    flex-grow: 1;
-    text-align: center;
-    display: inline-block;
-    border-bottom: solid 1px lighten(#02132B,30%);
-    margin: 0;
-    padding: 10px 12px;
-    &:hover {
-      background-color: rgba(#BD245E,.2);
-    }
-    em {
-      font-style: normal;
-      font-weight: 800;
-    }
-  }
-  .ais-refinement-list--item{
-    width: 100%
-  }
-  @media (max-width: $bp-small) {
-    display: none;
-  }
 }
 
-.ais-refinement-list {
+.items, .ais-refinement-list--list {
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px 30px;
+}
 
-  label {
+.items li, .ais-refinement-list--item {
+  flex-grow: 1;
+  background: rgba(#06132B,.6);
+  text-align: center;
+  border: solid 1px rgba($ais_blue,.6);
+  display: inline-block;
+  margin-bottom: -1px;
+  padding: 10px 12px;
+  font-size: 1.2em;
+  font-weight: 400;
+  &:hover {
 
-    .ais-refinement-list--count {
-      display: inline-block;
-      border-radius: 4px;
-      padding: 5px;
-      background: $ais_blue;
-      color: #fff;
-      font-size: 10px;
-      margin-left: 3px;
-    }
-
-    input {
-      display: none;
-    }
   }
-
-  .ais-refinement-list--item__active {
-    color: #fff;
-    background: $ais_blue;
-
-    .ais-refinement-list--count {
-      background: #fff;
-      color: $ais_blue;
-    }
+  em {
+    font-style: normal;
+    font-weight: 800;
   }
 }
+.ais-refinement-list--item{
+  width: 100%
+}
+.ais-refinement-list--item__active {
+  color: #fff;
+  background: rgba($ais_blue,.3);
+}
+
 
 .ais-hits {
   display: flex;
@@ -420,8 +437,10 @@ main {
   }
 
   .hit-brand {
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: 800;
+    margin-right: 40px;
+    white-space: nowrap;
     text-transform: uppercase;
     text-shadow: 1px 1px 0 black;
     // highlight
@@ -465,9 +484,7 @@ main {
   font-style: 16px;
 }
 
-.hide {
-  visibility: hidden;
-}
+
 
 footer {
   position: fixed;
