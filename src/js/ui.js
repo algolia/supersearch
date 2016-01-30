@@ -27,10 +27,14 @@ $( document ).ready(function() {
     // $('main, header').removeClass('blur');
     $('body, html').css('overflow:auto');
     $('.container-fluid').removeClass('no-scroll');
-  }).find('.searchbox').click(function(e) {
+  }).find('.searchbox, .tabs').click(function(e) {
       return false;
   });
 
+  $('.tabs a').on('click', function(e){
+    $('.tabs li a').toggleClass('active');
+    $('.tab-panel').toggleClass('active');
+  });
 
 
   // $('#years').on('click', 'a', function(e){
