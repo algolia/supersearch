@@ -65,7 +65,7 @@
   display: inline-block;
   position: relative;
   width: 500px;
-  height: 60px;
+  height: 40px;
   white-space: nowrap;
   box-sizing: border-box; }
   .sbx-custom__input {
@@ -75,8 +75,8 @@
     border-radius: 0px;
     box-shadow: inset 0 0 0 3px #fff;
     padding: 0;
-    padding-right: 48px;
-    padding-left: 60px;
+    padding-right: 40px;
+    padding-left: 40px;
     width: 100%;
     height: 100%;
     vertical-align: middle;
@@ -110,7 +110,7 @@
     border-radius: 0px 0 0 0px;
     background-color: rgba(62, 130, 247, 0);
     padding: 0;
-    width: 60px;
+    width: 40px;
     height: 100%;
     vertical-align: middle;
     text-align: center;
@@ -129,15 +129,15 @@
     .sbx-custom__submit:focus {
       outline: 0; }
     .sbx-custom__submit svg {
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
       vertical-align: middle;
       fill: white; }
   .sbx-custom__reset {
     display: none;
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 8px;
+    right: 8px;
     margin: 0;
     border: 0;
     background: none;
@@ -153,8 +153,8 @@
     .sbx-custom__reset svg {
       display: block;
       margin: 4px;
-      width: 20px;
-      height: 20px; }
+      width: 16px;
+      height: 16px; }
   .sbx-custom__input:valid ~ .sbx-custom__reset {
     display: block;
     -webkit-animation-name: sbx-reset-in;
@@ -211,12 +211,11 @@ body {
   font-family: 'Exo 2', sans-serif;
   font-weight: 800;
   background: url("img/levis-stadium.jpg") no-repeat center top #07132A;
-  background-size: cover;
   background-attachment: fixed; }
   @media (max-width: 740px) {
     body {
       margin: 0;
-      padding: 16px; } }
+      padding: 0 12px; } }
 
 .container-fluid {
   float: left;
@@ -259,16 +258,21 @@ header {
           right: 0;
           top: 0;
           text-align: center; } }
+    @media (max-width: 740px) {
+      header h1 {
+        display: none; } }
 
 .searchbox {
   max-width: 540px;
-  width: 100%;
   margin: 16px auto 20px;
   display: block; }
+  @media (max-width: 740px) {
+    .searchbox {
+      margin: 16px 0;
+      width: calc(100% - 70px); } }
   .searchbox .sbx-custom__input {
     color: white;
     box-shadow: 0 2px #fff;
-    padding: 16px;
     padding-left: 4em;
     background: transparent;
     font-weight: bold;
@@ -277,6 +281,26 @@ header {
     box-shadow: 0 2px white; }
   .searchbox .sbx-custom__reset {
     fill: white; }
+  .searchbox .sbx-custom__filters {
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    position: absolute;
+    right: -60px;
+    top: 8px; }
+    @media (min-width: 740px) {
+      .searchbox .sbx-custom__filters {
+        display: none; } }
+    .searchbox .sbx-custom__filters:focus {
+      outline: 0; }
+    .searchbox .sbx-custom__filters svg {
+      width: 30px;
+      height: 30px;
+      fill: #1768ce; }
+      .searchbox .sbx-custom__filters svg:hover {
+        fill: white; }
 
 main {
   max-width: calc(80% + 0.5em);
@@ -284,6 +308,10 @@ main {
   @media (max-width: 740px) {
     main {
       max-width: 100%; } }
+
+#results {
+  display: block;
+  clear: both; }
 
 .filters, #topbar-refinements {
   display: -webkit-inline-flex;
@@ -377,6 +405,9 @@ main {
       font-weight: 800; }
   .filters .ais-refinement-list--item, #topbar-refinements .ais-refinement-list--item {
     width: 100%; }
+  @media (max-width: 740px) {
+    .filters, #topbar-refinements {
+      display: none; } }
 
 .ais-refinement-list label .ais-refinement-list--count {
   display: inline-block;
@@ -598,12 +629,13 @@ main {
     width: 100%;
     text-align: right; }
   .ais-hits.ais-hits__empty {
-    margin-top: 140px;
+    padding-top: 80px;
     font-size: 1.2em;
     display: block;
     width: 100%;
     text-align: center;
-    color: white; }
+    color: white;
+    background: transparent; }
     .ais-hits.ais-hits__empty h2,
     .ais-hits.ais-hits__empty h3 {
       font-weight: 400; }

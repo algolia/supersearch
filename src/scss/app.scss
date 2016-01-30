@@ -44,7 +44,7 @@ $bp-small: 740px;
 
 $custom: (
   input-width: 500px,
-  input-height: 60px,
+  input-height: 40px,
   border-width: 3px,
   border-radius: 0px,
   input-border-color: #fff,
@@ -53,12 +53,12 @@ $custom: (
   input-focus-background: #001B3A,
   font-size: .9em,
   placeholder-color: #EEE,
-  icon-size: 28px,
+  icon-size: 24px,
   icon-position: left,
   icon-color: white,
   icon-background: #3e82f7,
   icon-background-opacity: 0,
-  icon-clear-size: 20px
+  icon-clear-size: 16px
 );
 
 .sbx-custom {
@@ -94,13 +94,12 @@ html, body {
 body {
   font-family: 'Exo 2', sans-serif;
   font-weight: 800;
-  background: url('img/levis-stadium.jpg') no-repeat  center top #07132A;
-  background-size: cover;
+  background: url('img/levis-stadium.jpg') no-repeat center top #07132A;
   background-attachment: fixed;
 
   @media (max-width: $bp-small) {
     margin: 0;
-    padding: 16px;
+    padding: 0 12px;
   }
 
 }
@@ -149,19 +148,24 @@ header {
         text-align: center;
       }
     }
+    @media (max-width: $bp-small) {
+      display: none;
+    }
   }
 }
 
 .searchbox {
   max-width: 540px;
-  width: 100%;
   margin: 16px auto 20px;
   display: block;
+  @media (max-width: $bp-small) {
+    margin: 16px 0;
+    width: calc(100% - 70px)
+  }
 
   .sbx-custom__input {
     color: white;
     box-shadow: 0 2px #fff;
-    padding: 16px;
     padding-left: 4em;
     background: transparent;
     font-weight: bold;
@@ -173,6 +177,31 @@ header {
   .sbx-custom__reset {
     fill: white
   }
+  .sbx-custom__filters {
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    position: absolute;
+    right: - 60px;
+    top: 8px;
+    @media (min-width: $bp-small) {
+      display: none;
+    }
+    &:focus {
+      outline: 0;
+    }
+
+    svg {
+      width: 30px;
+      height: 30px;
+      fill: $ais_blue;
+      &:hover {
+        fill: white;
+      }
+    }
+  }
 }
 
 main {
@@ -183,6 +212,10 @@ main {
   }
 }
 
+#results {
+  display: block;
+  clear: both;
+}
 
 .filters, #topbar-refinements {
   display: inline-flex;
@@ -281,6 +314,9 @@ main {
   }
   .ais-refinement-list--item{
     width: 100%
+  }
+  @media (max-width: $bp-small) {
+    display: none;
   }
 }
 
@@ -393,12 +429,13 @@ main {
   }
 
   &.ais-hits__empty {
-    margin-top: 140px;
+    padding-top: 80px;
     font-size: 1.2em;
     display: block;
     width: 100%;
     text-align: center;
     color: white;
+    background: transparent;
     h2,
     h3 {
       font-weight: 400;
