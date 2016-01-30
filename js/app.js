@@ -93,14 +93,11 @@
 	    // header: '<a href="javascript:void(0)" class="toggle"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add-icon"></use></svg> Year</a>',
 	    header: false,
 	    item: '{{name}}'
-	  },
-	  cssClasses: {
-	    body: 'hide'
 	  }
 	}));
 
 	search.addWidget(instantsearch.widgets.currentRefinedValues({
-	  container: "#topbar-refinements",
+	  container: "#refinements",
 	  clearAll: false,
 	  templates: {
 	    item: '<a href="javascript:void(0)">{{name}} <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#clear-icon"></use></svg></a>',
@@ -109,7 +106,7 @@
 	}));
 
 	search.addWidget(inceptionWidget({
-	  container: '#inception-filters',
+	  container: '#brands',
 	  mainSearchAttribute: 'brand',
 	  title: '<svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add-icon"></use></svg> Brand',
 	  secondarySearchAttribute: 'name',
@@ -157,7 +154,7 @@
 
 	var template = {
 	  main: function main(data) {
-	    return '\n      <div class=\'menu\'>\n        <form role="search" novalidate="novalidate" class="searchbox sbx-custom">\n            <input name="brand" type="search" placeholder="Search for a brand" autocomplete="off" required="required" class="sbx-custom__input ais-search-box--input" autocapitalize="off" autocorrect="off" role="textbox" spellcheck="false">\n            <button type="submit" class="sbx-custom__submit">\n              <svg role="img" aria-label="Search">\n                <title>Icon Search</title>\n                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sbx-icon-search-6"></use>\n              </svg>\n            </button>\n            <button type="reset" class="sbx-custom__reset">\n              <svg role="img" aria-label="Reset">\n                <title>Icon Reset</title>\n                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sbx-icon-clear-3"></use>\n              </svg>\n            </button>\n          </form>\n        <ul class=\'items\'></ul>\n      </div>';
+	    return '\n      <div class=\'menu\'>\n        <form name="brand" role="search" novalidate="novalidate" class="searchbox sbx-custom">\n            <input name="brandquery" type="search" placeholder="Search for a brand" autocomplete="off" required="required" class="sbx-custom__input ais-search-box--input" autocapitalize="off" autocorrect="off" role="textbox" spellcheck="false">\n            <button type="submit" class="sbx-custom__submit">\n              <svg role="img" aria-label="Search">\n                <title>Icon Search</title>\n                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sbx-icon-search-6"></use>\n              </svg>\n            </button>\n            <button type="reset" class="sbx-custom__reset">\n              <svg role="img" aria-label="Reset">\n                <title>Icon Reset</title>\n                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sbx-icon-clear-3"></use>\n              </svg>\n            </button>\n          </form>\n        <ul class=\'items\'></ul>\n      </div>';
 	  },
 	  item: function item(value, highlight) {
 	    return '<li data-facet-value="' + value + '">' + highlight + '</li>';
@@ -190,7 +187,7 @@
 	        var $input = $container.querySelector('input[type="search"]');
 	        var $list = $container.querySelector('ul');
 	        var $menu = $container.querySelector('.menu');
-	        // const $button = $container.querySelector('.menu-trigger');
+	        var $reset = $container.querySelector('.sbx-custom__reset');
 
 	        $input.addEventListener('keyup', function (e) {
 	          var query = $input.value;
@@ -203,6 +200,11 @@
 	              query: query
 	            }).then(updateListSearchOnce.bind(undefined, secondarySearchAttribute, $list));
 	          }
+	        });
+	        $reset.addEventListener('click', function (e) {
+	          $input.value = '';
+	          var results = helper.lastResults;
+	          updateList($list, mainSearchAttribute, results);
 	        });
 
 	        $list.addEventListener('click', function (e) {
@@ -2724,10 +2726,10 @@
 
 	  $('body').append('<div class="lightbox hidden"><a href="javascript:void(0)" class="close"><svg height="34px" id="Layer_1" style="enable-background:new 0 0 34 34;" version="1.1" viewBox="0 0 512 512" width="34px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg></a><iframe class="lightbox_frame" type="text/html" width="640" height="385"></iframe>');
 
-	  $('#results').on('click', '.hit', function (a, e) {
+	  $('#results').on('click', '.hit', function (e) {
 	    e.preventDefault();
-	    console.log(test);
-	    $('.lightbox_frame').attr('src', yt);
+	    var yt = $(this).data('id');
+	    $('.lightbox_frame').attr('src', 'http://www.youtube.com/embed/' + yt);
 	    $('.lightbox').toggleClass('hidden');
 	  });
 
@@ -2736,6 +2738,7 @@
 	  });
 
 	  $('.sbx-custom__filters').on('click', function (e) {
+	    $(this).addClass('hide');
 	    $('.filters-panel').removeClass('hide');
 	    // $('main, header').addClass('blur');
 	    $('.container-fluid').addClass('no-scroll');
@@ -2744,11 +2747,17 @@
 	  $('.filters-panel').on('click', function (e) {
 	    // e.preventDefault()
 	    $(this).addClass('hide');
+	    $('.sbx-custom__filters').removeClass('hide');
 	    // $('main, header').removeClass('blur');
 	    $('body, html').css('overflow:auto');
 	    $('.container-fluid').removeClass('no-scroll');
-	  }).find('.searchbox').click(function (e) {
+	  }).find('.searchbox, .tabs').click(function (e) {
 	    return false;
+	  });
+
+	  $('.tabs a').on('click', function (e) {
+	    $('.tabs li a').toggleClass('active');
+	    $('.tab-panel').toggleClass('active');
 	  });
 
 	  // $('#years').on('click', 'a', function(e){

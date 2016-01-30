@@ -196,6 +196,8 @@
   font-size: calc(.65rem + 0.3vw + 0.3vh); }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
@@ -216,19 +218,20 @@ body {
   width: 100%;
   max-width: 100%;
   position: relative;
-  transition: opacity .4s ease, -webkit-transform .8s ease;
-  transition: transform .8s ease, opacity .4s ease;
-  transition: transform .8s ease, opacity .4s ease, -webkit-transform .8s ease; }
+  transition: opacity 1s ease, -webkit-transform 1s ease;
+  transition: transform 1s ease, opacity 1s ease;
+  transition: transform 1s ease, opacity 1s ease, -webkit-transform 1s ease; }
   @media (max-width: 740px) {
     .container-fluid {
       padding: 0 12px; } }
   .container-fluid.no-scroll {
-    padding-right: 40px;
+    position: relative;
+    right: 40px;
     height: 100vh;
     overflow: hidden;
-    opacity: .5;
-    -webkit-transform: translateX(-60vw);
-    transform: translateX(-60vw); }
+    opacity: 0;
+    -webkit-transform: translateX(-80vw);
+    transform: translateX(-80vw); }
 
 header {
   position: relative;
@@ -238,11 +241,10 @@ header {
   header h1 {
     text-align: center;
     color: white;
-    font-size: 4em;
     margin: 20px 0 0;
     text-transform: uppercase;
     text-align: center;
-    color: White;
+    color: white;
     font-size: 8vw;
     margin: 10px 0 0;
     text-transform: uppercase;
@@ -317,10 +319,20 @@ main {
   display: block;
   clear: both; }
 
+.filters {
+  left: 0;
+  right: 0;
+  height: 76px;
+  padding: 16px; }
+  .filters a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white; }
+
 .tabs {
   list-style: none;
   display: block;
-  width: 230px;
+  width: 180px;
   border: solid 2px white;
   padding: 0;
   margin: 0 auto;
@@ -328,7 +340,7 @@ main {
   overflow: hidden; }
   .tabs a {
     display: inline-block;
-    font-size: 1.1em;
+    font-size: 1em;
     width: 50%;
     padding: 8px 0;
     text-align: center; }
@@ -336,18 +348,25 @@ main {
     color: black;
     background-color: white; }
 
+.tab-panel {
+  display: none; }
+  .tab-panel.active {
+    display: block; }
+  .tab-panel .searchbox {
+    width: 300px;
+    margin: 0 auto; }
+
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(2, 19, 43, 0.7);
   z-index: 99;
   margin: 0;
-  transition: -webkit-transform .4s ease-in;
-  transition: transform .4s ease-in;
-  transition: transform .4s ease-in, -webkit-transform .4s ease-in;
+  transition: opacity 1s ease, -webkit-transform .4s ease-in;
+  transition: transform .4s ease-in, opacity 1s ease;
+  transition: transform .4s ease-in, opacity 1s ease, -webkit-transform .4s ease-in;
   opacity: 1; }
   .overlay .overlay-content {
     height: 100%;
@@ -357,28 +376,30 @@ main {
     -webkit-overflow-scrolling: touch; }
   .overlay.hide {
     opacity: 0;
-    visibility: visible;
+    display: block !important;
     -webkit-transform: translateX(100vw);
     transform: translateX(100vw); }
   .overlay .close {
     position: absolute;
-    top: 4px;
-    right: 10px;
-    z-index: 5;
-    margin: 16px;
-    max-width: 50px;
-    cursor: pointer; }
-    .overlay .close svg {
-      width: 20px;
-      fill: #fff; }
+    top: 0;
+    right: 0;
+    color: white;
+    font-weight: 400;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    z-index: 9000;
+    padding: 24px 24px 12px 12px; }
 
 .blur {
   -webkit-filter: blur(3px);
   filter: blur(3px); }
 
-.filters, #topbar-refinements {
+.hide {
+  display: none !important; }
+
+#refinements {
   padding: 0; }
-  .filters > li, .filters > div, #topbar-refinements > li, #topbar-refinements > div {
+  #refinements > li, #refinements > div {
     width: 100%;
     padding: 0 8px;
     list-style: none;
@@ -393,12 +414,12 @@ main {
     -moz-user-select: inherit;
     -ms-user-select: inherit;
     user-select: inherit; }
-    .filters > li a, .filters > div a, #topbar-refinements > li a, #topbar-refinements > div a {
+    #refinements > li a, #refinements > div a {
       color: white;
       text-decoration: none; }
-      .filters > li a div, .filters > div a div, #topbar-refinements > li a div, #topbar-refinements > div a div {
+      #refinements > li a div, #refinements > div a div {
         display: inline-block; }
-      .filters > li a svg, .filters > div a svg, #topbar-refinements > li a svg, #topbar-refinements > div a svg {
+      #refinements > li a svg, #refinements > div a svg {
         display: inline;
         vertical-align: middle;
         width: 18px;
@@ -406,57 +427,46 @@ main {
         top: -2px;
         position: relative;
         fill: #00A3FF; }
-  .filters .ais-current-refined-values--list svg, #topbar-refinements .ais-current-refined-values--list svg {
+  #refinements .ais-current-refined-values--list svg {
     fill: #BD245E; }
-  .filters .items, .filters .ais-refinement-list--list, #topbar-refinements .items, #topbar-refinements .ais-refinement-list--list {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-flow: wrap;
-    -ms-flex-flow: wrap;
-    flex-flow: wrap;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    padding: 0; }
-  .filters .items li, .filters .ais-refinement-list--item, #topbar-refinements .items li, #topbar-refinements .ais-refinement-list--item {
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    text-align: center;
-    display: inline-block;
-    margin: 3px;
-    padding: 10px 12px;
-    background-color: rgba(0, 163, 255, 0.3); }
-    .filters .items li:hover, .filters .ais-refinement-list--item:hover, #topbar-refinements .items li:hover, #topbar-refinements .ais-refinement-list--item:hover {
-      background-color: rgba(189, 36, 94, 0.2); }
-    .filters .items li em, .filters .ais-refinement-list--item em, #topbar-refinements .items li em, #topbar-refinements .ais-refinement-list--item em {
-      font-style: normal;
-      font-weight: 800; }
-  .filters .ais-refinement-list--item, #topbar-refinements .ais-refinement-list--item {
-    width: 100%; }
 
-.ais-refinement-list label .ais-refinement-list--count {
+.items, .ais-refinement-list--list {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: wrap;
+  -ms-flex-flow: wrap;
+  flex-flow: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 20px 30px; }
+
+.items li, .ais-refinement-list--item {
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  background: rgba(6, 19, 43, 0.8);
+  box-shadow: inset 0 0 0 1px #00A3FF;
+  text-align: center;
   display: inline-block;
-  border-radius: 4px;
-  padding: 5px;
-  background: #1768ce;
-  color: #fff;
-  font-size: 10px;
-  margin-left: 3px; }
+  margin: 2px;
+  padding: 10px 12px;
+  font-size: 1.2em;
+  font-weight: 400; }
+  .items li em, .ais-refinement-list--item em {
+    font-style: normal;
+    font-weight: 800; }
 
-.ais-refinement-list label input {
-  display: none; }
+.ais-refinement-list--item {
+  width: 100%; }
 
-.ais-refinement-list .ais-refinement-list--item__active {
+.ais-refinement-list--item__active {
   color: #fff;
-  background: #1768ce; }
-  .ais-refinement-list .ais-refinement-list--item__active .ais-refinement-list--count {
-    background: #fff;
-    color: #1768ce; }
+  background: rgba(23, 104, 206, 0.3); }
 
 .ais-hits {
   display: -webkit-flex;
@@ -645,8 +655,10 @@ main {
       .ais-hits .hit:hover::after {
         opacity: 0; }
   .ais-hits .hit-brand {
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: 800;
+    margin-right: 40px;
+    white-space: nowrap;
     text-transform: uppercase;
     text-shadow: 1px 1px 0 black; }
     .ais-hits .hit-brand em {
