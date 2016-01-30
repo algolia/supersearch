@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>search with instantsearch.js</title>
+  <title>Super Bowl Commercials with instantsearch.js</title>
   <link href="app.css" rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Exo+2:400,900" rel="stylesheet" type="text/css" />
   <link rel="icon" type="image/png" href="favicon.png" />
@@ -33,7 +33,23 @@
 
 <body>
   <div class="filters-panel hide overlay">
-    <div class="overlay-content"></div>
+    <a href="javascript:void(0)" class="close">
+      <svg height="30px" id="Layer_1" style="enable-background:new 0 0 34 34;" version="1.1" viewBox="0 0 512 512" width="34px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"></path>
+      </svg>
+    </a>
+    <div class="overlay-content">
+      <ul class="filters">
+        <li>
+          <ul class="tabs">
+            <li><a href="#" class="active">Years</a><a href="#">Brands</a>
+            </li>
+          </ul>
+        </li>
+        <li id="inception-filters"></li>
+        <li id="years"></li>
+      </ul>
+    </div>
   </div>
   <div class="container-fluid">
     <header>
@@ -66,19 +82,13 @@
             //]]>
           </script>
           <script type="text/template" id="hit-template">
-            <a href="#" dataid="https://www.youtube.com/watch?v={{objectID}}" style="background-image: url('{{thumbnails.high.url}}')" class="hit"><div class="hit-brand">{{{_highlightResult.brand.value}}}</div><div class="hit-season">{{year}} - {{sbYear}}</div></a>
+            <a href="https://www.youtube.com/watch?v={{objectID}}" data-id="{{objectID}}" style="background-image: url('{{thumbnails.high.url}}')" class="hit"><div class="hit-brand">{{{_highlightResult.brand.value}}}</div><div class="hit-season">{{year}} - {{sbYear}}</div></a>
           </script>
         </button>
       </form>
     </header>
     <main>
       <section id="topbar-results-control">
-        <ul class="filters">
-          <li>Filters:</li>
-          <li id="inception-filters"></li>
-          <li id="years"></li>
-          <li id="clear"></li>
-        </ul>
         <div id="topbar-refinements"></div>
       </section>
       <section id="results"></section>
