@@ -24,22 +24,9 @@ $ais_red: lighten($sb_red, 15%);
 $bp-regular: 960px;
 $bp-small: 740px;
 
-%button {
-  background: rgba(white, 0.85);
-  padding: 0.25rem;
-  margin: 0.3rem 0.3rem;
-  border-radius: 3px;
-  color: $ais_blue;
-  cursor: pointer;
-  font-size: 14px;
-  line-height: 1;
-  text-decoration: none;
-  z-index: 12;
-}
-
 %flipInX {
   backface-visibility: visible !important;
-  animation: flipInX 0.8s ease;
+  animation: flipInX .8s ease;
 }
 
 $custom: (
@@ -55,7 +42,7 @@ $custom: (
   placeholder-color: #EEE,
   icon-size: 24px,
   icon-position: left,
-  icon-color: white,
+  icon-color: #fff,
   icon-background: #3e82f7,
   icon-background-opacity: 0,
   icon-clear-size: 16px
@@ -73,7 +60,7 @@ $custom: (
 }
 
 :root {
-  font-size: calc(.65rem + 0.3vw + 0.3vh);
+  font-size: calc(.65rem + .3vw + .3vh);
 }
 
 * {
@@ -95,7 +82,6 @@ body {
   font-family: 'Exo 2', sans-serif;
   font-weight: 800;
   background: url('img/levis-stadium.jpg') no-repeat center top #07132A;
-  // background-attachment: fixed;
 }
 
 .container-fluid {
@@ -104,9 +90,11 @@ body {
   max-width: 100%;
   position: relative;
   transition: transform 1s ease, opacity 1s ease;
+
   @media (max-width: $bp-small) {
     padding: 0 12px;
   }
+
   &.no-scroll {
     position: relative;
     right: 40px;
@@ -125,21 +113,23 @@ header {
 
   h1 {
     text-align: center;
-    color: white;
+    color: #fff;
     margin: 20px 0 0;
     text-transform: uppercase;
     text-align: center;
-    color: white;
+    color: #fff;
     font-size: 8vw;
     margin: 10px 0 0;
     text-transform: uppercase;
     font-weight: bold;
-    color: white;
+    color: #fff;
+
     @supports (-webkit-background-clip: text) {
       position: relative;
       text-align: center;
       color: transparent;
-      &:after {
+
+      &::after {
         content: attr(datatext);
          background: -webkit-linear-gradient(lighten($ais_red, 0%), lighten($ais_blue, 0%));
         -webkit-background-clip: text;
@@ -153,6 +143,7 @@ header {
         text-align: center;
       }
     }
+
     @media (max-width: $bp-small) {
       display: none;
     }
@@ -160,16 +151,18 @@ header {
 }
 
 .searchbox {
-  max-width: 540px;
+  max-width: 420px;
   margin: 16px auto 20px;
   display: block;
+  width: calc(100% - 130px);
+
   @media (max-width: $bp-small) {
     margin: 16px 0;
-    width: calc(100% - 70px)
+    width: calc(100% - 40px);
   }
 
   .sbx-custom__input {
-    color: white;
+    color: #fff;
     box-shadow: 0 2px #fff;
     background: transparent;
     font-weight: bold;
@@ -177,11 +170,13 @@ header {
   }
 
   .sbx-custom__input:focus {
-    box-shadow: 0 2px white;
+    box-shadow: 0 2px #fff;
   }
+
   .sbx-custom__reset {
-    fill: white
+    fill: #fff
   }
+
   .sbx-custom__filters {
     background-color: transparent;
     border: none;
@@ -189,26 +184,38 @@ header {
     padding: 0;
     display: block;
     position: absolute;
-    right: - 60px;
     top: 8px;
-    @media (min-width: $bp-small) {
-      display: none;
+    right: - 120px;
+    @media (max-width: $bp-small) {
+      right: - 40px;
     }
+
+    span {
+      color: #fff;
+      font-size: 1.8em;
+      text-transform: uppercase;
+      @media (max-width: $bp-small) {
+        display: none;
+      }
+    }
+
     &:focus {
       outline: 0;
     }
 
     svg {
-      width: 30px;
-      height: 30px;
-      fill: white;
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+      margin-right: 8px;
     }
   }
 }
 
 main {
-  max-width: calc(80% + 0.5em);
+  max-width: calc(80% + .5em);
   margin: auto;
+
   @media (max-width: $bp-small) {
     max-width: 100%;
   }
@@ -224,32 +231,35 @@ main {
   right: 0;
   height: 76px;
   padding: 16px;
+
   a {
     text-transform: uppercase;
     text-decoration: none;
-    color: white;
+    color: #fff;
   }
 }
 
 .tabs {
   list-style: none;
   display: block;
-  width: 180px;
-  border: solid 2px white;
+  width: 190px;
+  border: solid 2px #fff;
   padding: 0;
   margin: 0 auto;
   border-radius: 30px;
   overflow: hidden;
+
   a {
     display: inline-block;
-    font-size: 1em;
+    font-size: .9em;
     width: 50%;
     padding: 8px 0;
     text-align: center;
   }
+
   .active {
     color: black;
-    background-color: white;
+    background-color: #fff;
   }
 }
 
@@ -279,9 +289,10 @@ main {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    color: white;
+    color: #fff;
     -webkit-overflow-scrolling: touch;
   }
+
   &.hide {
     opacity: 0;
     display: block !important;
@@ -292,7 +303,7 @@ main {
     position: absolute;
     top: 0;
     right: 0;
-    color: white;
+    color: #fff;
     font-weight: 400;
     font-size: 1.1em;
     text-transform: uppercase;
@@ -310,25 +321,28 @@ main {
 }
 
 #refinements {
-  padding: 0;
-  > li, > div {
-    width: 100%;
-    padding: 0 8px;
+  clear: both;
+  padding: 12px 0;
+
+  > li, div {
     list-style: none;
     display: inline-block;
     font-size: 1em;
     font-weight: 400;
-    color: white;
+    color: #fff;
     white-space: nowrap;
     text-transform: uppercase;
     margin-right: 8px;
     user-select: inherit;
+
     a {
-      color: white;
+      color: #fff;
       text-decoration: none;
+
       div {
         display: inline-block;
       }
+
       svg {
         display: inline;
         vertical-align: middle;
@@ -366,33 +380,35 @@ main {
   padding: 10px 12px;
   font-size: 1.2em;
   font-weight: 400;
-  &:hover {
 
+  &:hover {
+    background: rgba(#00A3FF,.5);
   }
+
   em {
     font-style: normal;
     font-weight: 800;
   }
 }
-.ais-refinement-list--item{
+
+.ais-refinement-list--item {
   width: 100%
 }
+
 .ais-refinement-list--item__active {
   color: #fff;
   background: rgba($ais_blue,.3);
 }
-
 
 .ais-hits {
   display: flex;
   flex-flow: wrap;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 16px;
   padding: 0 .5vw .5vw 0;
   background-color: rgba(#02132B,.8);
-  @include flex-setting();
   margin-bottom: 120px;
+  @include flex-setting();
 
   .ais-hits--item {
     flex-grow: 1;
@@ -403,69 +419,11 @@ main {
     animation-fill-mode: backwards;
     font-size: 1.1em;
     @for $i from 1 to 42 {
+
       &:nth-child(#{$i}) {
         animation-delay: $i * .01s;
       }
     }
-
-  }
-
-  .hit {
-    height: 110px;
-    display: block;
-    text-decoration: none;
-    transition: background-size 0.2s ease;
-    cursor: pointer;
-    color: white;
-    padding: 8px;
-    position: relative;
-    background: {
-      repeat: no-repeat;
-      position: center;
-      size: 110%;
-      color: rgba(#3F97F3, 0.6);
-      blend-mode: soft-light;
-    }
-    @media (max-width: $bp-small) {
-      height: 90px;
-    }
-
-    &:hover {
-      background-color: #4D4E4E;
-      background-size: 120%;
-      transition: background-color .25s, background-size .1s ease;
-      blend-mode: hard-light;
-      &::after{
-        opacity: 0;
-      }
-    }
-  }
-
-  .hit-brand {
-    font-size: 1.2em;
-    font-weight: 800;
-    margin-right: 40px;
-    white-space: nowrap;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 0 black;
-    // highlight
-    em {
-      font-style: normal;
-      font-weight: 800;
-      text-decoration: underline;
-    }
-  }
-
-  .hit-season {
-    display: inline-block;
-    font-size: 0.8em;
-    border-radius: 10px;
-    padding: 2px 8px;
-    width: 100%;
-    text-align: right;
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
   }
 
   &.ais-hits__empty {
@@ -474,13 +432,74 @@ main {
     display: block;
     width: 100%;
     text-align: center;
-    color: white;
+    color: #fff;
     background: transparent;
+
     h2,
     h3 {
       font-weight: 400;
     }
   }
+}
+
+.hit {
+  height: 110px;
+  display: block;
+  text-decoration: none;
+  transition: background-size .2s ease;
+  cursor: pointer;
+  color: #fff;
+  padding: 8px;
+  position: relative;
+  background: {
+    repeat: no-repeat;
+    position: center;
+    size: 110%;
+    color: rgba(#3F97F3, .6);
+    blend-mode: soft-light;
+  }
+
+  @media (max-width: $bp-small) {
+    height: 90px;
+  }
+
+  &:hover {
+    background-color: #4D4E4E;
+    background-size: 120%;
+    transition: background-color .25s, background-size .1s ease;
+    blend-mode: hard-light;
+    &::after {
+      opacity: 0;
+    }
+  }
+
+}
+
+.hit-brand {
+  font-size: 1.2em;
+  font-weight: 800;
+  margin-right: 40px;
+  white-space: nowrap;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 black;
+
+  em {
+    font-style: normal;
+    font-weight: 800;
+    text-decoration: underline;
+  }
+}
+
+.hit-season {
+  display: inline-block;
+  font-size: .8em;
+  border-radius: 10px;
+  padding: 2px 8px;
+  width: 100%;
+  text-align: right;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
 }
 
 // Generic
@@ -489,8 +508,6 @@ main {
   font-style: 16px;
 }
 
-
-
 footer {
   position: fixed;
   bottom: 0;
@@ -498,7 +515,7 @@ footer {
   padding: 16px;
   text-align: center;
   color: #fff;
-  background: darken(#0067EB,35%);
+  background: darken(#0067EB, 35%);
   min-height: 65px;
   line-height: 55px;
   font-weight: 400;
@@ -510,11 +527,10 @@ footer {
 
   span {
     text-indent: -9999px;
-    background: url(../img/Algolia_logo_bg-dark.svg) no-repeat center center / contain;
+    background: url('../img/Algolia_logo_bg-dark.svg') no-repeat center center / contain;
     color: transparent;
   }
 }
-
 
 @keyframes fade {
 
