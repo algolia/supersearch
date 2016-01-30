@@ -258,6 +258,10 @@ main {
   &.active {
     display: block;
   }
+  .searchbox {
+    width: 300px;
+    margin: 0 auto;
+  }
 }
 
 .overlay {
@@ -280,7 +284,7 @@ main {
   }
   &.hide {
     opacity: 0;
-    display: block;
+    display: block !important;
     transform: translateX(100vw);
   }
 
@@ -289,6 +293,7 @@ main {
     top: 0;
     right: 0;
     color: white;
+    font-weight: 400;
     font-size: 1.1em;
     text-transform: uppercase;
     z-index: 9000;
@@ -301,7 +306,7 @@ main {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 #refinements {
@@ -353,11 +358,11 @@ main {
 
 .items li, .ais-refinement-list--item {
   flex-grow: 1;
-  background: rgba(#06132B,.6);
+  background: rgba(#06132B,.8);
+  box-shadow: inset 0 0 0 1px #00A3FF;
   text-align: center;
-  border: solid 1px rgba($ais_blue,.6);
   display: inline-block;
-  margin-bottom: -1px;
+  margin: 2px;
   padding: 10px 12px;
   font-size: 1.2em;
   font-weight: 400;

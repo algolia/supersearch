@@ -23,12 +23,14 @@ $( document ).ready(function() {
   $('.filters-panel').on('click', function(e){
     // e.preventDefault()
     $(this).addClass('hide');
+    $('.sbx-custom__filters').removeClass('hide');
     // $('main, header').removeClass('blur');
     $('body, html').css('overflow:auto');
     $('.container-fluid').removeClass('no-scroll');
   }).find('.searchbox').click(function(e) {
       return false;
   });
+
 
 
   // $('#years').on('click', 'a', function(e){

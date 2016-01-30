@@ -2,8 +2,8 @@ const template = {
   main: function(data){
     return `
       <div class='menu'>
-        <form role="search" novalidate="novalidate" class="searchbox sbx-custom">
-            <input name="brand" type="search" placeholder="Search for a brand" autocomplete="off" required="required" class="sbx-custom__input ais-search-box--input" autocapitalize="off" autocorrect="off" role="textbox" spellcheck="false">
+        <form name="brand" role="search" novalidate="novalidate" class="searchbox sbx-custom">
+            <input name="brandquery" type="search" placeholder="Search for a brand" autocomplete="off" required="required" class="sbx-custom__input ais-search-box--input" autocapitalize="off" autocorrect="off" role="textbox" spellcheck="false">
             <button type="submit" class="sbx-custom__submit">
               <svg role="img" aria-label="Search">
                 <title>Icon Search</title>
@@ -51,7 +51,7 @@ const inceptionWidget = function(config){
         const $input = $container.querySelector('input[type="search"]');
         const $list = $container.querySelector('ul');
         const $menu = $container.querySelector('.menu');
-        // const $button = $container.querySelector('.menu-trigger');
+        const $reset = $container.querySelector('.sbx-custom__reset');
 
         $input.addEventListener('keyup', function(e){
           const query = $input.value;
@@ -65,6 +65,11 @@ const inceptionWidget = function(config){
               query: query
             }).then(updateListSearchOnce.bind(undefined, secondarySearchAttribute, $list));
           }
+        });
+        $reset.addEventListener('click', function(e){
+          $input.value = '';
+          const results = helper.lastResults;
+          updateList($list, mainSearchAttribute, results);
         });
 
         $list.addEventListener('click', function(e){

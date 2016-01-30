@@ -106,7 +106,7 @@
 	}));
 
 	search.addWidget(inceptionWidget({
-	  container: '#inception-filters',
+	  container: '#brands',
 	  mainSearchAttribute: 'brand',
 	  title: '<svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add-icon"></use></svg> Brand',
 	  secondarySearchAttribute: 'name',
@@ -154,7 +154,7 @@
 
 	var template = {
 	  main: function main(data) {
-	    return '\n      <div class=\'menu\'>\n        <form role="search" novalidate="novalidate" class="searchbox sbx-custom">\n            <input name="brand" type="search" placeholder="Search for a brand" autocomplete="off" required="required" class="sbx-custom__input ais-search-box--input" autocapitalize="off" autocorrect="off" role="textbox" spellcheck="false">\n            <button type="submit" class="sbx-custom__submit">\n              <svg role="img" aria-label="Search">\n                <title>Icon Search</title>\n                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sbx-icon-search-6"></use>\n              </svg>\n            </button>\n            <button type="reset" class="sbx-custom__reset">\n              <svg role="img" aria-label="Reset">\n                <title>Icon Reset</title>\n                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sbx-icon-clear-3"></use>\n              </svg>\n            </button>\n          </form>\n        <ul class=\'items\'></ul>\n      </div>';
+	    return '\n      <div class=\'menu\'>\n        <form name="brand" role="search" novalidate="novalidate" class="searchbox sbx-custom">\n            <input name="brandquery" type="search" placeholder="Search for a brand" autocomplete="off" required="required" class="sbx-custom__input ais-search-box--input" autocapitalize="off" autocorrect="off" role="textbox" spellcheck="false">\n            <button type="submit" class="sbx-custom__submit">\n              <svg role="img" aria-label="Search">\n                <title>Icon Search</title>\n                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sbx-icon-search-6"></use>\n              </svg>\n            </button>\n            <button type="reset" class="sbx-custom__reset">\n              <svg role="img" aria-label="Reset">\n                <title>Icon Reset</title>\n                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sbx-icon-clear-3"></use>\n              </svg>\n            </button>\n          </form>\n        <ul class=\'items\'></ul>\n      </div>';
 	  },
 	  item: function item(value, highlight) {
 	    return '<li data-facet-value="' + value + '">' + highlight + '</li>';
@@ -187,7 +187,7 @@
 	        var $input = $container.querySelector('input[type="search"]');
 	        var $list = $container.querySelector('ul');
 	        var $menu = $container.querySelector('.menu');
-	        // const $button = $container.querySelector('.menu-trigger');
+	        var $reset = $container.querySelector('.sbx-custom__reset');
 
 	        $input.addEventListener('keyup', function (e) {
 	          var query = $input.value;
@@ -200,6 +200,11 @@
 	              query: query
 	            }).then(updateListSearchOnce.bind(undefined, secondarySearchAttribute, $list));
 	          }
+	        });
+	        $reset.addEventListener('click', function (e) {
+	          $input.value = '';
+	          var results = helper.lastResults;
+	          updateList($list, mainSearchAttribute, results);
 	        });
 
 	        $list.addEventListener('click', function (e) {
@@ -2742,6 +2747,7 @@
 	  $('.filters-panel').on('click', function (e) {
 	    // e.preventDefault()
 	    $(this).addClass('hide');
+	    $('.sbx-custom__filters').removeClass('hide');
 	    // $('main, header').removeClass('blur');
 	    $('body, html').css('overflow:auto');
 	    $('.container-fluid').removeClass('no-scroll');

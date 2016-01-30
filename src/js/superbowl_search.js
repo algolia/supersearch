@@ -59,7 +59,7 @@ search.addWidget(
 
 search.addWidget(
   inceptionWidget({
-    container: '#inception-filters',
+    container: '#brands',
     mainSearchAttribute: 'brand',
     title: '<svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add-icon"></use></svg> Brand',
     secondarySearchAttribute: 'name',
