@@ -199,7 +199,11 @@
 	          } else {
 	            helper.searchOnce({
 	              index: index,
-	              query: query
+	              query: query,
+	              facets: [],
+	              facetsRefinements: [],
+	              disjunctiveFacetsRefinements: [],
+	              disjunctiveFacets: []
 	            }).then(updateListSearchOnce.bind(undefined, secondarySearchAttribute, $list));
 	          }
 	        });
@@ -212,6 +216,7 @@
 	        $list.addEventListener('click', function (e) {
 	          var target = e.target;
 	          var facetValue = target.dataset.facetValue;
+	          // FIXME check if the value is valid :)
 	          helper.addDisjunctiveFacetRefinement(mainSearchAttribute, facetValue).search();
 	          $input.value = '';
 	        });
