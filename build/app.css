@@ -261,15 +261,30 @@ body {
     opacity: 0;
     -webkit-perspective: 300px;
     perspective: 300px;
-    -webkit-transform-origin: left 50% 50%;
-    transform-origin: left 50% 50%;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    -webkit-transform: translateX(-40vh);
-    transform: translateX(-40vh);
-    transition: opacity .8s linear, -webkit-transform .6s ease-out;
-    transition: transform .6s ease-out, opacity .8s linear;
-    transition: transform .6s ease-out, opacity .8s linear, -webkit-transform .6s ease-out; }
+    -webkit-transform: translateX(-30vh);
+    transform: translateX(-30vh);
+    transition: opacity 1 ease-out, -webkit-transform .7s ease-out;
+    transition: transform .7s ease-out, opacity 1 ease-out;
+    transition: transform .7s ease-out, opacity 1 ease-out, -webkit-transform .7s ease-out; }
+    .container-fluid.no-scroll .github-source {
+      display: none;
+      visibility: hidden; }
+
+.github-source {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 9999; }
+  @media (max-width: 740px) {
+    .github-source {
+      display: none; } }
+  .github-source svg {
+    opacity: 1;
+    width: 80px;
+    height: 80px;
+    fill: white; }
 
 header {
   position: relative;
@@ -295,7 +310,7 @@ header {
     .searchbox {
       margin: 16px 0;
       max-width: inherit;
-      width: calc(100% - 40px); } }
+      width: calc(100% - 60px); } }
   .searchbox .sbx-custom__input {
     color: #fff;
     box-shadow: 0 2px #fff;
@@ -316,11 +331,16 @@ header {
     padding: 0;
     display: block;
     position: absolute;
-    top: 4px;
-    right: -110px; }
+    top: -2px;
+    right: -104px;
+    margin: 6px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
     @media (max-width: 740px) {
       .searchbox .sbx-custom__filters {
-        right: -40px; } }
+        right: -59px; } }
     .searchbox .sbx-custom__filters span {
       color: #fff;
       font-size: 1.6em;
@@ -337,6 +357,10 @@ header {
       position: relative;
       top: 4px;
       margin-right: 8px; }
+      @media (max-width: 740px) {
+        .searchbox .sbx-custom__filters svg {
+          width: 30px;
+          height: 30px; } }
 
 main {
   max-width: calc(80% + .5em);
@@ -363,8 +387,7 @@ main {
   list-style: none;
   display: block;
   width: 190px;
-  border: solid 2px #fff;
-  padding: 0;
+  box-shadow: 0 0 0 1px #fff, inset 0 0 0 1px #fff;
   margin: 0 auto;
   border-radius: 30px;
   overflow: hidden; }
@@ -372,7 +395,7 @@ main {
     display: inline-block;
     font-size: .9em;
     width: 50%;
-    padding: 8px 0;
+    padding: 8px 0 10px;
     text-align: center; }
   .tabs .active {
     color: black;
@@ -411,6 +434,10 @@ main {
     transform: translateX(100vw); }
   .overlay .close {
     position: absolute;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     top: 0;
     right: 0;
     color: #fff;

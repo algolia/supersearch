@@ -42,6 +42,9 @@
       #years.tab-panel
       #brands.tab-panel.active
   .container-fluid
+    %a.github-source{href: "https://github.com/Shipow/superbowl"}
+      %svg
+        %use{xlink:href: "#github-banner"}
     %header
       %h1
         %img{src:"img/logo-superbowl.svg",alt:"Super Bowl Commercials search by Algolia"}
@@ -55,7 +58,7 @@
           %svg{role: "img", aria-label: "Reset"}
             %title Icon Reset
             %use{xlink:href: "#sbx-icon-clear-3"}
-        %button.sbx-custom__filters{href:"#", type: "button"}
+        %button.sbx-custom__filters{type: "button"}
           %svg{role: "img", aria-label: "Search"}
             %use{xlink:href: "#icon-filters"}
           %span filters

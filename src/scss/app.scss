@@ -122,10 +122,30 @@ body {
     overflow: hidden;
     opacity: 0;
     perspective: 300px;
-    transform-origin: left 50% 50%;
     transform-style: preserve-3d;
-    transform: translateX(-40vh);
-    transition: transform .6s ease-out, opacity .8s linear;
+    transform: translateX(-30vh);
+    transition: transform .7s ease-out, opacity 1 ease-out;
+    .github-source {
+      display: none;
+      visibility: hidden;
+    }
+  }
+}
+
+.github-source {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+  @media (max-width: $bp-small) {
+    display: none;
+  }
+
+  svg {
+    opacity: 1;
+    width: 80px;
+    height: 80px;
+    fill: white;
   }
 }
 
@@ -154,7 +174,7 @@ header {
   @media (max-width: $bp-small) {
     margin: 16px 0;
     max-width: inherit;
-    width: calc(100% - 40px);
+    width: calc(100% - 60px);
   }
 
   .sbx-custom__input {
@@ -184,10 +204,13 @@ header {
     padding: 0;
     display: block;
     position: absolute;
-    top: 4px;
-    right: - 110px;
+    top: -2px;
+    right: - 104px;
+    margin: 6px;
+    user-select: none;
+
     @media (max-width: $bp-small) {
-      right: - 40px;
+      right: - 59px;
     }
 
     span {
@@ -210,6 +233,10 @@ header {
       position: relative;
       top: 4px;
       margin-right: 8px;
+      @media (max-width: $bp-small) {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 }
@@ -245,8 +272,7 @@ main {
   list-style: none;
   display: block;
   width: 190px;
-  border: solid 2px #fff;
-  padding: 0;
+  box-shadow: 0 0 0 1px #fff, inset 0 0 0 1px #fff;
   margin: 0 auto;
   border-radius: 30px;
   overflow: hidden;
@@ -255,7 +281,7 @@ main {
     display: inline-block;
     font-size: .9em;
     width: 50%;
-    padding: 8px 0;
+    padding: 8px 0 10px;
     text-align: center;
   }
 
@@ -303,6 +329,7 @@ main {
 
   .close {
     position: absolute;
+    user-select: none;
     top: 0;
     right: 0;
     color: #fff;
