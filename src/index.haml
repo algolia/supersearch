@@ -43,7 +43,8 @@
       #brands.tab-panel.active
   .container-fluid
     %header
-      %h1{datatext:"SuperBowl Ads"} SuperBowl Ads
+      %h1
+        %img{src:"img/logo-superbowl.svg",alt:"Super Bowl Commercials search by Algolia"}
       %form.searchbox.sbx-custom{role: "search", novalidate: true, onsubmit="return false;"}
         %input#search.sbx-custom__input{type: "search", placeholder: "Search for a commercial", autocomplete: "off", required: true, spellcheck: false}
         %button.sbx-custom__submit{type: "submit"}
@@ -70,6 +71,7 @@
         #refinements
       %section#results
       %section#pagination
+      %span.poweredby Powered by <a href="https://www.algolia.com" class="algolia">Algolia</a>
 
   %script{src: "js/instantsearch.min.js"}
   %script{src: "js/app.js"}
