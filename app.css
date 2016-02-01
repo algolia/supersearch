@@ -246,8 +246,8 @@ body {
     transform-origin: left 50% 50%;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    -webkit-transform: translateX(-50vh) scale(0.9);
-    transform: translateX(-50vh) scale(0.9);
+    -webkit-transform: translateX(-40vh);
+    transform: translateX(-40vh);
     transition: opacity .5s ease, -webkit-transform 1s ease;
     transition: transform 1s ease, opacity .5s ease;
     transition: transform 1s ease, opacity .5s ease, -webkit-transform 1s ease; }
