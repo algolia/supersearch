@@ -67,7 +67,7 @@ $custom: (
     top: -1px;
     width: 70px;
     text-indent: -9999px;
-    background: url('../img/Algolia_logo_bg-dark.svg') no-repeat center center / contain;
+    background: url('img/algolia_logo_bg-dark.svg') no-repeat center center / contain;
     color: transparent;
   }
 }
@@ -117,6 +117,7 @@ body {
 
   &.no-scroll {
     position: relative;
+    right: 40px;
     height: 100vh;
     overflow: hidden;
     opacity: 0;
@@ -124,7 +125,7 @@ body {
     transform-origin: left 50% 50%;
     transform-style: preserve-3d;
     transform: translateX(-40vh);
-    transition: transform 1s ease, opacity .5s ease;
+    transition: transform .6s ease-out, opacity .8s linear;
   }
 }
 
@@ -134,6 +135,7 @@ header {
   float: left;
   width: 100%;
   h1 {
+    animation: flipInX .6s ease-in;
     padding: 30px 0 0;
     text-align: center;
     color: #fff;
@@ -151,6 +153,7 @@ header {
 
   @media (max-width: $bp-small) {
     margin: 16px 0;
+    max-width: inherit;
     width: calc(100% - 40px);
   }
 
@@ -164,6 +167,10 @@ header {
 
   .sbx-custom__input:focus {
     box-shadow: 0 2px #fff;
+  }
+
+  .sbx-custom__input:focus ~ .sbx-custom__submit {
+    animation: bounce .3s ease-in;
   }
 
   .sbx-custom__reset {
@@ -277,7 +284,7 @@ main {
   right: 0;
   z-index: 99;
   margin: 0;
-  transition: transform .4s ease-in, opacity 1s ease;
+  transition: transform .3s ease-in, opacity .6s ease;
   opacity: 1;
 
   .overlay-content {
@@ -498,16 +505,26 @@ main {
   right: 8px;
 }
 
-@keyframes fade {
+@keyframes bounce {
 
   0% {
-    transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
-    opacity: 0;
+    transform: scale(.6);
+  }
+
+  40% {
+    transform: scale(.8);
+  }
+
+  60% {
+    transform: scale(1.1);
+  }
+
+  80% {
+    transform: scale(.9);
   }
 
   100% {
-    opacity: 1;
-    transform: perspective(400px);
+    transform: scale(1);
   }
 }
 
