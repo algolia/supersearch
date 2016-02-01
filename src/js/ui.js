@@ -29,6 +29,7 @@
 
 
   $('.sbx-custom__filters').on('click', function(e){
+    $('[name="brandquery"]').focus();
     $(this).addClass('hide');
     $('.filters-panel').removeClass('hide');
     // $('main, header').addClass('blur');
