@@ -208,7 +208,7 @@
     top: -1px;
     width: 70px;
     text-indent: -9999px;
-    background: url("img/algolia_logo_bg-dark.svg") no-repeat center center/contain;
+    background: url("img/algolia-dark.svg") no-repeat center center/contain;
     color: transparent; }
 
 .fade {
@@ -332,7 +332,7 @@ header {
     display: block;
     position: absolute;
     top: -2px;
-    right: -104px;
+    right: -120px;
     margin: 6px;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -446,10 +446,6 @@ main {
     text-transform: uppercase;
     z-index: 9000;
     padding: 24px 24px 12px 12px; }
-
-.blur {
-  -webkit-filter: blur(3px);
-  filter: blur(3px); }
 
 .hide {
   display: none !important; }
@@ -726,9 +722,9 @@ main {
       opacity: 0; }
 
 .hit-brand {
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 800;
-  margin-right: 40px;
+  margin-right: 60px;
   white-space: nowrap;
   text-transform: uppercase;
   text-shadow: 1px 1px 0 black; }
