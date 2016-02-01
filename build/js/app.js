@@ -2728,7 +2728,7 @@
 	  e.preventDefault();
 	  var yt = $(this).data('id');
 	  $('.lightbox_frame_wrapper').append($('<iframe class="lightbox_frame" type="text/html" width="640" height="385"></iframe>'));
-	  $('.lightbox_frame').attr('src', 'http://www.youtube.com/embed/' + yt).load(function () {
+	  $('.lightbox_frame').attr('src', 'http://www.youtube.com/embed/' + yt + '?autoplay=1').load(function () {
 	    $(this).addClass('loaded');
 	  });
 	  $('.lightbox').toggleClass('hidden');
