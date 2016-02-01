@@ -2751,18 +2751,13 @@
 	});
 
 	$('.sbx-custom__filters').on('click', function (e) {
-	  $('[name="brandquery"]').focus();
-	  $(this).addClass('hide');
+	  e.preventDefault();
 	  $('.filters-panel').removeClass('hide');
-	  // $('main, header').addClass('blur');
 	  $('.container-fluid').addClass('no-scroll');
 	  $('body, html').css('overflow:hidden');
 	});
 	$('.filters-panel').on('click', function (e) {
-	  // e.preventDefault()
 	  $(this).addClass('hide');
-	  $('.sbx-custom__filters').removeClass('hide');
-	  // $('main, header').removeClass('blur');
 	  $('body, html').css('overflow:auto');
 	  $('.container-fluid').removeClass('no-scroll');
 	}).find('.searchbox, .tabs').click(function (e) {
