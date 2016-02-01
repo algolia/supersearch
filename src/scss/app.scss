@@ -24,11 +24,6 @@ $ais_red: lighten($sb_red, 15%);
 $bp-regular: 960px;
 $bp-small: 740px;
 
-%flipInX {
-  backface-visibility: visible !important;
-  animation: flipInX .3s ease;
-}
-
 $custom: (
   input-width: 500px,
   input-height: 40px,
@@ -205,7 +200,7 @@ header {
     display: block;
     position: absolute;
     top: -2px;
-    right: - 104px;
+    right: - 120px;
     margin: 6px;
     user-select: none;
 
@@ -339,10 +334,6 @@ main {
     z-index: 9000;
     padding: 24px 24px 12px 12px;
     }
-}
-
-.blur {
-  filter: blur(3px);
 }
 
 .hide {
@@ -506,9 +497,9 @@ main {
 }
 
 .hit-brand {
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 800;
-  margin-right: 40px;
+  margin-right: 60px;
   white-space: nowrap;
   text-transform: uppercase;
   text-shadow: 1px 1px 0 black;
