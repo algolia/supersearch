@@ -4,14 +4,17 @@
 // let instantsearch = require('instantsearch.js');
 const inceptionWidget = require('./widgets/inception.js');
 
-let search = instantsearch({
+
+let superbowlsearch = instantsearch({
   appId: 'VC519DRAY3',
   apiKey: 'ba8e7e5e700d53fe3f28f20226b63baf',
   indexName: 'sb_ads',
   urlSync: false
 });
 
-search.addWidget(
+window.search = superbowlsearch;
+
+superbowlsearch.addWidget(
   instantsearch.widgets.searchBox({
     container: '#search',
     placeholder: 'Find ads from big games past&hellip;',
@@ -19,7 +22,7 @@ search.addWidget(
   })
 );
 
-search.addWidget(
+superbowlsearch.addWidget(
   instantsearch.widgets.hits({
     hitsPerPage: 30,
     container: '#results',
@@ -31,7 +34,7 @@ search.addWidget(
   })
 );
 
-search.addWidget(
+superbowlsearch.addWidget(
   instantsearch.widgets.refinementList({
     container: '#years',
     attributeName: 'year',
@@ -46,7 +49,7 @@ search.addWidget(
   })
 );
 
-search.addWidget(
+superbowlsearch.addWidget(
   instantsearch.widgets.currentRefinedValues({
     container: "#refinements",
     clearAll: false,
@@ -57,7 +60,7 @@ search.addWidget(
   })
 );
 
-search.addWidget(
+superbowlsearch.addWidget(
   inceptionWidget({
     container: '#brands',
     mainSearchAttribute: 'brand',
@@ -98,4 +101,4 @@ search.addWidget(
 //   })
 // );
 
-search.start();
+superbowlsearch.start();

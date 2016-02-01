@@ -61,20 +61,22 @@
 
 	var inceptionWidget = __webpack_require__(2);
 
-	var search = instantsearch({
+	var superbowlsearch = instantsearch({
 	  appId: 'VC519DRAY3',
 	  apiKey: 'ba8e7e5e700d53fe3f28f20226b63baf',
 	  indexName: 'sb_ads',
 	  urlSync: false
 	});
 
-	search.addWidget(instantsearch.widgets.searchBox({
+	window.search = superbowlsearch;
+
+	superbowlsearch.addWidget(instantsearch.widgets.searchBox({
 	  container: '#search',
 	  placeholder: 'Find ads from big games past&hellip;',
 	  wrapInput: false
 	}));
 
-	search.addWidget(instantsearch.widgets.hits({
+	superbowlsearch.addWidget(instantsearch.widgets.hits({
 	  hitsPerPage: 30,
 	  container: '#results',
 	  templates: {
@@ -83,7 +85,7 @@
 	  }
 	}));
 
-	search.addWidget(instantsearch.widgets.refinementList({
+	superbowlsearch.addWidget(instantsearch.widgets.refinementList({
 	  container: '#years',
 	  attributeName: 'year',
 	  operator: 'or',
@@ -96,7 +98,7 @@
 	  }
 	}));
 
-	search.addWidget(instantsearch.widgets.currentRefinedValues({
+	superbowlsearch.addWidget(instantsearch.widgets.currentRefinedValues({
 	  container: "#refinements",
 	  clearAll: false,
 	  templates: {
@@ -105,7 +107,7 @@
 	  }
 	}));
 
-	search.addWidget(inceptionWidget({
+	superbowlsearch.addWidget(inceptionWidget({
 	  container: '#brands',
 	  mainSearchAttribute: 'brand',
 	  title: '<svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add-icon"></use></svg> Brand',
@@ -144,7 +146,7 @@
 	//   })
 	// );
 
-	search.start();
+	superbowlsearch.start();
 
 /***/ },
 /* 2 */
@@ -2722,59 +2724,46 @@
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
-	$(document).ready(function () {
+	$('body').append('<div class="lightbox hidden"><a href="javascript:void(0)" class="close"><svg height="34px" id="Layer_1" style="enable-background:new 0 0 34 34;" version="1.1" viewBox="0 0 512 512" width="34px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg></a><iframe class="lightbox_frame" type="text/html" width="640" height="385"></iframe>');
 
-	  $('body').append('<div class="lightbox hidden"><a href="javascript:void(0)" class="close"><svg height="34px" id="Layer_1" style="enable-background:new 0 0 34 34;" version="1.1" viewBox="0 0 512 512" width="34px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg></a><iframe class="lightbox_frame" type="text/html" width="640" height="385"></iframe>');
+	$('#results').on('click', '.hit', function (e) {
+	  e.preventDefault();
+	  var yt = $(this).data('id');
+	  $('.lightbox_frame').attr('src', 'http://www.youtube.com/embed/' + yt);
+	  $('.lightbox').toggleClass('hidden');
+	});
 
-	  $('#results').on('click', '.hit', function (e) {
-	    e.preventDefault();
-	    var yt = $(this).data('id');
-	    $('.lightbox_frame').attr('src', 'http://www.youtube.com/embed/' + yt);
-	    $('.lightbox').toggleClass('hidden');
-	  });
+	$('.close').on('click', function () {
+	  $('.lightbox').addClass('hidden');
+	});
 
-	  $('.close').on('click', function () {
-	    $('.lightbox').addClass('hidden');
-	  });
+	$('.sbx-custom__reset').on('click', function (e) {
+	  e.preventDefault();
+	  $(this).parent().find('input').val('').focus();
+	  search.helper.setQuery('').search();
+	});
 
-	  $('.sbx-custom__filters').on('click', function (e) {
-	    $(this).addClass('hide');
-	    $('.filters-panel').removeClass('hide');
-	    // $('main, header').addClass('blur');
-	    $('.container-fluid').addClass('no-scroll');
-	    $('body, html').css('overflow:hidden');
-	  });
-	  $('.filters-panel').on('click', function (e) {
-	    // e.preventDefault()
-	    $(this).addClass('hide');
-	    $('.sbx-custom__filters').removeClass('hide');
-	    // $('main, header').removeClass('blur');
-	    $('body, html').css('overflow:auto');
-	    $('.container-fluid').removeClass('no-scroll');
-	  }).find('.searchbox, .tabs').click(function (e) {
-	    return false;
-	  });
+	$('.sbx-custom__filters').on('click', function (e) {
+	  $(this).addClass('hide');
+	  $('.filters-panel').removeClass('hide');
+	  // $('main, header').addClass('blur');
+	  $('.container-fluid').addClass('no-scroll');
+	  $('body, html').css('overflow:hidden');
+	});
+	$('.filters-panel').on('click', function (e) {
+	  // e.preventDefault()
+	  $(this).addClass('hide');
+	  $('.sbx-custom__filters').removeClass('hide');
+	  // $('main, header').removeClass('blur');
+	  $('body, html').css('overflow:auto');
+	  $('.container-fluid').removeClass('no-scroll');
+	}).find('.searchbox, .tabs').click(function (e) {
+	  return false;
+	});
 
-	  $('.tabs a').on('click', function (e) {
-	    $('.tabs li a').toggleClass('active');
-	    $('.tab-panel').toggleClass('active');
-	  });
-
-	  // $('#years').on('click', 'a', function(e){
-	  //   $('.ais-refinement-list--body').removeClass('hide');
-	  // });
-	  //
-	  // $('#years').on('click', '.ais-refinement-list--body', function(e){
-	  //   $('.ais-refinement-list--body').addClass('hide');
-	  // });
-	  //
-	  //
-	  // $('#inception-filters .menu').on('click', function(e){
-	  //   // e.preventDefault()
-	  //   $(this).addClass('hide');
-	  // }).find('.searchbox').click(function(e) {
-	  //     return false;
-	  // });
+	$('.tabs a').on('click', function (e) {
+	  $('.tabs li a').toggleClass('active');
+	  $('.tab-panel').toggleClass('active');
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 

@@ -59,12 +59,6 @@
             %use{xlink:href: "#icon-filters"}
           %span filters
 
-          / Js: focus search input after reset
-          :javascript
-             document.querySelector('.searchbox [type="reset"]').addEventListener('click', function() {
-               this.parentNode.querySelector('input').focus();
-             });
-
           %script#hit-template{type: "text/template"}
             %a.hit{href: "https://www.youtube.com/watch?v={{objectID}}",data-id: "{{objectID}}", style: "background-image: url('{{thumbnails.high.url}}')"}
               .hit-brand {{{_highlightResult.brand.value}}}
