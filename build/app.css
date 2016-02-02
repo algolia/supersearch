@@ -711,11 +711,9 @@ main {
   background-color: rgba(63, 151, 243, 0.6);
   background-blend-mode: soft-light; }
   @media (max-width: 740px) {
-    .hit::after {
-      opacity: .3; } }
-  @media (max-width: 740px) {
     .hit {
-      height: 90px; } }
+      height: 90px;
+      background-color: rgba(63, 151, 243, 0.4); } }
   .hit:hover {
     background-color: #4D4E4E;
     background-size: 120%;

@@ -479,13 +479,9 @@ main {
     color: rgba(#3F97F3, .6);
     blend-mode: soft-light;
   }
-  &::after {
-    @media (max-width: $bp-small) {
-      opacity: .3;
-    }
-  }
   @media (max-width: $bp-small) {
     height: 90px;
+    background-color: rgba(#3F97F3, .4);;
   }
 
   &:hover {
