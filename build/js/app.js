@@ -216,8 +216,8 @@
 	        $list.addEventListener('click', function (e) {
 	          var target = e.target;
 	          var facetValue = target.dataset.facetValue;
-	          // FIXME check if the value is valid :)
-	          helper.addDisjunctiveFacetRefinement(mainSearchAttribute, facetValue).search();
+	          if (!facetValue) return;
+	          helper.clearRefinements(mainSearchAttribute).addDisjunctiveFacetRefinement(mainSearchAttribute, facetValue).search();
 	          $input.value = '';
 	        });
 	        // $menu.classList.add('hide');

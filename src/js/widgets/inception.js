@@ -79,8 +79,10 @@ const inceptionWidget = function(config){
         $list.addEventListener('click', function(e){
           const target = e.target;
           const facetValue = target.dataset.facetValue;
-          // FIXME check if the value is valid :)
-          helper.addDisjunctiveFacetRefinement(mainSearchAttribute, facetValue).search();
+          if(!facetValue) return;
+          helper.clearRefinements(mainSearchAttribute)
+                .addDisjunctiveFacetRefinement(mainSearchAttribute, facetValue)
+                .search();
           $input.value = '';
         });
         // $menu.classList.add('hide');
