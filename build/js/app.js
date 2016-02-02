@@ -199,7 +199,11 @@
 	          } else {
 	            helper.searchOnce({
 	              index: index,
-	              query: query
+	              query: query,
+	              facets: [],
+	              facetsRefinements: [],
+	              disjunctiveFacetsRefinements: [],
+	              disjunctiveFacets: []
 	            }).then(updateListSearchOnce.bind(undefined, secondarySearchAttribute, $list));
 	          }
 	        });
@@ -212,7 +216,8 @@
 	        $list.addEventListener('click', function (e) {
 	          var target = e.target;
 	          var facetValue = target.dataset.facetValue;
-	          helper.addDisjunctiveFacetRefinement(mainSearchAttribute, facetValue).search();
+	          if (!facetValue) return;
+	          helper.clearRefinements(mainSearchAttribute).addDisjunctiveFacetRefinement(mainSearchAttribute, facetValue).search();
 	          $input.value = '';
 	        });
 	        // $menu.classList.add('hide');

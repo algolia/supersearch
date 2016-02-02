@@ -62,7 +62,11 @@ const inceptionWidget = function(config){
           else {
             helper.searchOnce({
               index: index,
-              query: query
+              query: query,
+              facets: [],
+              facetsRefinements: [],
+              disjunctiveFacetsRefinements: [],
+              disjunctiveFacets: []
             }).then(updateListSearchOnce.bind(undefined, secondarySearchAttribute, $list));
           }
         });
@@ -75,7 +79,10 @@ const inceptionWidget = function(config){
         $list.addEventListener('click', function(e){
           const target = e.target;
           const facetValue = target.dataset.facetValue;
-          helper.addDisjunctiveFacetRefinement(mainSearchAttribute, facetValue).search();
+          if(!facetValue) return;
+          helper.clearRefinements(mainSearchAttribute)
+                .addDisjunctiveFacetRefinement(mainSearchAttribute, facetValue)
+                .search();
           $input.value = '';
         });
         // $menu.classList.add('hide');
