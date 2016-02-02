@@ -65,7 +65,7 @@
 	  appId: 'VC519DRAY3',
 	  apiKey: 'ba8e7e5e700d53fe3f28f20226b63baf',
 	  indexName: 'sb_ads',
-	  urlSync: false
+	  urlSync: true
 	});
 
 	window.search = superbowlsearch;
@@ -85,10 +85,9 @@
 	  }
 	}));
 
-	superbowlsearch.addWidget(instantsearch.widgets.refinementList({
+	superbowlsearch.addWidget(instantsearch.widgets.menu({
 	  container: '#years',
 	  attributeName: 'year',
-	  operator: 'or',
 	  limit: 1000,
 	  sortBy: ['name:desc'],
 	  templates: {
@@ -199,7 +198,11 @@
 	          } else {
 	            helper.searchOnce({
 	              index: index,
-	              query: query
+	              query: query,
+	              facets: [],
+	              facetsRefinements: [],
+	              disjunctiveFacetsRefinements: [],
+	              disjunctiveFacets: []
 	            }).then(updateListSearchOnce.bind(undefined, secondarySearchAttribute, $list));
 	          }
 	        });
@@ -212,7 +215,8 @@
 	        $list.addEventListener('click', function (e) {
 	          var target = e.target;
 	          var facetValue = target.dataset.facetValue;
-	          helper.addDisjunctiveFacetRefinement(mainSearchAttribute, facetValue).search();
+	          if (!facetValue) return;
+	          helper.clearRefinements(mainSearchAttribute).addDisjunctiveFacetRefinement(mainSearchAttribute, facetValue).search();
 	          $input.value = '';
 	        });
 	        // $menu.classList.add('hide');
