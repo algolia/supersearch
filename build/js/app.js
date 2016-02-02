@@ -65,7 +65,7 @@
 	  appId: 'VC519DRAY3',
 	  apiKey: 'ba8e7e5e700d53fe3f28f20226b63baf',
 	  indexName: 'sb_ads',
-	  urlSync: false
+	  urlSync: true
 	});
 
 	window.search = superbowlsearch;
