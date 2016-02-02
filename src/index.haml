@@ -63,10 +63,11 @@
             %use{xlink:href: "#icon-filters"}
           %span filters
 
-          %script#hit-template{type: "text/template"}
-            %a.hit{href: "https://www.youtube.com/watch?v={{objectID}}",data-id: "{{objectID}}", style: "background-image: url('{{thumbnails.high.url}}')"}
-              .hit-brand {{{_highlightResult.brand.value}}}
-              .hit-season {{year}} - {{sbYear}}
+      %script#hit-template{type: "text/template"}
+        %a.hit{href: "https://www.youtube.com/watch?v={{objectID}}",data-id: "{{objectID}}", style: "background-image: url('{{thumbnails.high.url}}')"}
+          .hit-brand {{{_highlightResult.brand.value}}}
+          .hit-name {{{_highlightResult.ad_name.value}}}
+          .hit-season {{year}} - {{sbYear}}
 
 
     %main

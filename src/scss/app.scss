@@ -470,7 +470,7 @@ main {
   transition: background-size .2s ease;
   cursor: pointer;
   color: #fff;
-  padding: 8px;
+  padding: 4px 8px;
   position: relative;
   background: {
     repeat: no-repeat;
@@ -479,7 +479,11 @@ main {
     color: rgba(#3F97F3, .6);
     blend-mode: soft-light;
   }
-
+  &::after {
+    @media (max-width: $bp-small) {
+      opacity: .3;
+    }
+  }
   @media (max-width: $bp-small) {
     height: 90px;
   }
@@ -489,17 +493,17 @@ main {
     background-size: 120%;
     transition: background-color .25s, background-size .1s ease;
     blend-mode: hard-light;
-    &::after {
-      opacity: 0;
+    .hit-name {
+      background-image: linear-gradient(45deg, black, rgba(#04328D,0));
     }
   }
 
 }
 
 .hit-brand {
-  font-size: 1.1em;
+  font-size: .9em;
   font-weight: 800;
-  margin-right: 60px;
+  margin-right: 100px;
   white-space: nowrap;
   text-transform: uppercase;
   text-shadow: 1px 1px 0 black;
@@ -507,7 +511,22 @@ main {
   em {
     font-style: normal;
     font-weight: 800;
-    text-decoration: underline;
+    color: #FF2682;
+  }
+}
+
+.hit-name {
+  font-size: .85em;
+  font-weight: 400;
+  text-shadow: 0 0 6px #2B8DF4, 1px 1px 2px black;
+  background-image: linear-gradient(45deg, #04328D, rgba(#04328D,0));
+  display: inline-block;
+  padding: 2px 6px 2px 8px;
+  margin-left: -8px;
+
+  em {
+    color: #FF2682;
+    font-style: normal;
   }
 }
 
@@ -519,8 +538,8 @@ main {
   width: 100%;
   text-align: right;
   position: absolute;
-  bottom: 8px;
-  right: 8px;
+  bottom: 4px;
+  right: 4px;
 }
 
 @keyframes bounce {
@@ -548,13 +567,18 @@ main {
 
 @keyframes flipInX {
   0% {
+    opacity: 0;
+
+  }
+  20% {
+    opacity: 0;
     transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
     transition-timing-function: ease-in;
   }
 
   40% {
     transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
-    transition-timing-function: ease-in;
+    opacity: 1;
   }
 
   60% {
