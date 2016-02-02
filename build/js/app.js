@@ -85,10 +85,9 @@
 	  }
 	}));
 
-	superbowlsearch.addWidget(instantsearch.widgets.refinementList({
+	superbowlsearch.addWidget(instantsearch.widgets.menu({
 	  container: '#years',
 	  attributeName: 'year',
-	  operator: 'or',
 	  limit: 1000,
 	  sortBy: ['name:desc'],
 	  templates: {

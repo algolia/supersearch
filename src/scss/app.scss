@@ -382,7 +382,7 @@ main {
   }
 }
 
-.items, .ais-refinement-list--list {
+.items, .ais-refinement-list--list, .ais-menu--list{
   display: flex;
   flex-flow: wrap;
   flex-direction: row;
@@ -390,7 +390,7 @@ main {
   padding: 20px 30px;
 }
 
-.items li, .ais-refinement-list--item {
+.items li, .ais-refinement-list--item, .ais-menu--item{
   flex-grow: 1;
   background: rgba(#06132B,.8);
   box-shadow: inset 0 0 0 1px #00A3FF;
@@ -412,11 +412,11 @@ main {
   }
 }
 
-.ais-refinement-list--item {
+.ais-refinement-list--item, .ais-menu--item {
   width: 100%
 }
 
-.ais-refinement-list--item__active {
+.ais-refinement-list--item__active, .ais-menu--item__active {
   color: #fff;
   background: rgba($ais_blue,.3);
 }

@@ -482,7 +482,7 @@ main {
   #refinements .ais-current-refined-values--list svg {
     fill: #BD245E; }
 
-.items, .ais-refinement-list--list {
+.items, .ais-refinement-list--list, .ais-menu--list {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -497,7 +497,7 @@ main {
   justify-content: space-between;
   padding: 20px 30px; }
 
-.items li, .ais-refinement-list--item {
+.items li, .ais-refinement-list--item, .ais-menu--item {
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -509,17 +509,17 @@ main {
   padding: 10px 12px;
   font-size: 1.2em;
   font-weight: 400; }
-  .items li:hover, .ais-refinement-list--item:hover {
+  .items li:hover, .ais-refinement-list--item:hover, .ais-menu--item:hover {
     text-shadow: 0 0 5px white;
     background: rgba(0, 163, 255, 0.5); }
-  .items li em, .ais-refinement-list--item em {
+  .items li em, .ais-refinement-list--item em, .ais-menu--item em {
     font-style: normal;
     font-weight: 800; }
 
-.ais-refinement-list--item {
+.ais-refinement-list--item, .ais-menu--item {
   width: 100%; }
 
-.ais-refinement-list--item__active {
+.ais-refinement-list--item__active, .ais-menu--item__active {
   color: #fff;
   background: rgba(23, 104, 206, 0.3); }
 

@@ -35,10 +35,9 @@ superbowlsearch.addWidget(
 );
 
 superbowlsearch.addWidget(
-  instantsearch.widgets.refinementList({
+  instantsearch.widgets.menu({
     container: '#years',
     attributeName: 'year',
-    operator: 'or',
     limit: 1000,
     sortBy: ['name:desc'],
     templates: {
