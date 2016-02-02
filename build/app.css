@@ -337,7 +337,8 @@ header {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none; }
+    user-select: none;
+    cursor: pointer; }
     @media (max-width: 740px) {
       .searchbox .sbx-custom__filters {
         right: -59px; } }
@@ -402,7 +403,9 @@ main {
     background-color: #fff; }
 
 .tab-panel {
-  display: none; }
+  display: none;
+  max-width: 800px;
+  margin: 0 auto; }
   .tab-panel.active {
     display: block; }
   .tab-panel .searchbox {
@@ -445,7 +448,12 @@ main {
     font-size: 1.1em;
     text-transform: uppercase;
     z-index: 9000;
-    padding: 24px 24px 12px 12px; }
+    background-color: transparent;
+    padding: 24px 24px 12px 12px;
+    cursor: pointer;
+    border: 0; }
+    .overlay .close:focus {
+      outline: 0; }
 
 .hide {
   display: none !important; }
