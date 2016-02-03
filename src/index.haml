@@ -84,6 +84,7 @@
           .hit-brand {{{_highlightResult.brand.value}}}
           .hit-name {{{_highlightResult.ad_name.value}}}
           .hit-season {{year}} - {{sbYear}}
+          .hit-tags {{#_highlightResult._tags}} {{#matchedWords}} # {{matchedWords}}{{/matchedWords}} {{/_highlightResult._tags}}
 
     %main
       %section#topbar-results-control

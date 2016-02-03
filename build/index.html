@@ -100,7 +100,7 @@
         </button>
       </form>
       <script type="text/template" id="hit-template">
-        <a href="https://www.youtube.com/watch?v={{objectID}}" data-id="{{objectID}}" style="background-image: url('{{thumbnails.high.url}}')" class="hit"><div class="hit-brand">{{{_highlightResult.brand.value}}}</div><div class="hit-name">{{{_highlightResult.ad_name.value}}}</div><div class="hit-season">{{year}} - {{sbYear}}</div></a>
+        <a href="https://www.youtube.com/watch?v={{objectID}}" data-id="{{objectID}}" style="background-image: url('{{thumbnails.high.url}}')" class="hit"><div class="hit-brand">{{{_highlightResult.brand.value}}}</div><div class="hit-name">{{{_highlightResult.ad_name.value}}}</div><div class="hit-season">{{year}} - {{sbYear}}</div><div class="hit-tags">{{#_highlightResult._tags}} {{#matchedWords}} # {{matchedWords}}{{/matchedWords}} {{/_highlightResult._tags}}</div></a>
       </script>
     </header>
     <main>
