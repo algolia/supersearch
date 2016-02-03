@@ -67,12 +67,6 @@ $custom: (
   }
 }
 
-.fade {
-  animation-name: fade;
-  animation-duration: 200ms;
-  animation-timing-function: ease;
-  animation-iteration-count: 1;
-}
 
 :root {
   font-size: calc(.65rem + .3vw + .3vh);
@@ -287,13 +281,23 @@ main {
   }
 }
 
+.ais-menu {
+  animation: fadeleft .2s ease-in;
+}
+.menu {
+  animation: faderight .2s ease-in;
+}
+
+
 .tab-panel {
   display: none;
+  visibility: hidden;
   max-width: 800px ;
-  margin: 0 auto;
-
+  margin: 4vh auto 0;
   &.active {
+    visibility: visible;
     display: block;
+    transform: translateX(0);
   }
 
   .searchbox {
@@ -392,6 +396,10 @@ main {
       fill: #BD245E;
     }
   }
+  .ais-current-refined-values--item {
+    animation: bounce .5s ease-in;
+    font-size: 1.2em;
+  }
 }
 
 .items, .ais-refinement-list--list, .ais-menu--list{
@@ -476,7 +484,7 @@ main {
 }
 
 .hit {
-  height: 110px;
+  height: 140px;
   display: block;
   text-decoration: none;
   transition: background-size .2s ease;
@@ -548,6 +556,34 @@ main {
   position: absolute;
   bottom: 4px;
   right: 4px;
+}
+
+@keyframes fadeleft {
+
+  0% {
+    opacity: 0;
+    transform: translateX(-50vw);
+  }
+
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes faderight {
+
+  0% {
+    opacity: 0;
+    transform: translateX(50vw);
+  }
+
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes bounce {
