@@ -72,7 +72,7 @@ superbowlsearch.addWidget(
 search.addWidget(
   instantsearch.widgets.pagination({
     container: '#pagination',
-    maxPages: 10
+    maxPages: 4
   })
 );
 
