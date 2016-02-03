@@ -41,7 +41,6 @@ superbowlsearch.addWidget(
     limit: 1000,
     sortBy: ['name:desc'],
     templates: {
-      // header: '<a href="javascript:void(0)" class="toggle"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add-icon"></use></svg> Year</a>',
       header: false,
       item: '{{name}}'
     }
@@ -63,7 +62,6 @@ superbowlsearch.addWidget(
   inceptionWidget({
     container: '#brands',
     mainSearchAttribute: 'brand',
-    title: '<svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add-icon"></use></svg> Brand',
     secondarySearchAttribute: 'name',
     index: 'sb_ads_brands'
   })
@@ -72,7 +70,9 @@ superbowlsearch.addWidget(
 search.addWidget(
   instantsearch.widgets.pagination({
     container: '#pagination',
-    maxPages: 4
+    maxPages: 20,
+    padding: 1,
+    showFirstLast: false
   })
 );
 

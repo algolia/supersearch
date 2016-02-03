@@ -39,7 +39,6 @@ $('.sbx-custom__reset').on('click touchstart', function(e) {
 
 $('.sbx-custom__filters').on('click touchstart', function(e){
   e.preventDefault();
-  e.stopPropagation();
   $('.filters-panel').removeClass('hide');
   $('.container-fluid').addClass('no-scroll');
   $('body, html').css('overflow:hidden');
@@ -53,7 +52,9 @@ $('.filters-panel').on('click', function(e){
     return false;
 });
 
-$('.tabs a').on('touchstart', function(e){
+$('.tabs a').on('click touchstart', function(e){
+  e.preventDefault();
+  e.stopPropagation();
   $('.tabs li a').toggleClass('active');
   $('.tab-panel').toggleClass('active');
 });
