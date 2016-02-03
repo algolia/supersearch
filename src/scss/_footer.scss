@@ -1,11 +1,15 @@
 .poweredby {
   color: white;
   display: block;
+  width: 250px;
   text-align: center;
   font-weight: 400;
   font-size: 14px;
   text-transform: uppercase;
-  padding: 0 0 40px;
+  padding: 4px 0 8px;
+  margin: 0 auto 40px;
+  background-color: rgba(#02132B,.8);
+  border-radius: 25px;
   .algolia {
     position: relative;
     display: inline-block;

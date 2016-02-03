@@ -116,6 +116,9 @@
     -webkit-transform: perspective(400px);
     transform: perspective(400px); } }
 
+.hide {
+  display: none !important; }
+
 * {
   margin: 0;
   padding: 0;
@@ -280,11 +283,15 @@ header {
 .poweredby {
   color: white;
   display: block;
+  width: 250px;
   text-align: center;
   font-weight: 400;
   font-size: 14px;
   text-transform: uppercase;
-  padding: 0 0 40px; }
+  padding: 4px 0 8px;
+  margin: 0 auto 40px;
+  background-color: rgba(2, 19, 43, 0.8);
+  border-radius: 25px; }
   .poweredby .algolia {
     position: relative;
     display: inline-block;
@@ -680,20 +687,10 @@ header {
   clear: both; }
 
 .ais-hits {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: wrap;
-  -ms-flex-flow: wrap;
-  flex-flow: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
   padding: 0 .5vw .5vw 0;
   background-color: rgba(2, 19, 43, 0.8);
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   -webkit-flex-flow: wrap;
   -ms-flex-flow: wrap;
@@ -840,18 +837,6 @@ header {
       -webkit-animation-delay: 0.41s;
       animation-delay: 0.41s; }
 
-.ais-hits__empty {
-  padding-top: 80px;
-  font-size: 1.2em;
-  display: block;
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  background: transparent; }
-  .ais-hits__empty h2,
-  .ais-hits__empty h3 {
-    font-weight: 400; }
-
 .hit {
   height: 140px;
   display: block;
@@ -913,6 +898,27 @@ header {
   bottom: 4px;
   right: 4px; }
 
+.ais-hits__empty {
+  display: block;
+  min-height: 70vh;
+  background: transparent;
+  padding-top: 10px; }
+  @media (max-width: 740px) {
+    .ais-hits__empty {
+      padding-top: 60px; } }
+  .ais-hits__empty .no-results {
+    padding: 1.4em 0;
+    font-size: 1.1em;
+    display: block;
+    width: 340px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    font-weight: 400; }
+    .ais-hits__empty .no-results h2 {
+      font-weight: 400;
+      margin-bottom: .4em; }
+
 #pagination {
   margin: 30px 0 60px;
   font-size: 1.2em;
@@ -945,6 +951,3 @@ header {
   #pagination li {
     display: inline-block;
     padding: 0 8px; }
-
-.hide {
-  display: none !important; }

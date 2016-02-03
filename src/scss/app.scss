@@ -1,9 +1,5 @@
 @charset 'utf-8';
 
-@import 'variables', 'animations', 'mixins';
+@import 'variables', 'animations', 'mixins', 'helpers';
 @import 'layout', 'typography', 'header','lightbox', 'footer';
 @import 'searchbox', 'filters', 'refinements', 'hits', 'pagination';
-
-.hide {
-  display: none !important;
-}

@@ -4,10 +4,6 @@
 }
 
 .ais-hits {
-  display: flex;
-  flex-flow: wrap;
-  flex-direction: row;
-  justify-content: space-between;
   padding: 0 .5vw .5vw 0;
   background-color: rgba(#02132B,.8);
   @include flex-setting();
@@ -28,22 +24,6 @@
     }
   }
 }
-
-.ais-hits__empty {
-  padding-top: 80px;
-  font-size: 1.2em;
-  display: block;
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  background: transparent;
-
-  h2,
-  h3 {
-    font-weight: 400;
-  }
-}
-
 
 .hit {
   height: 140px;
@@ -118,4 +98,28 @@
   position: absolute;
   bottom: 4px;
   right: 4px;
+}
+
+.ais-hits__empty {
+  display: block;
+  min-height: 70vh;
+  background: transparent;
+  padding-top: 10px;
+  @media (max-width: $bp-small) {
+    padding-top: 60px;
+  }
+  .no-results {
+    padding: 1.4em 0;
+    font-size: 1.1em;
+    display: block;
+    width: 340px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    font-weight: 400;
+    h2 {
+      font-weight: 400;
+      margin-bottom: .4em;
+    }
+  }
 }
