@@ -215,8 +215,8 @@ header {
     .please-be-kind {
       display: none; } }
   .please-be-kind a {
-    -webkit-animation: flipInX .6s ease-in;
-    animation: flipInX .6s ease-in;
+    -webkit-animation: flipInX .2s ease;
+    animation: flipInX .2s ease;
     -webkit-animation-fill-mode: backwards;
     animation-fill-mode: backwards;
     -webkit-animation-delay: 1s;
@@ -237,8 +237,8 @@ header {
       -webkit-animation-delay: 1.2s;
       animation-delay: 1.2s; }
     .please-be-kind a:nth-child(4) {
-      -webkit-animation-delay: 1.3s;
-      animation-delay: 1.3s; }
+      -webkit-animation-delay: 1.25s;
+      animation-delay: 1.25s; }
     .please-be-kind a .pulse {
       opacity: 0;
       position: absolute;
@@ -252,7 +252,8 @@ header {
     .please-be-kind a:hover .pulse {
       -webkit-animation: bounce .3s ease-in;
       animation: bounce .3s ease-in;
-      opacity: 1; }
+      opacity: 1;
+      background-image: linear-gradient(135deg, #AD2C6A, #62469C); }
     .please-be-kind a:hover svg {
       fill: white; }
   .please-be-kind svg {
