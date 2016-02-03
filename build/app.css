@@ -724,7 +724,8 @@ header {
   margin: 2px;
   padding: 10px 12px;
   font-size: 1.2em;
-  font-weight: 400; }
+  font-weight: 400;
+  cursor: pointer; }
   .items li:hover, .ais-refinement-list--item:hover, .ais-menu--item:hover {
     text-shadow: 0 0 5px white;
     background: rgba(0, 163, 255, 0.5); }
