@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>Play</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="User-Messages-FB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="500---Breakpoint" sketch:type="MSArtboardGroup" transform="translate(-225.000000, -1206.000000)">
+            <g id="Link-Copy" sketch:type="MSLayerGroup" transform="translate(16.000000, 1050.000000)">
+                <g id="Play" transform="translate(209.000000, 156.000000)" sketch:type="MSShapeGroup">
+                    <circle id="Oval-99" opacity="0.94921875" fill="#415FD9" cx="25" cy="25" r="25"></circle>
+                    <path d="M20.6753455,33.6623273 C19.197793,34.4011035 18,33.6470745 18,32.0074602 L18,19.9925398 C18,18.3398057 19.2089808,17.6044904 20.6753455,18.3376727 L33.3246545,24.6623273 C34.802207,25.4011035 34.7910192,26.6044904 33.3246545,27.3376727 L20.6753455,33.6623273 Z" id="Triangle-1" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
