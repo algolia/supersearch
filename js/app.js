@@ -50,9 +50,6 @@
 	__webpack_require__(3);
 	__webpack_require__(6);
 
-	__webpack_require__(8);
-	__webpack_require__(9);
-
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
@@ -119,7 +116,7 @@
 
 	search.addWidget(instantsearch.widgets.pagination({
 	  container: '#pagination',
-	  maxPages: 10
+	  maxPages: 4
 	}));
 
 	superbowlsearch.start();
@@ -2705,7 +2702,7 @@
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
-	$('#results').on('click touchstart', '.hit', function (e) {
+	$('#results').on('click', '.hit', function (e) {
 	  e.preventDefault();
 	  var yt = $(this).data('id');
 	  $('.lightbox_frame_wrapper').append($('<iframe class="lightbox_frame" type="text/html" width="640" height="385" allowfullscreen></iframe>'));
@@ -2726,7 +2723,7 @@
 
 	var $lightbox = $('<div class="lightbox hidden"><a href="javascript:void(0)" class="close"><svg height="34px" id="Layer_1" style="enable-background:new 0 0 34 34;" version="1.1" viewBox="0 0 512 512" width="34px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg></a><div class="lightbox_frame_wrapper"></div>');
 
-	$lightbox.on('click touchstart', function () {
+	$lightbox.on('click', function () {
 	  closeLightbox();
 	});
 
@@ -2746,11 +2743,13 @@
 
 	$('.sbx-custom__filters').on('click touchstart', function (e) {
 	  e.preventDefault();
+	  e.stopPropagation();
 	  $('.filters-panel').removeClass('hide');
 	  $('.container-fluid').addClass('no-scroll');
 	  $('body, html').css('overflow:hidden');
 	});
-	$('.filters-panel').on('click touchstart', function (e) {
+
+	$('.filters-panel').on('click', function (e) {
 	  $(this).addClass('hide');
 	  $('body, html').css('overflow:auto');
 	  $('.container-fluid').removeClass('no-scroll');
@@ -2758,7 +2757,7 @@
 	  return false;
 	});
 
-	$('.tabs a').on('click touchstart', function (e) {
+	$('.tabs a').on('touchstart', function (e) {
 	  $('.tabs li a').toggleClass('active');
 	  $('.tab-panel').toggleClass('active');
 	});
@@ -12600,53 +12599,6 @@
 	return jQuery;
 	}));
 
-
-/***/ },
-/* 8 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	(function (i, s, o, g, r, a, m) {
-	  i['GoogleAnalyticsObject'] = r;i[r] = i[r] || function () {
-	    (i[r].q = i[r].q || []).push(arguments);
-	  }, i[r].l = 1 * new Date();a = s.createElement(o), m = s.getElementsByTagName(o)[0];a.async = 1;a.src = g;m.parentNode.insertBefore(a, m);
-	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-	ga('create', 'UA-32446386-14', 'auto');
-	ga('send', 'pageview');
-
-/***/ },
-/* 9 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	adroll_adv_id = "TGR7R4XSGVGYVPX4LQBDFQ";
-	adroll_pix_id = "YQNWNHGUUBD2JMY7BVOBWM";
-	/* OPTIONAL: provide email to improve user identification */
-	/* adroll_email = "username@example.com"; */
-	(function () {
-	    var _onload = function _onload() {
-	        if (document.readyState && !/loaded|complete/.test(document.readyState)) {
-	            setTimeout(_onload, 10);return;
-	        }
-	        if (!window.__adroll_loaded) {
-	            __adroll_loaded = true;setTimeout(_onload, 50);return;
-	        }
-	        var scr = document.createElement("script");
-	        var host = "https:" == document.location.protocol ? "https://s.adroll.com" : "http://a.adroll.com";
-	        scr.setAttribute('async', 'true');
-	        scr.type = "text/javascript";
-	        scr.src = host + "/j/roundtrip.js";
-	        ((document.getElementsByTagName('head') || [null])[0] || document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
-	    };
-	    if (window.addEventListener) {
-	        window.addEventListener('load', _onload, false);
-	    } else {
-	        window.attachEvent('onload', _onload);
-	    }
-	})();
 
 /***/ }
 /******/ ]);
