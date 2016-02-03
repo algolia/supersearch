@@ -31,7 +31,7 @@
 
 %body
   .filters-panel.hide.overlay
-    %button.close{type: "button"} Cancel
+    %button.close{type: "button"} BACK
     .overlay-content
       %ul.filters
         %li
@@ -52,11 +52,9 @@
         %input#search.sbx-custom__input{type: "search", placeholder: "Search for a commercial", autocomplete: "off", required: true, spellcheck: false}
         %button.sbx-custom__submit{type: "submit"}
           %svg{role: "img", aria-label: "Search"}
-            %title Icon Search
             %use{xlink:href: "#sbx-icon-search-6"}
         %button.sbx-custom__reset{type: "reset"}
           %svg{role: "img", aria-label: "Reset"}
-            %title Icon Reset
             %use{xlink:href: "#sbx-icon-clear-3"}
         %button.sbx-custom__filters{type: "button"}
           %svg{role: "img", aria-label: "Search"}
@@ -69,13 +67,17 @@
           .hit-name {{{_highlightResult.ad_name.value}}}
           .hit-season {{year}} - {{sbYear}}
 
-
     %main
       %section#topbar-results-control
         #refinements
       %section#results
       %section#pagination
-      %span.poweredby Made with <3 by <a href="https://www.algolia.com" class="algolia">Algolia</a>
+      %span.poweredby Made with
+        %span.KOOL
+          %svg{role: "img", aria-label: "Search"}
+            %use{xlink:href: "#icon-heart"}
+         by
+         %a.algolia{href: "https://www.algolia.com"} Algolia
 
   %script{src: "js/instantsearch.min.js"}
   %script{src: "js/app.js"}
