@@ -91,7 +91,6 @@
 	  limit: 1000,
 	  sortBy: ['name:desc'],
 	  templates: {
-	    // header: '<a href="javascript:void(0)" class="toggle"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add-icon"></use></svg> Year</a>',
 	    header: false,
 	    item: '{{name}}'
 	  }
@@ -109,14 +108,15 @@
 	superbowlsearch.addWidget(inceptionWidget({
 	  container: '#brands',
 	  mainSearchAttribute: 'brand',
-	  title: '<svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add-icon"></use></svg> Brand',
 	  secondarySearchAttribute: 'name',
 	  index: 'sb_ads_brands'
 	}));
 
 	search.addWidget(instantsearch.widgets.pagination({
 	  container: '#pagination',
-	  maxPages: 4
+	  maxPages: 20,
+	  padding: 1,
+	  showFirstLast: false
 	}));
 
 	superbowlsearch.start();
@@ -2743,7 +2743,6 @@
 
 	$('.sbx-custom__filters').on('click touchstart', function (e) {
 	  e.preventDefault();
-	  e.stopPropagation();
 	  $('.filters-panel').removeClass('hide');
 	  $('.container-fluid').addClass('no-scroll');
 	  $('body, html').css('overflow:hidden');
@@ -2757,7 +2756,9 @@
 	  return false;
 	});
 
-	$('.tabs a').on('touchstart', function (e) {
+	$('.tabs a').on('click touchstart', function (e) {
+	  e.preventDefault();
+	  e.stopPropagation();
 	  $('.tabs li a').toggleClass('active');
 	  $('.tab-panel').toggleClass('active');
 	});
