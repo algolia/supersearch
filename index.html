@@ -10,7 +10,7 @@
   <meta name="description" content="Find and watch every Super Bowl ad ever with Algolia" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@AlgoliaSuperbowl" />
+  <meta name="twitter:site" content="@Algolia" />
   <meta name="twitter:creator" content="@Algolia" />
   <meta property="og:url" content="http://shipow.github.io/superbowl/" />
   <meta property="og:title" content="Super Bowl Instant Ad Search" />
@@ -55,25 +55,13 @@
     </a>
     <header>
       <div class="please-be-kind">
-        <a href="#" class="paul">
-          <div class="pulse"></div>
-          <svg role="img">
-            <use xlink:href="#icon-hn"></use>
-          </svg>
-        </a>
-        <a href="#" class="ryan">
-          <div class="pulse"></div>
-          <svg role="img">
-            <use xlink:href="#icon-producthunt"></use>
-          </svg>
-        </a>
-        <a href="#" class="mark">
+        <a href="#facebook" class="share-link mark">
           <div class="pulse"></div>
           <svg role="img">
             <use xlink:href="#icon-facebook"></use>
           </svg>
         </a>
-        <a href="#" class="jack">
+        <a href="#twitter" class="share-link jack">
           <div class="pulse"></div>
           <svg role="img">
             <use xlink:href="#icon-twitter"></use>
@@ -100,7 +88,7 @@
         </button>
       </form>
       <script type="text/template" id="hit-template">
-        <a href="https://www.youtube.com/watch?v={{objectID}}" data-id="{{objectID}}" style="background-image: url('{{thumbnails.high.url}}')" class="hit"><div class="hit-brand">{{{_highlightResult.brand.value}}}</div><div class="hit-name">{{{_highlightResult.ad_name.value}}}</div><div class="hit-season">{{year}} - {{sbYear}}</div><div class="hit-tags">{{#_highlightResult._tags}} {{#matchedWords}} # {{matchedWords}}{{/matchedWords}} {{/_highlightResult._tags}}</div></a>
+        <a href="https://www.youtube.com/watch?v={{objectID}}" data-id="{{objectID}}" style="background-image: url('{{thumbnails.high.url}}')" class="hit"><div class="hit-brand">{{{_highlightResult.brand.value}}}</div><div class="hit-name">{{{_highlightResult.ad_name.value}}}</div><div class="hit-season">{{year}} - {{sbYear}}</div><div class="hit-tags">{{#_highlightResult._tags}} {{#matchedWords}}<span># {{matchedWords}}</span>{{/matchedWords}} {{/_highlightResult._tags}}</div></a>
       </script>
     </header>
     <main>
@@ -108,7 +96,8 @@
         <div id="refinements"></div>
       </section>
       <section id="results"></section>
-      <section id="pagination"></section><span class="poweredby">Made with<span class="KOOL"><svg role="img" aria-label="Search"><use xlink:href="#icon-heart"></use></svg></span> by<a href="https://www.algolia.com" class="algolia">Algolia</a>
+      <section id="pagination"></section><span class="poweredby">Made with<span class="KOOL"><svg role="img" aria-label="Search"><use xlink:href="#icon-heart"></use></svg></span> by<a href="https://www.algolia.com" class="algolia">Algolia</a> with<a href="https://community.algolia.com/instantsearch.js/"
+      class="instantsearch">Instantsearch.js</a>
       </span>
     </main>
   </div>
