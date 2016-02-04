@@ -200,8 +200,9 @@ header {
     -webkit-animation: flipInX .6s ease-in;
     animation: flipInX .6s ease-in;
     padding: 30px 0 0;
-    text-align: center;
-    color: #fff; }
+    text-align: center; }
+    header h1 img {
+      width: 450px; }
     @media (max-width: 740px) {
       header h1 {
         display: none; } }
