@@ -1,11 +1,11 @@
-adroll_adv_id = "TGR7R4XSGVGYVPX4LQBDFQ";
-adroll_pix_id = "YQNWNHGUUBD2JMY7BVOBWM";
+var adroll_adv_id = "TGR7R4XSGVGYVPX4LQBDFQ";
+var adroll_pix_id = "YQNWNHGUUBD2JMY7BVOBWM";
 /* OPTIONAL: provide email to improve user identification */
 /* adroll_email = "username@example.com"; */
 (function () {
     var _onload = function(){
         if (document.readyState && !/loaded|complete/.test(document.readyState)){setTimeout(_onload, 10);return}
-        if (!window.__adroll_loaded){__adroll_loaded=true;setTimeout(_onload, 50);return}
+        if (!window.__adroll_loaded){var __adroll_loaded=true;setTimeout(_onload, 50);return}
         var scr = document.createElement("script");
         var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
         scr.setAttribute('async', 'true');
