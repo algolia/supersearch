@@ -61,7 +61,7 @@ $('.tabs a').on('click touchstart', function(e){
 
 $(".share-link").on("click", function(e) {
   e.preventDefault();
-  var e = "http://shipow.github.io/superbowl/"
+  var e = "https://community.algolia.com/supersearch/"
     , n = "Never struggle to find a Super Bowl ad again. Find the good, the bad and the @Nationwide.";
   switch (this.href.split("#")[1]) {
   case "twitter":
