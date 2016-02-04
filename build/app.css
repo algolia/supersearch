@@ -348,6 +348,10 @@ header {
   margin: 0 auto 40px;
   background-color: rgba(2, 19, 43, 0.8);
   border-radius: 25px; }
+  @media (max-width: 740px) {
+    .poweredby {
+      font-size: 14px;
+      width: 200px; } }
   .poweredby .algolia {
     position: relative;
     display: inline-block;
