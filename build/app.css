@@ -215,7 +215,7 @@ header {
   @media (max-width: 740px) {
     .please-be-kind {
       display: none; } }
-  .please-be-kind .share-link {
+  .please-be-kind a {
     -webkit-animation: flipInX .2s ease;
     animation: flipInX .2s ease;
     -webkit-animation-fill-mode: backwards;
@@ -231,16 +231,16 @@ header {
     box-shadow: inset 0 0 0 2px #1B52AC;
     margin-right: 8px;
     position: relative; }
-    .please-be-kind .share-link:nth-child(2) {
+    .please-be-kind a:nth-child(2) {
       -webkit-animation-delay: 1.1s;
       animation-delay: 1.1s; }
-    .please-be-kind .share-link:nth-child(3) {
+    .please-be-kind a:nth-child(3) {
       -webkit-animation-delay: 1.2s;
       animation-delay: 1.2s; }
-    .please-be-kind .share-link:nth-child(4) {
+    .please-be-kind a:nth-child(4) {
       -webkit-animation-delay: 1.25s;
       animation-delay: 1.25s; }
-    .please-be-kind .share-link .pulse {
+    .please-be-kind a .pulse {
       pointer-events: none;
       opacity: 0;
       position: absolute;
@@ -251,12 +251,12 @@ header {
       border-radius: 50%;
       background: #813c88;
       z-index: 99; }
-    .please-be-kind .share-link:hover .pulse {
+    .please-be-kind a:hover .pulse {
       -webkit-animation: bounce .25s ease-in;
       animation: bounce .25s ease-in;
       opacity: 1;
       background-image: linear-gradient(135deg, #AD2C6A, #62469C); }
-    .please-be-kind .share-link:hover svg {
+    .please-be-kind a:hover svg {
       fill: white; }
   .please-be-kind svg {
     position: relative;

@@ -46,7 +46,7 @@ header {
     display: none;
   }
 
-  .share-link {
+  a {
     animation: flipInX .2s ease;
     animation-fill-mode: backwards;
     animation-delay: 1s;
