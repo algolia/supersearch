@@ -1,20 +1,21 @@
 !!! 5
 %head
   %meta{charset: "UTF-8"}
-  %title Super Bowl Commercials with instantsearch.js
+  %title Super Bowl Instant Ad Search with instantsearch.js
   %link{href: "app.css", rel: "stylesheet", type: "text/css"}
-  %link{href: "https://fonts.googleapis.com/css?family=Exo+2:400,900", rel: "stylesheet", type: "text/css"}
+  %link{href: "https://fonts.googleapis.com/css?family=Exo+2:400,800", rel: "stylesheet", type: "text/css"}
   %link{rel:"icon", type:"image/png", href:"favicon.png"}
   %link{rel:"shortcut icon", type:"image/png", href:"favicon.png"}
-  %meta{name:"fb:app_id", content:"YOUR_FB_APP_ID"}
-  %meta{name:"viewport", content:"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"}
+  %meta{name: "description", content:"Find and watch every Super Bowl ad ever with Algolia"}
+  -# %meta{name: "fb:app_id", content:"YOUR_FB_APP_ID"}
+  %meta{name: "viewport", content:"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"}
   %meta{name: "twitter:card", content: "summary_large_image"}
-  %meta{name: "twitter:site", content: "@AlgoliaSuperbowl"}
+  %meta{name: "twitter:site", content: "@Algolia"}
   %meta{name: "twitter:creator", content: "@Algolia"}
-  %meta{property: "og:url", content: "https://community.algolia.com/instantsearch.js/"}
-  %meta{property: "og:title", content: "SUPERBOWL ADS"}
-  %meta{property: "og:description", content: "Superbowl Ads is an Algolia experiment that will help you to browse through the history of the superbowl, by selecting and watching superbowl ads. The ads are from the first ever Superbowl, to the latest!"}
-  %meta{property: "og:image", content: "img/og_screen.png"}
+  %meta{property: "og:url", content: "http://shipow.github.io/superbowl/"}
+  %meta{property: "og:title", content: "Super Bowl Instant Ad Search"}
+  %meta{property: "og:description", content: "Find and watch every Super Bowl ad ever with Algolia"}
+  %meta{property: "og:image", content: "http://shipow.github.io/superbowl/img/og_screen.png"}
   %meta{name:"apple-mobile-web-app-capable",content:"yes"}
   %meta{name:"apple-mobile-web-app-title",content:"Algolia - SuperBowl Ads"}
   %meta{name:"apple-mobile-web-app-status-bar-style",content:"black"}
@@ -47,24 +48,24 @@
         %use{xlink:href: "#github-banner"}
     %header
       .please-be-kind
-        %a.paul{href: "#"}
-          .pulse
-          %svg{role: "img"}
-            %use{xlink:href: "#icon-hn"}
-        %a.ryan{href: "#"}
-          .pulse
-          %svg{role: "img"}
-            %use{xlink:href: "#icon-producthunt"}
-        %a.mark{href: "#"}
+        -# %a.share-link.paul{href: "#"}
+        -#   .pulse
+        -#   %svg{role: "img"}
+        -#     %use{xlink:href: "#icon-hn"}
+        -# %a.share-link.ryan{href: "#"}
+        -#   .pulse
+        -#   %svg{role: "img"}
+        -#     %use{xlink:href: "#icon-producthunt"}
+        %a.share-link.mark{href: "#facebook"}
           .pulse
           %svg{role: "img"}
             %use{xlink:href: "#icon-facebook"}
-        %a.jack{href: "#"}
+        %a.share-link.jack{href: "#twitter"}
           .pulse
           %svg{role: "img"}
             %use{xlink:href: "#icon-twitter"}
       %h1
-        %a{href: "/"}
+        %a{href: "http://shipow.github.io/superbowl/"}
           %img{src: "img/logo-superbowl.svg", alt: "Super Bowl Commercials search by Algolia"}
       %form.searchbox.sbx-custom{role: "search", novalidate: true, onsubmit="return false;"}
         %input#search.sbx-custom__input{type: "search", placeholder: "Search for a commercial", autocomplete: "off", required: true, spellcheck: false}
@@ -84,7 +85,7 @@
           .hit-brand {{{_highlightResult.brand.value}}}
           .hit-name {{{_highlightResult.ad_name.value}}}
           .hit-season {{year}} - {{sbYear}}
-          .hit-tags {{#_highlightResult._tags}} {{#matchedWords}} # {{matchedWords}}{{/matchedWords}} {{/_highlightResult._tags}}
+          .hit-tags {{#_highlightResult._tags}} {{#matchedWords}}<span># {{matchedWords}}</span>{{/matchedWords}} {{/_highlightResult._tags}}
 
     %main
       %section#topbar-results-control
@@ -97,6 +98,8 @@
             %use{xlink:href: "#icon-heart"}
          by
          %a.algolia{href: "https://www.algolia.com"} Algolia
+         with
+         %a.instantsearch{href: "https://community.algolia.com/instantsearch.js/"} Instantsearch.js
 
   %script{src: "js/instantsearch.min.js"}
   %script{src: "js/app.js"}

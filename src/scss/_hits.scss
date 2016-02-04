@@ -101,7 +101,7 @@
   font-weight: 800;
 }
 
-.hit-tags {
+.hit-tags span{
   color: black;
   display: inline-block;
   font-size: .6em;
@@ -111,7 +111,10 @@
   left: 4px;
   font-weight: 800;
   background-color: white;
-  padding: 0 8px 2px;
+  padding: 0 .5em 2px;
+  &:not(:first-child) {
+    display: none;
+  }
 }
 
 .ais-hits__empty {

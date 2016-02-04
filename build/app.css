@@ -214,7 +214,7 @@ header {
   @media (max-width: 740px) {
     .please-be-kind {
       display: none; } }
-  .please-be-kind a {
+  .please-be-kind .share-link {
     -webkit-animation: flipInX .2s ease;
     animation: flipInX .2s ease;
     -webkit-animation-fill-mode: backwards;
@@ -230,16 +230,16 @@ header {
     box-shadow: inset 0 0 0 2px #1B52AC;
     margin-right: 8px;
     position: relative; }
-    .please-be-kind a:nth-child(2) {
+    .please-be-kind .share-link:nth-child(2) {
       -webkit-animation-delay: 1.1s;
       animation-delay: 1.1s; }
-    .please-be-kind a:nth-child(3) {
+    .please-be-kind .share-link:nth-child(3) {
       -webkit-animation-delay: 1.2s;
       animation-delay: 1.2s; }
-    .please-be-kind a:nth-child(4) {
+    .please-be-kind .share-link:nth-child(4) {
       -webkit-animation-delay: 1.25s;
       animation-delay: 1.25s; }
-    .please-be-kind a .pulse {
+    .please-be-kind .share-link .pulse {
       pointer-events: none;
       opacity: 0;
       position: absolute;
@@ -250,12 +250,12 @@ header {
       border-radius: 50%;
       background: #813c88;
       z-index: 99; }
-    .please-be-kind a:hover .pulse {
+    .please-be-kind .share-link:hover .pulse {
       -webkit-animation: bounce .25s ease-in;
       animation: bounce .25s ease-in;
       opacity: 1;
       background-image: linear-gradient(135deg, #AD2C6A, #62469C); }
-    .please-be-kind a:hover svg {
+    .please-be-kind .share-link:hover svg {
       fill: white; }
   .please-be-kind svg {
     position: relative;
@@ -341,11 +341,9 @@ header {
 .poweredby {
   color: white;
   display: block;
-  width: 250px;
+  width: 400px;
   text-align: center;
-  font-weight: 400;
-  font-size: 14px;
-  text-transform: uppercase;
+  font-size: 15px;
   padding: 4px 0 8px;
   margin: 0 auto 40px;
   background-color: rgba(2, 19, 43, 0.8);
@@ -358,6 +356,15 @@ header {
     width: 70px;
     text-indent: -9999px;
     background: url("img/algolia-dark.svg") no-repeat center center/contain;
+    color: transparent; }
+  .poweredby .instantsearch {
+    position: relative;
+    display: inline-block;
+    height: 20px;
+    top: -1px;
+    width: 150px;
+    text-indent: -9999px;
+    background: url("img/logo-instantsearch.svg") no-repeat center center/contain;
     color: transparent; }
 
 .KOOL {
@@ -956,7 +963,7 @@ header {
   right: 4px;
   font-weight: 800; }
 
-.hit-tags {
+.hit-tags span {
   color: black;
   display: inline-block;
   font-size: .6em;
@@ -966,7 +973,9 @@ header {
   left: 4px;
   font-weight: 800;
   background-color: white;
-  padding: 0 8px 2px; }
+  padding: 0 .5em 2px; }
+  .hit-tags span:not(:first-child) {
+    display: none; }
 
 .ais-hits__empty {
   display: block;

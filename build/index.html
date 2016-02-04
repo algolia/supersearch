@@ -2,20 +2,20 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Super Bowl Commercials with instantsearch.js</title>
+  <title>Super Bowl Instant Ad Search with instantsearch.js</title>
   <link href="app.css" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css?family=Exo+2:400,900" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Exo+2:400,800" rel="stylesheet" type="text/css" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="shortcut icon" type="image/png" href="favicon.png" />
-  <meta name="fb:app_id" content="YOUR_FB_APP_ID" />
+  <meta name="description" content="Find and watch every Super Bowl ad ever with Algolia" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@AlgoliaSuperbowl" />
+  <meta name="twitter:site" content="@Algolia" />
   <meta name="twitter:creator" content="@Algolia" />
-  <meta property="og:url" content="https://community.algolia.com/instantsearch.js/" />
-  <meta property="og:title" content="SUPERBOWL ADS" />
-  <meta property="og:description" content="Superbowl Ads is an Algolia experiment that will help you to browse through the history of the superbowl, by selecting and watching superbowl ads. The ads are from the first ever Superbowl, to the latest!" />
-  <meta property="og:image" content="img/og_screen.png" />
+  <meta property="og:url" content="http://shipow.github.io/superbowl/" />
+  <meta property="og:title" content="Super Bowl Instant Ad Search" />
+  <meta property="og:description" content="Find and watch every Super Bowl ad ever with Algolia" />
+  <meta property="og:image" content="http://shipow.github.io/superbowl/img/og_screen.png" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Algolia - SuperBowl Ads" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -55,32 +55,20 @@
     </a>
     <header>
       <div class="please-be-kind">
-        <a href="#" class="paul">
-          <div class="pulse"></div>
-          <svg role="img">
-            <use xlink:href="#icon-hn"></use>
-          </svg>
-        </a>
-        <a href="#" class="ryan">
-          <div class="pulse"></div>
-          <svg role="img">
-            <use xlink:href="#icon-producthunt"></use>
-          </svg>
-        </a>
-        <a href="#" class="mark">
+        <a href="#facebook" class="share-link mark">
           <div class="pulse"></div>
           <svg role="img">
             <use xlink:href="#icon-facebook"></use>
           </svg>
         </a>
-        <a href="#" class="jack">
+        <a href="#twitter" class="share-link jack">
           <div class="pulse"></div>
           <svg role="img">
             <use xlink:href="#icon-twitter"></use>
           </svg>
         </a>
       </div>
-      <h1><a href="/"><img src="img/logo-superbowl.svg" alt="Super Bowl Commercials search by Algolia" /></a></h1>
+      <h1><a href="http://shipow.github.io/superbowl/"><img src="img/logo-superbowl.svg" alt="Super Bowl Commercials search by Algolia" /></a></h1>
       <form role="search" novalidate="novalidate" class="searchbox sbx-custom">
         <input type="search" placeholder="Search for a commercial" autocomplete="off" required="required" class="sbx-custom__input" id="search" />
         <button type="submit" class="sbx-custom__submit">
@@ -100,7 +88,7 @@
         </button>
       </form>
       <script type="text/template" id="hit-template">
-        <a href="https://www.youtube.com/watch?v={{objectID}}" data-id="{{objectID}}" style="background-image: url('{{thumbnails.high.url}}')" class="hit"><div class="hit-brand">{{{_highlightResult.brand.value}}}</div><div class="hit-name">{{{_highlightResult.ad_name.value}}}</div><div class="hit-season">{{year}} - {{sbYear}}</div><div class="hit-tags">{{#_highlightResult._tags}} {{#matchedWords}} # {{matchedWords}}{{/matchedWords}} {{/_highlightResult._tags}}</div></a>
+        <a href="https://www.youtube.com/watch?v={{objectID}}" data-id="{{objectID}}" style="background-image: url('{{thumbnails.high.url}}')" class="hit"><div class="hit-brand">{{{_highlightResult.brand.value}}}</div><div class="hit-name">{{{_highlightResult.ad_name.value}}}</div><div class="hit-season">{{year}} - {{sbYear}}</div><div class="hit-tags">{{#_highlightResult._tags}} {{#matchedWords}}<span># {{matchedWords}}</span>{{/matchedWords}} {{/_highlightResult._tags}}</div></a>
       </script>
     </header>
     <main>
@@ -108,7 +96,8 @@
         <div id="refinements"></div>
       </section>
       <section id="results"></section>
-      <section id="pagination"></section><span class="poweredby">Made with<span class="KOOL"><svg role="img" aria-label="Search"><use xlink:href="#icon-heart"></use></svg></span> by<a href="https://www.algolia.com" class="algolia">Algolia</a>
+      <section id="pagination"></section><span class="poweredby">Made with<span class="KOOL"><svg role="img" aria-label="Search"><use xlink:href="#icon-heart"></use></svg></span> by<a href="https://www.algolia.com" class="algolia">Algolia</a> with<a href="https://community.algolia.com/instantsearch.js/"
+      class="instantsearch">Instantsearch.js</a>
       </span>
     </main>
   </div>

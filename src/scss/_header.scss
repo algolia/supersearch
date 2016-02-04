@@ -3,6 +3,7 @@
   top: 0;
   right: 0;
   z-index: 9999;
+
   @media (max-width: $bp-small) {
     display: none;
   }
@@ -20,11 +21,13 @@ header {
   z-index: 5;
   float: left;
   width: 100%;
+
   h1 {
     animation: flipInX .6s ease-in;
     padding: 30px 0 0;
     text-align: center;
     color: #fff;
+
     @media (max-width: $bp-small) {
       display: none;
     }
@@ -36,10 +39,12 @@ header {
   top: 0;
   left: 0;
   margin: 20px 0 0 20px;
+
   @media (max-width: $bp-small) {
     display: none;
   }
-  a {
+
+  .share-link {
     animation: flipInX .2s ease;
     animation-fill-mode: backwards;
     animation-delay: 1s;
@@ -52,15 +57,19 @@ header {
     box-shadow: inset 0 0 0 2px #1B52AC;
     margin-right: 8px;
     position: relative;
+
     &:nth-child(2) {
       animation-delay: 1.1s;
     }
+
     &:nth-child(3) {
       animation-delay: 1.2s;
     }
+
     &:nth-child(4) {
       animation-delay: 1.25s;
     }
+
     .pulse {
       pointer-events: none;
       opacity: 0;
@@ -73,17 +82,20 @@ header {
       background: rgba(#813C88,1);
       z-index: 99;
     }
+
     &:hover {
       .pulse {
         animation: bounce .25s ease-in;
         opacity: 1;
         background-image: linear-gradient(135deg, #AD2C6A, #62469C);
       }
+
       svg {
         fill: white;
       }
     }
   }
+
   svg {
     position: relative;
     z-index: 9999;
