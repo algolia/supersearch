@@ -32,21 +32,6 @@
 </head>
 
 <body>
-  <div class="filters-panel hide overlay">
-    <button type="button" class="close">BACK</button>
-    <div class="overlay-content">
-      <ul class="filters">
-        <li>
-          <ul class="tabs">
-            <li><a href="#years" class="active">Years</a><a href="#brands">Brands</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <div class="tab-panel active" id="years"></div>
-      <div class="tab-panel" id="brands"></div>
-    </div>
-  </div>
   <div class="container-fluid">
     <a href="https://github.com/algolia/supersearch" class="github-source">
       <svg>
@@ -55,24 +40,32 @@
     </a>
     <header>
       <div class="please-be-kind">
-        <a href="https://www.producthunt.com/tech/algolia-supersearch" target="_blank" class="ryan">
-          <div class="pulse"></div>
-          <svg role="img">
-            <use xlink:href="#icon-producthunt"></use>
-          </svg>
-        </a>
-        <a href="#facebook" class="share-link mark">
-          <div class="pulse"></div>
-          <svg role="img">
-            <use xlink:href="#icon-facebook"></use>
-          </svg>
-        </a>
-        <a href="#twitter" class="share-link jack">
-          <div class="pulse"></div>
-          <svg role="img">
-            <use xlink:href="#icon-twitter"></use>
-          </svg>
-        </a>
+        <ul class="social-links">
+          <li>
+            <a href="https://www.producthunt.com/tech/algolia-supersearch" target="_blank">
+              <div class="pulse"></div>
+              <svg role="img">
+                <use xlink:href="#icon-producthunt"></use>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#facebook" class="share-link">
+              <div class="pulse"></div>
+              <svg role="img">
+                <use xlink:href="#icon-facebook"></use>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#twitter" class="share-link">
+              <div class="pulse"></div>
+              <svg role="img">
+                <use xlink:href="#icon-twitter"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
       </div>
       <h1><a href="https://community.algolia.com/supersearch/"><img src="img/logo-superbowl.svg" alt="Super Search Commercials search by Algolia" /></a></h1>
       <form role="search" novalidate="novalidate" class="searchbox sbx-custom">
@@ -94,7 +87,7 @@
         </button>
       </form>
       <script type="text/template" id="hit-template">
-        <a href="https://www.youtube.com/watch?v={{objectID}}" data-id="{{objectID}}" style="background-image: url('{{thumbnails.high.url}}')" class="hit"><div class="hit-brand">{{{_highlightResult.brand.value}}}</div><div class="hit-name">{{{_highlightResult.ad_name.value}}}</div><div class="hit-season">{{year}} - {{sbYear}}</div><div class="hit-tags">{{#_highlightResult._tags}} {{#matchedWords}}<span># {{matchedWords}}</span>{{/matchedWords}} {{/_highlightResult._tags}}</div></a>
+        <a href="https://www.youtube.com/watch?v={{objectID}}" data-yt="{{objectID}}" data-brand="{{brand}}" style="background-image: url('{{thumbnails.high.url}}')" class="hit"><div class="hit-brand">{{{_highlightResult.brand.value}}}</div><div class="hit-name">{{{_highlightResult.ad_name.value}}}</div><div class="hit-season">{{year}} - {{sbYear}}</div><div class="hit-tags">{{#_highlightResult._tags}} {{#matchedWords}}<span># {{matchedWords}}</span>{{/matchedWords}} {{/_highlightResult._tags}}</div></a>
       </script>
     </header>
     <main>
@@ -106,6 +99,50 @@
       class="instantsearch">Instantsearch.js</a>
       </span>
     </main>
+  </div>
+  <div class="lightbox hidden">
+    <a href="javascript:void(0);" class="close">
+      <svg role="img">
+        <use xlink:href="#sbx-icon-clear-2"></use>
+      </svg>
+    </a>
+    <div class="lightbox_frame_wrapper"></div>
+    <div class="lightbox_sharing">
+      <ul class="social-links">
+        <li>Share this commercial</li>
+        <li>
+          <a href="#facebook" class="share-video mark">
+            <div class="pulse"></div>
+            <svg role="img">
+              <use xlink:href="#icon-facebook"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="#twitter" class="share-video jack">
+            <div class="pulse"></div>
+            <svg role="img">
+              <use xlink:href="#icon-twitter"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="filters-panel hide overlay">
+    <button type="button" class="close">BACK</button>
+    <div class="overlay-content">
+      <ul class="filters">
+        <li>
+          <ul class="tabs">
+            <li><a href="#years" class="active">Years</a><a href="#brands">Brands</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="tab-panel active" id="years"></div>
+      <div class="tab-panel" id="brands"></div>
+    </div>
   </div>
   <script src="js/instantsearch.min.js"></script>
   <script src="js/app.js"></script>
