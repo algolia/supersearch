@@ -7,6 +7,7 @@ var runSequence = require('run-sequence');
 //dev
 var webserver = require('gulp-webserver');
 var livereload = require('gulp-livereload');
+var gutil = require('gulp-util');
 
 //deploy
 var ghPages = require('gulp-gh-pages');
@@ -29,6 +30,18 @@ var cheerio = require('gulp-cheerio');
 //js
 var webpack = require('webpack-stream');
 var webpackConfig = require("./webpack.config.js");
+
+function handleError(level, error) {
+   gutil.log(error.message);
+   if (isFatal(level)) {
+      process.exit(1);
+   }
+}
+
+// Convenience handler for error-level errors.
+function onError(error) { handleError.call(this, 'error', error);}
+// Convenience handler for warning-level errors.
+function onWarning(error) { handleError.call(this, 'warning', error);}
 
 gulp.task('clean', function() {
   return del("build");
@@ -87,6 +100,7 @@ gulp.task('sass', function () {
   .pipe(livereload());
 });
 
+
 gulp.task('js', function () {
   return gulp.src('src/js/app.js')
       .pipe(webpack(webpackConfig))
@@ -123,7 +137,7 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('build',['clean'], function(callback) {
-  runSequence('copy','js','haml', 'inlineSvg', 'prettify', 'sass', callback);
+  runSequence('sass','copy','haml', 'inlineSvg', 'prettify','js', callback);
 });
 
 gulp.task('dev', function(callback) {
