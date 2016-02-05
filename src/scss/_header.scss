@@ -36,17 +36,41 @@ header {
   }
 }
 
+
 .please-be-kind {
   position: absolute;
   top: 0;
   left: 0;
   margin: 20px 0 0 20px;
+}
+
+.social-links {
+  display: inline;
+  padding: 0;
+  list-style: none;
+  li {
+    display: inline-block;
+    margin-right: 10px;
+
+    &:nth-child(2) a{
+      animation-delay: 1.1s;
+    }
+
+    &:nth-child(3) a{
+      animation-delay: 1.2s;
+    }
+
+    &:nth-child(4) a{
+      animation-delay: 1.25s;
+    }
+  }
 
   @media (max-width: $bp-small) {
     display: none;
   }
 
   a {
+    top: 2px;
     animation: flipInX .2s ease;
     animation-fill-mode: backwards;
     animation-delay: 1s;
@@ -57,21 +81,7 @@ header {
     text-align: center;
     display: inline-block;
     box-shadow: inset 0 0 0 2px #1B52AC;
-    margin-right: 8px;
     position: relative;
-
-    &:nth-child(2) {
-      animation-delay: 1.1s;
-    }
-
-    &:nth-child(3) {
-      animation-delay: 1.2s;
-    }
-
-    &:nth-child(4) {
-      animation-delay: 1.25s;
-    }
-
     .pulse {
       pointer-events: none;
       opacity: 0;

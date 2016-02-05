@@ -6,6 +6,7 @@ $bp-small: 740px;
   top: 0;
   left: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -33,19 +34,15 @@ $bp-small: 740px;
     right: 0;
     z-index: 5;
     margin: 16px;
-    max-width: 50px;
     cursor: pointer;
 
     svg {
-      max-width: 100%;
+      height: 40px;
+      width: 40px;
       fill: #fff;
     }
   }
 
-  // Lightbox iframe
-  .lightbox_frame_wrapper {
-    flex: none;
-  }
   .lightbox_frame {
     z-index: 2;
     transform: scale(0);
@@ -63,7 +60,6 @@ $bp-small: 740px;
       left: 0;
       content: 'loading';
     }
-
   }
 
   &.hidden {
@@ -73,4 +69,13 @@ $bp-small: 740px;
     transform-style: preserve-3d;
     transform: translateY(50vh) scale(.9);
   }
+}
+
+.lightbox_frame_wrapper {
+}
+
+.lightbox_sharing {
+  margin-top: 20px;
+  color: white;
+  z-index: 999;
 }

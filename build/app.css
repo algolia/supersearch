@@ -212,10 +212,28 @@ header {
   top: 0;
   left: 0;
   margin: 20px 0 0 20px; }
+
+.social-links {
+  display: inline;
+  padding: 0;
+  list-style: none; }
+  .social-links li {
+    display: inline-block;
+    margin-right: 10px; }
+    .social-links li:nth-child(2) a {
+      -webkit-animation-delay: 1.1s;
+      animation-delay: 1.1s; }
+    .social-links li:nth-child(3) a {
+      -webkit-animation-delay: 1.2s;
+      animation-delay: 1.2s; }
+    .social-links li:nth-child(4) a {
+      -webkit-animation-delay: 1.25s;
+      animation-delay: 1.25s; }
   @media (max-width: 740px) {
-    .please-be-kind {
+    .social-links {
       display: none; } }
-  .please-be-kind a {
+  .social-links a {
+    top: 2px;
     -webkit-animation: flipInX .2s ease;
     animation: flipInX .2s ease;
     -webkit-animation-fill-mode: backwards;
@@ -229,18 +247,8 @@ header {
     text-align: center;
     display: inline-block;
     box-shadow: inset 0 0 0 2px #1B52AC;
-    margin-right: 8px;
     position: relative; }
-    .please-be-kind a:nth-child(2) {
-      -webkit-animation-delay: 1.1s;
-      animation-delay: 1.1s; }
-    .please-be-kind a:nth-child(3) {
-      -webkit-animation-delay: 1.2s;
-      animation-delay: 1.2s; }
-    .please-be-kind a:nth-child(4) {
-      -webkit-animation-delay: 1.25s;
-      animation-delay: 1.25s; }
-    .please-be-kind a .pulse {
+    .social-links a .pulse {
       pointer-events: none;
       opacity: 0;
       position: absolute;
@@ -251,14 +259,14 @@ header {
       border-radius: 50%;
       background: #813c88;
       z-index: 99; }
-    .please-be-kind a:hover .pulse {
+    .social-links a:hover .pulse {
       -webkit-animation: bounce .25s ease-in;
       animation: bounce .25s ease-in;
       opacity: 1;
       background-image: linear-gradient(135deg, #AD2C6A, #62469C); }
-    .please-be-kind a:hover svg {
+    .social-links a:hover svg {
       fill: white; }
-  .please-be-kind svg {
+  .social-links svg {
     position: relative;
     z-index: 9999;
     fill: #366DCA;
@@ -272,6 +280,9 @@ header {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -301,15 +312,11 @@ header {
     right: 0;
     z-index: 5;
     margin: 16px;
-    max-width: 50px;
     cursor: pointer; }
     .lightbox .close svg {
-      max-width: 100%;
+      height: 40px;
+      width: 40px;
       fill: #fff; }
-  .lightbox .lightbox_frame_wrapper {
-    -webkit-flex: none;
-    -ms-flex: none;
-    flex: none; }
   .lightbox .lightbox_frame {
     z-index: 2;
     -webkit-transform: scale(0);
@@ -338,6 +345,11 @@ header {
     transform-style: preserve-3d;
     -webkit-transform: translateY(50vh) scale(0.9);
     transform: translateY(50vh) scale(0.9); }
+
+.lightbox_sharing {
+  margin-top: 20px;
+  color: white;
+  z-index: 999; }
 
 .poweredby {
   color: white;
