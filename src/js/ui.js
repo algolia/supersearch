@@ -1,5 +1,7 @@
 function openLightbox(e) {
-  jHash.val('yt', $(e).data('yt'));
+  var yt = $(e).data('yt') || jHash.val('yt');
+  jHash.val('yt', yt);
+
   $('.lightbox_frame_wrapper')
     .append($('<iframe class="lightbox_frame" type="text/html" width="640" height="385" allowfullscreen></iframe>'));
   $('.lightbox_frame').attr('src', 'https://www.youtube.com/embed/'+ yt + '?autoplay=1').load(function(){
@@ -22,13 +24,11 @@ function closeLightbox() {
 // init
 var yt = jHash.val('yt');
 if (yt) {
-  openLightbox(yt);
+  openLightbox();
 };
 
 $('#results').on('click', '.hit', function(e) {
   e.preventDefault();
-  var yt = $(this).data('yt');
-  var brand = $(this).data('brand');
   openLightbox(e.target);
 });
 
