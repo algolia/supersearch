@@ -30,6 +30,15 @@ superbowlsearch.addWidget(
       empty: `<div class="no-results"><h2>No Results</h2>
         <p>What about starting a new search?</p></div>`,
       item: document.getElementById('hit-template').innerHTML
+    },
+    transformData: function(hit) {
+      $.each(hit._highlightResult._tags, function( index, tag ) {
+        if (tag.matchLevel === "full"){
+            hit.matchedTag = '# ' + tag.value;
+            return false;
+        }
+      });
+      return hit;
     }
   })
 );

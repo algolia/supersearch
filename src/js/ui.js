@@ -89,15 +89,15 @@ $(".share-link").on("click", function(e) {
 $(".share-video").on("click", function(e) {
   e.preventDefault();
   var yt = jHash.val('yt');
-  var brand = $(this).data('brand');
+  var brand = $(this).data('brand') || null;
   var e = "https://community.algolia.com/supersearch/#?yt=" + yt
     , n = "I ❤ this " + brand + " #SuperBowl #ad on 🏈 SuperSearch Commercials 🏈 ";
-    switch (this.href.split("#")[1]) {
+  switch (this.href.split("#")[1]) {
     case "twitter":
       window.open("https://twitter.com/share?url=" + encodeURIComponent(e) + "&text=" + encodeURIComponent(n) + "&via=algolia", "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600");
       break;
     case "facebook":
       window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(e) + "&t=" + encodeURIComponent(n), "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600");
       break;
-    }
+  }
 });

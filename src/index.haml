@@ -57,7 +57,7 @@
       %h1
         %a{href: "https://community.algolia.com/supersearch/"}
           %img{src: "img/logo-superbowl.svg", alt: "Super Search Commercials search by Algolia"}
-      %form.searchbox.sbx-custom{role: "search", novalidate: true, onsubmit="return false;"}
+      %form.searchbox.sbx-custom{name: "searchquery", role: "search", novalidate: true, onsubmit: "return false;"}
         %input#search.sbx-custom__input{type: "search", placeholder: "Search for a commercial", autocomplete: "off", required: true, spellcheck: false}
         %button.sbx-custom__submit{type: "submit"}
           %svg{role: "img", aria-label: "Search"}
@@ -75,7 +75,7 @@
           .hit-brand {{{_highlightResult.brand.value}}}
           .hit-name {{{_highlightResult.ad_name.value}}}
           .hit-season {{year}} - {{sbYear}}
-          .hit-tags {{#_highlightResult._tags}} {{#matchedWords}}<span># {{matchedWords}}</span>{{/matchedWords}} {{/_highlightResult._tags}}
+          .hit-tag {{{ matchedTag }}}
 
     %main
       %section#topbar-results-control
