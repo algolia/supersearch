@@ -9,8 +9,8 @@ const utils = require('./utils.js');
 let deviceInfo = utils.getDeviceInfo();
 
 let superbowlsearch = instantsearch({
-  appId: 'VC519DRAY3',
-  apiKey: 'ba8e7e5e700d53fe3f28f20226b63baf',
+  appId: 'latency',
+  apiKey: '6be0576ff61c053d5f9a3225e2a90f76',
   indexName: 'sb_ads',
   searchParameters: {
     analyticsTags: deviceInfo.join(',')
