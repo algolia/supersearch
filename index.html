@@ -68,7 +68,7 @@
         </ul>
       </div>
       <h1><a href="https://community.algolia.com/supersearch/"><img src="img/logo-superbowl.svg" alt="Super Search Commercials search by Algolia" /></a></h1>
-      <form name="searchquery" role="search" novalidate="novalidate" onsubmit="return false;" class="searchbox sbx-custom">
+      <form role="search" novalidate="novalidate" class="searchbox sbx-custom">
         <input type="search" placeholder="Search for a commercial" autocomplete="off" required="required" class="sbx-custom__input" id="search" />
         <button type="submit" class="sbx-custom__submit">
           <svg role="img" aria-label="Search">
@@ -87,7 +87,7 @@
         </button>
       </form>
       <script type="text/template" id="hit-template">
-        <a href="https://www.youtube.com/watch?v={{objectID}}" data-yt="{{objectID}}" data-brand="{{brand}}" style="background-image: url('{{thumbnails.high.url}}')" class="hit"><div class="hit-brand">{{{_highlightResult.brand.value}}}</div><div class="hit-name">{{{_highlightResult.ad_name.value}}}</div><div class="hit-season">{{year}} - {{sbYear}}</div><div class="hit-tag">{{{ matchedTag }}}</div></a>
+        <a href="https://www.youtube.com/watch?v={{objectID}}" data-yt="{{objectID}}" data-brand="{{brand}}" style="background-image: url('{{thumbnails.high.url}}')" class="hit"><div class="hit-brand">{{{_highlightResult.brand.value}}}</div><div class="hit-name">{{{_highlightResult.ad_name.value}}}</div><div class="hit-season">{{year}} - {{sbYear}}</div><div class="hit-tags">{{#_highlightResult._tags}} {{#matchedWords}}<span># {{matchedWords}}</span>{{/matchedWords}} {{/_highlightResult._tags}}</div></a>
       </script>
     </header>
     <main>
