@@ -3,12 +3,18 @@
 //until 1.2 is released
 // let instantsearch = require('instantsearch.js');
 const inceptionWidget = require('./widgets/inception.js');
+const utils = require('./utils.js');
 
+// Retrieves informations about the current device for Analytics purpose
+let deviceInfo = utils.getDeviceInfo();
 
 let superbowlsearch = instantsearch({
   appId: 'latency',
   apiKey: '6be0576ff61c053d5f9a3225e2a90f76',
   indexName: 'sb_ads',
+  searchParameters: {
+    analyticsTags: deviceInfo.join(',')
+  },
   urlSync: true
 });
 
