@@ -32,12 +32,14 @@ superbowlsearch.addWidget(
       item: document.getElementById('hit-template').innerHTML
     },
     transformData: function(hit) {
-      $.each(hit._highlightResult._tags, function( index, tag ) {
-        if (tag.matchLevel === "full"){
+      if (typeof hit !== 'undefined' && typeof hit._highlightResult !== 'undefined' ) {
+        $.each(hit._highlightResult._tags, function( index, tag ) {
+          if (tag.matchLevel === "full"){
             hit.matchedTag = '# ' + tag.value;
             return false;
-        }
-      });
+          }
+        });
+      }
       return hit;
     }
   })
