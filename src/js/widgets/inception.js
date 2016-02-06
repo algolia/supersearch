@@ -2,17 +2,15 @@ const template = {
   main: function(data){
     return `
       <div class='menu'>
-        <form name="brand" role="search" novalidate="novalidate" class="searchbox sbx-custom">
+        <form name="brand" role="search" novalidate="novalidate" class="searchbox sbx-custom" onsubmit="return false;">
             <input name="brandquery" type="search" placeholder="Search for a brand" autocomplete="off" required="required" class="sbx-custom__input ais-search-box--input" autocapitalize="off" autocorrect="off" role="textbox" spellcheck="false">
             <button type="submit" class="sbx-custom__submit">
               <svg role="img" aria-label="Search">
-                <title>Icon Search</title>
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sbx-icon-search-6"></use>
               </svg>
             </button>
             <button type="reset" class="sbx-custom__reset">
               <svg role="img" aria-label="Reset">
-                <title>Icon Reset</title>
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sbx-icon-clear-3"></use>
               </svg>
             </button>

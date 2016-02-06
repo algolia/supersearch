@@ -4,31 +4,23 @@
   %title Algolia SuperSearch with instantsearch.js
   %link{href: "app.css", rel: "stylesheet", type: "text/css"}
   %link{href: "https://fonts.googleapis.com/css?family=Exo+2:400,800", rel: "stylesheet", type: "text/css"}
-  %link{rel:"icon", type:"image/png", href:"favicon.png"}
-  %link{rel:"shortcut icon", type:"image/png", href:"favicon.png"}
+  %link{rel:"icon", type:"icon", href:"favicon.ico"}
   %meta{name: "description", content:"Find and watch every commercial ever aired during the Big Game with Algolia Super Search"}
-  -# %meta{name: "fb:app_id", content:"YOUR_FB_APP_ID"}
   %meta{name: "viewport", content:"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"}
+  -# twitter
   %meta{name: "twitter:card", content: "summary_large_image"}
   %meta{name: "twitter:site", content: "@Algolia"}
   %meta{name: "twitter:creator", content: "@Algolia"}
+  -# facebook
   %meta{property: "og:url", content: "https://community.algolia.com/supersearch/"}
   %meta{property: "og:title", content: "Algolia SuperSearch"}
   %meta{property: "og:description", content: "Find and watch every commercial ever aired during the Big Game with Algolia Super Search"}
   %meta{property: "og:image", content: "https://community.algolia.com/supersearch/img/og_screen.png"}
-  %meta{name:"apple-mobile-web-app-capable",content:"yes"}
-  %meta{name:"apple-mobile-web-app-title",content:"Algolia - Super Search Ads"}
-  %meta{name:"apple-mobile-web-app-status-bar-style",content:"black"}
-  %link{href:"img/og_screen.png", media:"(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)", rel:"apple-touch-startup-image"}
-  %link{href:"img/og_screen.png", media:"(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)", rel:"apple-touch-startup-image"}
-  %link{href:"img/og_screen.png", media:"(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 1) and (orientation: portrait)", rel:"apple-touch-startup-image"}
-  %link{href:"img/og_screen.png", media:"(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 1) and (orientation: landscape)", rel:"apple-touch-startup-image"}
-  %link{href:"img/og_screen.png", media:"(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)", rel:"apple-touch-startup-image"}
-  %link{href:"img/og_screen.png", media:"(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)", rel:"apple-touch-startup-image"}
-  %link{href:"img/og_screen.png", media:"(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)", rel:"apple-touch-startup-image"}
-  %link{href:"img/og_screen.png", media:"(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)", rel:"apple-touch-startup-image"}
-  %link{href:"img/og_screen.png", media:"(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)", rel:"apple-touch-startup-image"}
-  %link{href:"img/og_screen.png", media:"(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)", rel:"apple-touch-startup-image"}
+  -# ios
+  -# todo: fix youtube player
+  -# %meta{name:"apple-mobile-web-app-capable", content:"yes"}
+  -# %meta{name:"apple-mobile-web-app-title", content:"Algolia - Super Search Ads"}
+  -# %meta{name:"apple-mobile-web-app-status-bar-style", content:"black"}
 
 %body
   .container-fluid
@@ -38,7 +30,6 @@
     %header
       .please-be-kind
         %ul.social-links
-          -#  %use{xlink:href: "#icon-hn"}
           %li
             %a{href: "https://www.producthunt.com/tech/algolia-supersearch", target: "_blank"}
               .pulse
@@ -92,7 +83,7 @@
          %a.instantsearch{href: "https://community.algolia.com/instantsearch.js/"} Instantsearch.js
 
   .lightbox.hidden
-    %a.close{href:"javascript:void(0);"}
+    %a.close{href: "javascript:void(0);"}
       %svg{role: "img"}
         %use{xlink:href: "#sbx-icon-clear-2"}
     .lightbox_frame_wrapper
@@ -100,12 +91,12 @@
       %ul.social-links
         %li Share this commercial
         %li
-          %a.share-video.mark{href: "#facebook"}
+          %a.share-video{href: "#facebook"}
             .pulse
             %svg{role: "img"}
               %use{xlink:href: "#icon-facebook"}
         %li
-          %a.share-video.jack{href: "#twitter"}
+          %a.share-video{href: "#twitter"}
             .pulse
             %svg{role: "img"}
               %use{xlink:href: "#icon-twitter"}
@@ -123,6 +114,7 @@
       #brands.tab-panel
 
   %script{src: "js/app.js"}
+  -# <!-- inject:js --><!-- endinject -->
 
   .svg-icons{style: "height: 0; width: 0; position: absolute; visibility: hidden"}
     <!-- inject:svg --><!-- endinject -->
