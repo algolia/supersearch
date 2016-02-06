@@ -46,6 +46,8 @@
 
 	'use strict';
 
+	/* globals require */
+
 	__webpack_require__(1);
 	__webpack_require__(4);
 
@@ -2803,6 +2805,8 @@
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
+	/*jshint esversion: 6 */
+
 	var instantsearch = __webpack_require__(7);
 	var inceptionWidget = __webpack_require__(448);
 
@@ -2847,7 +2851,6 @@
 	  limit: 1000,
 	  sortBy: ['name:desc'],
 	  templates: {
-	    header: false,
 	    item: '{{name}}'
 	  }
 	}));
@@ -58958,7 +58961,7 @@
 	  $('body, html').css('overflow:hidden');
 	  $('.container-fluid').addClass('no-scroll');
 	  $(".lightbox .share-video").data('brand', $(e).data('brand'));
-	};
+	}
 
 	function closeLightbox() {
 	  $('.lightbox_frame').remove();
@@ -58966,13 +58969,13 @@
 	  $('body, html').css('overflow:auto');
 	  $('.container-fluid').removeClass('no-scroll');
 	  jHash.clearQuery();
-	};
+	}
 
 	// init
 	var yt = jHash.val('yt');
 	if (yt) {
 	  openLightbox();
-	};
+	}
 
 	$('#results').on('click', '.hit', function (e) {
 	  e.preventDefault();
@@ -58986,7 +58989,7 @@
 	});
 
 	$(document).keyup(function (e) {
-	  if (e.keyCode == 27 && $('.lightbox:not(.hidden)') != null) {
+	  if (e.keyCode == 27 && $('.lightbox:not(.hidden)') !== null) {
 	    closeLightbox();
 	  }
 	});
@@ -59021,14 +59024,14 @@
 
 	$(".share-link").on("click", function (e) {
 	  e.preventDefault();
-	  var e = "https://community.algolia.com/supersearch/",
-	      n = "Never struggle to find a #SuperBowl ad again. Find the good, the bad and the @Nationwide.";
+	  var url = "https://community.algolia.com/supersearch/";
+	  var msg = "Never struggle to find a #SuperBowl ad again. Find the good, the bad and the @Nationwide.";
 	  switch (this.href.split("#")[1]) {
 	    case "twitter":
-	      window.open("https://twitter.com/share?url=" + encodeURIComponent(e) + "&text=" + encodeURIComponent(n) + "&via=algolia", "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600");
+	      window.open("https://twitter.com/share?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent(msg) + "&via=algolia", "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600");
 	      break;
 	    case "facebook":
-	      window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(e) + "&t=" + encodeURIComponent(n), "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600");
+	      window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url) + "&t=" + encodeURIComponent(msg), "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600");
 	      break;
 	  }
 	});
@@ -59037,14 +59040,14 @@
 	  e.preventDefault();
 	  var yt = jHash.val('yt');
 	  var brand = $(this).data('brand') || null;
-	  var e = "https://community.algolia.com/supersearch/#?yt=" + yt,
-	      n = "I ❤ this " + brand + " #SuperBowl #ad on 🏈 SuperSearch Commercials 🏈 ";
+	  var url = "https://community.algolia.com/supersearch/#?yt=" + yt;
+	  var msg = "I ❤ this " + brand + " #SuperBowl #ad on 🏈 SuperSearch Commercials 🏈 ";
 	  switch (this.href.split("#")[1]) {
 	    case "twitter":
-	      window.open("https://twitter.com/share?url=" + encodeURIComponent(e) + "&text=" + encodeURIComponent(n) + "&via=algolia", "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600");
+	      window.open("https://twitter.com/share?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent(msg) + "&via=algolia", "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600");
 	      break;
 	    case "facebook":
-	      window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(e) + "&t=" + encodeURIComponent(n), "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600");
+	      window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url) + "&t=" + encodeURIComponent(msg), "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600");
 	      break;
 	  }
 	});
@@ -59056,6 +59059,7 @@
 
 	'use strict';
 
+	// jshint ignore: start
 	(function (i, s, o, g, r, a, m) {
 	  i['GoogleAnalyticsObject'] = r;i[r] = i[r] || function () {
 	    (i[r].q = i[r].q || []).push(arguments);
@@ -59073,8 +59077,6 @@
 
 	var adroll_adv_id = "TGR7R4XSGVGYVPX4LQBDFQ";
 	var adroll_pix_id = "YQNWNHGUUBD2JMY7BVOBWM";
-	/* OPTIONAL: provide email to improve user identification */
-	/* adroll_email = "username@example.com"; */
 	(function () {
 	    var _onload = function _onload() {
 	        if (document.readyState && !/loaded|complete/.test(document.readyState)) {

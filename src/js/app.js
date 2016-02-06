@@ -1,4 +1,4 @@
-'use strict';
+/* globals require */
 
 require('./vendors/jquery-1.12.0.min.js');
 require('./vendors/jhash-2.1.js');

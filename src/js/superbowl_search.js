@@ -1,4 +1,4 @@
-'use strict';
+/*jshint esversion: 6 */
 
 let instantsearch = require('instantsearch.js');
 const inceptionWidget = require('./widgets/inception.js');
@@ -50,7 +50,6 @@ superbowlsearch.addWidget(
     limit: 1000,
     sortBy: ['name:desc'],
     templates: {
-      header: false,
       item: '{{name}}'
     }
   })
@@ -74,7 +73,7 @@ superbowlsearch.addWidget(
     secondarySearchAttribute: 'name',
     index: 'sb_ads_brands'
   })
-)
+);
 
 search.addWidget(
   instantsearch.widgets.pagination({
