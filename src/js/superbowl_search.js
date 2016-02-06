@@ -1,9 +1,7 @@
 'use strict';
 
-//until 1.2 is released
-// let instantsearch = require('instantsearch.js');
+let instantsearch = require('instantsearch.js');
 const inceptionWidget = require('./widgets/inception.js');
-
 
 let superbowlsearch = instantsearch({
   appId: 'latency',
