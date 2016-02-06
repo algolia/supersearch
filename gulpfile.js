@@ -30,18 +30,7 @@ var cheerio = require('gulp-cheerio');
 //js
 var webpack = require('webpack-stream');
 var webpackConfig = require("./webpack.config.js");
-
-function handleError(level, error) {
-   gutil.log(error.message);
-   if (isFatal(level)) {
-      process.exit(1);
-   }
-}
-
-// Convenience handler for error-level errors.
-function onError(error) { handleError.call(this, 'error', error);}
-// Convenience handler for warning-level errors.
-function onWarning(error) { handleError.call(this, 'warning', error);}
+var jshint = require('gulp-jshint');
 
 gulp.task('clean', function() {
   return del("build");
@@ -102,8 +91,15 @@ gulp.task('sass', function () {
 
 
 gulp.task('js', function () {
+  gulp.src('src/js/*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'));
+
   return gulp.src('src/js/app.js')
       .pipe(webpack(webpackConfig))
+      .on('error',  function(e){
+        this.emit('end'); // Recover from errors
+      })
       .pipe(gulp.dest('build/js'))
       .pipe(livereload());
 });
@@ -113,8 +109,6 @@ gulp.task('copy', function () {
   .pipe(gulp.dest('build'));
   gulp.src('src/img/**/*')
   .pipe(gulp.dest('build/img'));
-  gulp.src('src/js/instantsearch.min.js')
-  .pipe(gulp.dest('build/js'));
 });
 
 gulp.task('watch', function() {
