@@ -15,6 +15,7 @@ var ghPages = require('gulp-gh-pages');
 //css
 var sass = require('gulp-sass');
 var scsslint = require('gulp-scss-lint');
+var scssLintStylish = require('gulp-scss-lint-stylish');
 var autoprefixer = require('gulp-autoprefixer');
 
 //html
@@ -89,7 +90,6 @@ gulp.task('sass', function () {
   .pipe(livereload());
 });
 
-
 gulp.task('js', function () {
   gulp.src('src/js/*.js')
     .pipe(jshint())
@@ -146,6 +146,7 @@ gulp.task('deploy', function() {
 gulp.task('scss-lint', function() {
   return gulp.src('src/scss/*.scss')
     .pipe(scsslint({
-      'config': '.scss-lint.yml'
+      customReport: scssLintStylish,
+      config: '.scss-lint.yml'
     }));
 });
