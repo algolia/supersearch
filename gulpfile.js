@@ -19,7 +19,6 @@ const autoprefixer = require('gulp-autoprefixer');
 
 //html
 const haml = require('gulp-haml');
-const prettify = require('gulp-html-prettify');
 
 //SVG
 const inject = require('gulp-inject');
@@ -35,7 +34,7 @@ const jshint = require('gulp-jshint');
 //prod
 const rev = require('gulp-rev-mtime');
 const minifyCss = require('gulp-minify-css');
-const minify = require('gulp-minify');
+const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
 const pngquant = require('imagemin-pngquant')
 const favicons = require("gulp-favicons");
@@ -63,15 +62,6 @@ gulp.task('clean', function() {
 gulp.task('haml', function () {
   return gulp.src('src/*.haml')
   .pipe(haml())
-  .pipe(gulp.dest('build'));
-});
-
-// -------------------------------------
-//   Task: Pretify HTML
-// -------------------------------------
-gulp.task('prettify:html', function(callback) {
-  return gulp.src('build/*.html')
-  .pipe(prettify({indent_char: ' ', indent_size: 2}))
   .pipe(gulp.dest('build'));
 });
 
@@ -104,8 +94,9 @@ gulp.task('icons', function () {
   }
   return gulp
     .src('build/index.html')
-    .pipe(inject(svgs, { transform: fileContents }))
-    .pipe(gulp.dest('build'));
+    .pipe(inject(svgs, {transform: fileContents }))
+    .pipe(gulp.dest('build'))
+    .pipe(livereload());
 });
 
 // -------------------------------------
@@ -118,7 +109,6 @@ gulp.task('scss', function () {
       browsers: ['last 2 versions'],
       cascade: false
     }))
-    .pipe(minifyCss())
     .pipe(gulp.dest('build'))
     .pipe(livereload());
 });
@@ -132,6 +122,15 @@ gulp.task('lint:scss', function() {
       customReport: scssLintStylish,
       config: '.scss-lint.yml'
     }));
+});
+
+// -------------------------------------
+//   Task: Minify CSS
+// -------------------------------------
+gulp.task('css:min', ['scss'], function () {
+  return gulp.src('build/*.css')
+    .pipe(minifyCss())
+    .pipe(gulp.dest('build'));
 });
 
 // -------------------------------------
@@ -157,17 +156,31 @@ gulp.task('lint:js', function() {
 });
 
 // -------------------------------------
-//   Task: Images
+//   Task: Minify JS
+// -------------------------------------
+gulp.task('js:min', ['js'], function () {
+  return gulp.src('build/js/*.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('build/js'));
+});
+
+// -------------------------------------
+//   Task: Images & Optmizations
 // -------------------------------------
 gulp.task('images', function () {
+  return gulp.src('src/img/*')
+    .pipe(gulp.dest('build/img'))
+    .pipe(livereload());
+});
+
+gulp.task('images:optim', function () {
   return gulp.src('src/img/*')
     .pipe(imagemin({
       progressive: true,
       svgoPlugins: [{removeViewBox: false}],
       use: [pngquant()]
     }))
-    .pipe(gulp.dest('build/img'))
-    .pipe(livereload());
+    .pipe(gulp.dest('build/img'));
 });
 
 // -------------------------------------
@@ -197,10 +210,10 @@ gulp.task("favicons", function () {
 // -------------------------------------
 gulp.task('watch', function() {
   livereload.listen();
-  gulp.watch('src/img/**/*',['images']);
+  gulp.watch('src/*.haml', ['build:haml']);
   gulp.watch('src/scss/**/*.scss', ['scss','lint:scss']);
-  gulp.watch('src/*.haml', ['build']);
-  gulp.watch('src/js/**/*.js', ['js']);
+  gulp.watch('src/js/**/*.js', ['js', 'lint:js']);
+  gulp.watch('src/img/**/*',['images']);
 });
 
 // -------------------------------------
@@ -229,23 +242,31 @@ gulp.task('rev', function () {
 });
 
 // -------------------------------------
-//   Task: Build
+//   Task: Build DEV - PROD - HAML
 // -------------------------------------
-gulp.task('build',['clean'], function(callback) {
-  runSequence('scss','images', 'favicons', 'haml', 'icons', 'prettify:html', 'js', 'rev', callback);
+gulp.task('build:dev',['clean'], function(callback) {
+  runSequence('scss', 'images', 'haml', 'icons', 'js', 'favicons', callback);
+});
+
+gulp.task('build:prod',['clean'], function(callback) {
+  runSequence('scss', 'css:min', 'images:optim', 'haml', 'icons', 'js:min', 'favicons', 'rev', callback);
+});
+
+gulp.task('build:haml', function(callback) {
+  runSequence('haml', 'icons', callback);
 });
 
 // -------------------------------------
 //   Task: Developement
 // -------------------------------------
 gulp.task('dev', function(callback) {
-  runSequence('build', 'watch','webserver', callback);
+  runSequence('build:dev', 'watch','webserver', callback);
 });
 
 // -------------------------------------
 //   Task: Deploy Github Page
 // -------------------------------------
-gulp.task('deploy', function() {
+gulp.task('deploy',['build:prod'], function(callback) {
   return gulp.src('build/**/*')
     .pipe(ghPages());
 });
