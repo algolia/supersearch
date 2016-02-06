@@ -65,6 +65,7 @@
   text-transform: uppercase;
   text-shadow: 1px 1px 0 black;
   margin-bottom: 4px;
+  pointer-events: none;
 
   em {
     font-style: normal;
@@ -80,6 +81,7 @@
   display: inline-block;
   padding: 0 20px 2px 8px;
   margin-left: -8px;
+  pointer-events: none;
 
   em {
     color: #FF2682;
@@ -98,6 +100,7 @@
   bottom: 4px;
   right: 4px;
   font-weight: 800;
+  pointer-events: none;
 }
 
 .hit-tag {
@@ -115,6 +118,7 @@
   font-weight: 800;
   background-color: white;
   padding: 0 .5em 2px;
+  pointer-events: none;
   em {
     font-style: normal;
   }
