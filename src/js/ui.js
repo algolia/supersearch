@@ -1,5 +1,4 @@
 
-
 function openLightbox(e) {
   var yt = $(e).data('yt') || jHash.val('yt');
   jHash.val('yt', yt);

@@ -7,7 +7,6 @@ var runSequence = require('run-sequence');
 //dev
 var webserver = require('gulp-webserver');
 var livereload = require('gulp-livereload');
-var gutil = require('gulp-util');
 
 //deploy
 var ghPages = require('gulp-gh-pages');
@@ -17,6 +16,7 @@ var sass = require('gulp-sass');
 var scsslint = require('gulp-scss-lint');
 var scssLintStylish = require('gulp-scss-lint-stylish');
 var autoprefixer = require('gulp-autoprefixer');
+var minifyCss = require('gulp-minify-css');
 
 //html
 var haml = require('gulp-haml');
@@ -86,8 +86,17 @@ gulp.task('sass', function () {
     browsers: ['last 2 versions'],
     cascade: false
   }))
+  .pipe(minifyCss())
   .pipe(gulp.dest('build'))
   .pipe(livereload());
+});
+
+gulp.task('scss-lint', function() {
+  return gulp.src('src/scss/*.scss')
+    .pipe(scsslint({
+      customReport: scssLintStylish,
+      config: '.scss-lint.yml'
+    }));
 });
 
 gulp.task('js', function () {
@@ -141,12 +150,4 @@ gulp.task('dev', function(callback) {
 gulp.task('deploy', function() {
   return gulp.src('build/**/*')
     .pipe(ghPages());
-});
-
-gulp.task('scss-lint', function() {
-  return gulp.src('src/scss/*.scss')
-    .pipe(scsslint({
-      customReport: scssLintStylish,
-      config: '.scss-lint.yml'
-    }));
 });
