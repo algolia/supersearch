@@ -260,7 +260,7 @@ gulp.task('build:haml', function(callback) {
 //   Task: Developement
 // -------------------------------------
 gulp.task('dev', function(callback) {
-  runSequence('build:dev', 'watch','webserver', callback);
+  runSequence('build:dev', 'watch', 'webserver', callback);
 });
 
 // -------------------------------------
