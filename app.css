@@ -951,7 +951,8 @@ header {
   white-space: nowrap;
   text-transform: uppercase;
   text-shadow: 1px 1px 0 black;
-  margin-bottom: 4px; }
+  margin-bottom: 4px;
+  pointer-events: none; }
   .hit-brand em {
     font-style: normal;
     font-weight: 800;
@@ -963,7 +964,8 @@ header {
   background-image: linear-gradient(60deg, rgba(4, 50, 141, 0.6), rgba(4, 50, 141, 0) 90%, rgba(4, 50, 141, 0));
   display: inline-block;
   padding: 0 20px 2px 8px;
-  margin-left: -8px; }
+  margin-left: -8px;
+  pointer-events: none; }
   .hit-name em {
     color: #FF2682;
     font-style: normal; }
@@ -978,7 +980,8 @@ header {
   position: absolute;
   bottom: 4px;
   right: 4px;
-  font-weight: 800; }
+  font-weight: 800;
+  pointer-events: none; }
 
 .hit-tag {
   max-width: 50%;
@@ -994,7 +997,8 @@ header {
   left: 4px;
   font-weight: 800;
   background-color: white;
-  padding: 0 .5em 2px; }
+  padding: 0 .5em 2px;
+  pointer-events: none; }
   .hit-tag em {
     font-style: normal; }
   .hit-tag:empty {
