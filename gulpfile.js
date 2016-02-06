@@ -157,7 +157,7 @@ gulp.task('lint:js', function() {
 });
 
 // -------------------------------------
-//   Task: Copy images
+//   Task: Images
 // -------------------------------------
 gulp.task('images', function () {
   return gulp.src('src/img/*')
@@ -166,7 +166,8 @@ gulp.task('images', function () {
       svgoPlugins: [{removeViewBox: false}],
       use: [pngquant()]
     }))
-    .pipe(gulp.dest('build/img'));
+    .pipe(gulp.dest('build/img'))
+    .pipe(livereload());
 });
 
 // -------------------------------------
