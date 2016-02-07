@@ -82,7 +82,7 @@ $(".share-link").on("click", function(e) {
     window.open("https://twitter.com/share?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent(msg) + "&via=algolia", "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600");
     break;
   case "facebook":
-    window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url) + "&t=" + encodeURIComponent(msg), "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600");
+    window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url), "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600");
     break;
   }
 });
@@ -92,13 +92,13 @@ $(".share-video").on("click", function(e) {
   var yt = jHash.val('yt');
   var brand = $(this).data('brand') || null;
   var url = "https://community.algolia.com/supersearch/#?yt=" + yt;
-  var msg = "I ❤ this " + brand + " #SuperBowl #ad on 🏈 SuperSearch Commercials 🏈 ";
+  var msg = "I ❤ this " + brand + " #SuperBowl #ad on 🏈 SuperSearch Commercials";
   switch (this.href.split("#")[1]) {
     case "twitter":
       window.open("https://twitter.com/share?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent(msg) + "&via=algolia", "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600");
       break;
     case "facebook":
-      window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url) + "&t=" + encodeURIComponent(msg), "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600");
+      window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url), "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600");
       break;
   }
 });

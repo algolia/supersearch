@@ -29,18 +29,21 @@
   height: 140px;
   display: block;
   text-decoration: none;
-  transition: background-size .2s ease;
+  transition: background-size .2s ease, opacity .4s ease;
   cursor: pointer;
   color: #fff;
   padding: 4px 8px;
   position: relative;
-  background: {
-    repeat: no-repeat;
-    position: center;
-    size: 110%;
-    color: rgba(#3F97F3, .6);
-    blend-mode: soft-light;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 110%;
+  background-color: rgba(#3F97F3, .6);
+  background-blend-mode: soft-light;
+  opacity: 0;
+  &.loaded {
+    opacity: 1;
   }
+
   @media (max-width: $bp-small) {
     height: 90px;
     background-color: rgba(#3F97F3, .4);;

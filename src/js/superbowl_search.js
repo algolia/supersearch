@@ -84,4 +84,14 @@ search.addWidget(
   })
 );
 
+superbowlsearch.on('render', function() {
+  $('.hit img').one('load', function() {
+    var img = $(this).attr('src');
+    $(this).parent().css('background-image', 'url("' + img + '")');
+    $(this).parent().addClass('loaded');
+  }).each(function() {
+      if(this.complete) $(this).load();
+  });
+});
+
 superbowlsearch.start();
