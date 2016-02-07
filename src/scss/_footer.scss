@@ -10,7 +10,8 @@
   border-radius: 25px;
   @media (max-width: $bp-small) {
     font-size: 14px;
-    width: 200px;
+    width: 220px;
+    border-radius: 50px;
   }
   .algolia {
     position: relative;

@@ -124,6 +124,7 @@
 
   &.hide {
     opacity: 0;
+    transition: transform .3s ease-in, opacity .2s ease;
     display: block !important;
     transform: translateX(100vw);
   }

@@ -87,6 +87,10 @@ $(".share-link").on("click", function(e) {
   }
 });
 
+$('.filters-panel').on('click','.items li, .ais-menu--item', function(){
+  $('.ais-hits').addClass('hide');
+})
+
 $(".share-video").on("click", function(e) {
   e.preventDefault();
   var yt = jHash.val('yt');

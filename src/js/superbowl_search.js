@@ -92,6 +92,7 @@ superbowlsearch.on('render', function() {
   }).each(function() {
       if(this.complete) $(this).load();
   });
+  $('.ais-hits').removeClass('hide');
 });
 
 superbowlsearch.start();

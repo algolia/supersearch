@@ -22,22 +22,21 @@ body {
   width: 100%;
   max-width: 100%;
   position: relative;
-  transition: transform .5s ease, opacity 1s ease;
+  transition: opacity .4s ease;
 
   @media (max-width: $bp-small) {
     padding: 0 12px;
   }
 
   &.no-scroll {
+    transition: transform .5s ease, opacity .5s ease;
     position: relative;
     right: 40px;
     height: 100vh;
     overflow: hidden;
     opacity: 0;
     perspective: 300px;
-    transform-style: preserve-3d;
     transform: translateX(-30vh);
-    transition: transform .7s ease-out, opacity 1 ease-out;
     .github-source {
       display: none;
       visibility: hidden;
