@@ -1,27 +1,26 @@
 @keyframes fadeleft {
 
   0% {
-    opacity: 0;
     transform: translateX(-30vw);
+    opacity: 0;
   }
 
   100% {
-    opacity: 1;
     transform: translateX(0);
+    opacity: 1;
   }
 }
 
 @keyframes faderight {
 
   0% {
-    opacity: 0;
     transform: translateX(30vw);
+    opacity: 0;
   }
 
-
   100% {
-    opacity: 1;
     transform: translateX(0);
+    opacity: 1;
   }
 }
 
@@ -53,9 +52,10 @@
     opacity: 0;
 
   }
+
   20% {
-    opacity: 0;
     transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
+    opacity: 0;
     transition-timing-function: ease-in;
   }
 
