@@ -4,7 +4,7 @@
   %title Algolia SuperSearch with instantsearch.js
   %link{href: "app.css", rel: "stylesheet", type: "text/css"}
   %link{href: "https://fonts.googleapis.com/css?family=Exo+2:400,800", rel: "stylesheet", type: "text/css"}
-  %link{rel:"icon", type:"icon", href:"favicon.ico"}
+  %link{rel:"icon", type: "image/x-icon", href:"favicon.ico"}
   %meta{name: "description", content:"Find and watch every commercial ever aired during the Big Game with Algolia Super Search"}
   %meta{name: "viewport", content:"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"}
   -# twitter
@@ -48,7 +48,7 @@
       %h1
         %a{href: "https://community.algolia.com/supersearch/"}
           %img{src: "img/logo-supersearch.svg", alt: "Super Search Commercials search by Algolia"}
-      %form.searchbox.sbx-custom{name: "searchquery", role: "search", novalidate: true, onsubmit: "return false;"}
+      %form.searchbox.sbx-custom{name: "searchquery", novalidate: true, onsubmit: "return false;"}
         %input#search.sbx-custom__input{type: "search", placeholder: "Search for a commercial", autocomplete: "off", required: true, spellcheck: false}
         %button.sbx-custom__submit{type: "submit"}
           %svg{role: "img", aria-label: "Search"}
