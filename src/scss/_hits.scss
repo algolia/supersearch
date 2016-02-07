@@ -39,7 +39,8 @@
   background-size: 110%;
   background-color: rgba(#3F97F3, .6);
   background-blend-mode: soft-light;
-  opacity: 0;
+  opacity: 0.4;
+
   &.loaded {
     opacity: 1;
   }

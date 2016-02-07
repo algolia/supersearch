@@ -63,7 +63,7 @@
 
       %script#hit-template{type: "text/template"}
         %a.hit{href: "https://www.youtube.com/watch?v={{objectID}}", data-yt: "{{objectID}}", data-brand: "{{brand}}"}
-          %img.hide{src: "{{thumbnails.high.url}}"}
+          %img.hide{src: "https://res.cloudinary.com/hilnmyskv/image/fetch/w_300,h_200,q_70,c_fill,f_auto/{{thumbnails.high.url}}"}
           .hit-brand {{{_highlightResult.brand.value}}}
           .hit-name {{{_highlightResult.ad_name.value}}}
           .hit-season {{year}} - {{sbYear}}
