@@ -14,4 +14,4 @@ var adroll_pix_id = "YQNWNHGUUBD2JMY7BVOBWM";
     };
     if (window.addEventListener) {window.addEventListener('load', _onload, false);}
     else {window.attachEvent('onload', _onload);}
-}());
+})();
