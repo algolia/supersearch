@@ -76,7 +76,7 @@ $('.tabs a').on('click touchstart', function(e){
 $(".share-link").on("click", function(e) {
   e.preventDefault();
   var url = "https://community.algolia.com/supersearch/";
-  var msg = "Never struggle to find a #SuperBowl ad again. Find the good, the bad and the @Nationwide.";
+  var msg = "Every #SuperBowl commercial ever aired at your fingertips with #SuperSearch! 🏈 ";
   switch (this.href.split("#")[1]) {
   case "twitter":
     window.open("https://twitter.com/share?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent(msg) + "&via=algolia", "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600");

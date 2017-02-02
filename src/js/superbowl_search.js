@@ -6,7 +6,7 @@ const inceptionWidget = require('./widgets/inception.js');
 let superbowlsearch = instantsearch({
   appId: 'latency',
   apiKey: '6be0576ff61c053d5f9a3225e2a90f76',
-  indexName: 'sb_ads',
+  indexName: 'sb_ads_2017',
   urlSync: true
 });
 
